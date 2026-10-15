@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon — VaultShred</title>
+    <meta name="description" content="This page is coming soon. Subscribe to be notified when it launches.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="fullscreen-page">
+
+<div id="fullscreen-topbar-placeholder"></div>
+
+<main class="fullscreen-content">
+    <div>
+        <div style="width:80px;height:80px;border-radius:var(--radius-xl);background:var(--secondary-50);color:var(--secondary);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 28px">
+            <i class="fas fa-rocket"></i>
+        </div>
+        <h2 class="error-subtitle" style="font-size:2rem">Coming Soon</h2>
+        <p class="error-desc">We're working hard to bring you something amazing. Subscribe to be the first to know when this page goes live.</p>
+
+        <div class="countdown-grid">
+            <div class="cd-block">
+                <span class="cd-num" id="cd-days">00</span>
+                <span class="cd-label">Days</span>
+            </div>
+            <div class="cd-block">
+                <span class="cd-num" id="cd-hours">00</span>
+                <span class="cd-label">Hours</span>
+            </div>
+            <div class="cd-block">
+                <span class="cd-num" id="cd-minutes">00</span>
+                <span class="cd-label">Minutes</span>
+            </div>
+            <div class="cd-block">
+                <span class="cd-num" id="cd-seconds">00</span>
+                <span class="cd-label">Seconds</span>
+            </div>
+        </div>
+
+        <form class="coming-soon-form" onsubmit="event.preventDefault();alert('Thank you! We\'ll notify you when this page is ready.');">
+            <input type="email" placeholder="Enter your email to get notified" required>
+            <button type="submit" class="btn btn-primary">Notify Me</button>
+        </form>
+
+        <div class="error-actions" style="margin-top:32px">
+            <a href="index.html" class="btn btn-secondary"><i class="fas fa-home"></i> Back to Home</a>
+        </div>
+    </div>
+</main>
+
+<script src="components.js"></script>
+</body>
+</html>
