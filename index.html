@@ -13,38 +13,135 @@
 
 <div id="navbar-placeholder"></div>
 
-<!-- ============ HERO SPLIT ============ -->
-<section class="hero-split">
-    <div class="hero-split-left">
-        <span class="hero-eyebrow"><i class="fas fa-shield-halved"></i> NAID AAA Certified</span>
-        <h1 class="fade-up">Secure Document <span class="accent">Shredding</span> You Can Trust</h1>
-        <p class="fade-up delay-1">Protect your business with certified document destruction. On-site and off-site shredding services with a complete chain of custody and Certificate of Destruction.</p>
-        <div class="hero-actions fade-up delay-2">
-            <a href="contact.html" class="btn btn-primary btn-lg">Schedule a Pickup <i class="fas fa-arrow-right"></i></a>
-            <a href="services.html" class="btn btn-secondary btn-lg">Our Services</a>
+<!-- ============ HERO SLIDER (3 Slides — 5s Auto Transition) ============ -->
+<section class="hero-slider" id="heroSlider" aria-roledescription="carousel" aria-label="Featured Shredding Services">
+    <div class="hero-slides-wrapper">
+        <!-- SLIDE 1: Secure Document Shredding -->
+        <div class="hero-slide hero-split active" data-slide-index="0" role="group" aria-roledescription="slide" aria-label="1 of 3: Secure Document Shredding">
+            <div class="hero-split-left">
+                <span class="hero-eyebrow"><i class="fas fa-shield-halved"></i> NAID AAA Certified</span>
+                <h1>Secure Document <span class="accent">Shredding</span> You Can Trust</h1>
+                <p>Protect your business with certified document destruction. On-site and off-site shredding services with a complete chain of custody and Certificate of Destruction.</p>
+                <div class="hero-actions">
+                    <a href="contact.html" class="btn btn-primary btn-lg">Schedule a Pickup <i class="fas fa-arrow-right"></i></a>
+                    <a href="services.html" class="btn btn-secondary btn-lg">Our Services</a>
+                </div>
+                <div class="hero-trust-strip">
+                    <div class="trust-item">
+                        <span class="trust-icon"><i class="fas fa-certificate"></i></span>
+                        <span>HIPAA Compliant</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon"><i class="fas fa-lock"></i></span>
+                        <span>100% Secure</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon"><i class="fas fa-recycle"></i></span>
+                        <span>Eco-Friendly</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-split-right">
+                <img src="assets/images/hero-truck.jpg" alt="Secure shredding service truck arriving at business" class="hero-img-main" loading="eager">
+                <div class="hero-security-pill"><span class="pulse-dot"></span> NAID AAA Certified Facility</div>
+                <div class="hero-stat-card">
+                    <div class="stat-num" data-count="15000" data-suffix="+">15,000+</div>
+                    <div class="stat-label">Documents Destroyed Daily</div>
+                </div>
+            </div>
         </div>
-        <div class="hero-trust-strip fade-up delay-3">
-            <div class="trust-item">
-                <span class="trust-icon"><i class="fas fa-certificate"></i></span>
-                <span>HIPAA Compliant</span>
+
+        <!-- SLIDE 2: Mobile On-Site Destruction -->
+        <div class="hero-slide hero-split" data-slide-index="1" role="group" aria-roledescription="slide" aria-label="2 of 3: On-Site Mobile Shredding" aria-hidden="true">
+            <div class="hero-split-left">
+                <span class="hero-eyebrow"><i class="fas fa-truck-fast"></i> Mobile On-Site Service</span>
+                <h1>Watch Your Files <span class="accent">Destroyed</span> At Your Door</h1>
+                <p>High-security mobile shredding trucks arrive directly at your location. Witness immediate cross-cut destruction on live CCTV monitors with zero chain-of-custody risk.</p>
+                <div class="hero-actions">
+                    <a href="contact.html" class="btn btn-primary btn-lg">Book Mobile Shredding <i class="fas fa-arrow-right"></i></a>
+                    <a href="services.html" class="btn btn-secondary btn-lg">How It Works</a>
+                </div>
+                <div class="hero-trust-strip">
+                    <div class="trust-item">
+                        <span class="trust-icon"><i class="fas fa-video"></i></span>
+                        <span>Live CCTV Witness</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon"><i class="fas fa-location-crosshairs"></i></span>
+                        <span>GPS-Tracked Fleet</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon"><i class="fas fa-box-archive"></i></span>
+                        <span>Tamper-Proof Bins</span>
+                    </div>
+                </div>
             </div>
-            <div class="trust-item">
-                <span class="trust-icon"><i class="fas fa-lock"></i></span>
-                <span>100% Secure</span>
+            <div class="hero-split-right">
+                <img src="assets/images/onsite-service.jpg" alt="Mobile document shredding truck at business location" class="hero-img-main" loading="lazy">
+                <div class="hero-security-pill"><span class="pulse-dot"></span> Witnessed On-Site Destruction</div>
+                <div class="hero-stat-card">
+                    <div class="stat-num" data-count="100" data-suffix="%">100%</div>
+                    <div class="stat-label">Witnessed On-Site Destruction</div>
+                </div>
             </div>
-            <div class="trust-item">
-                <span class="trust-icon"><i class="fas fa-recycle"></i></span>
-                <span>Eco-Friendly</span>
+        </div>
+
+        <!-- SLIDE 3: Certified Legal Compliance -->
+        <div class="hero-slide hero-split" data-slide-index="2" role="group" aria-roledescription="slide" aria-label="3 of 3: Legal & Regulatory Compliance" aria-hidden="true">
+            <div class="hero-split-left">
+                <span class="hero-eyebrow"><i class="fas fa-file-contract"></i> 100% Legal Compliance</span>
+                <h1>Guaranteed Compliance with <span class="accent">Zero</span> Legal Liability</h1>
+                <p>Ensure strict compliance with HIPAA, FACTA, GLBA, and GDPR regulations. Receive legally binding, tamper-evident Certificates of Destruction immediately after service.</p>
+                <div class="hero-actions">
+                    <a href="contact.html" class="btn btn-primary btn-lg">Get Free Quote <i class="fas fa-arrow-right"></i></a>
+                    <a href="compliance.html" class="btn btn-secondary btn-lg">Compliance Standards</a>
+                </div>
+                <div class="hero-trust-strip">
+                    <div class="trust-item">
+                        <span class="trust-icon"><i class="fas fa-award"></i></span>
+                        <span>NAID AAA Verified</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon"><i class="fas fa-stamp"></i></span>
+                        <span>Audit-Ready Proof</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon"><i class="fas fa-leaf"></i></span>
+                        <span>100% Recycled</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-split-right">
+                <img src="assets/images/shredding-machine.jpg" alt="Industrial shredding machinery processing confidential paper" class="hero-img-main" loading="lazy">
+                <div class="hero-security-pill"><span class="pulse-dot"></span> DIN 66399 Level P-4 Shredding</div>
+                <div class="hero-stat-card">
+                    <div class="stat-num" data-count="500" data-suffix="+">500+</div>
+                    <div class="stat-label">Zero-Defect Audits Passed</div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="hero-split-right">
-        <img src="assets/images/hero-truck.jpg" alt="Secure shredding service truck arriving at business" class="hero-img-main">
-        <div class="hero-img-overlay"></div>
-        <div class="hero-stat-card scale-in delay-3">
-            <div class="stat-num" data-count="15000" data-suffix="+">0</div>
-            <div class="stat-label">Documents Destroyed Daily</div>
+
+    <!-- Slider Navigation Bar -->
+    <div class="hero-slider-nav" role="toolbar" aria-label="Hero slider controls">
+        <button class="hero-nav-btn prev" id="heroPrevBtn" aria-label="Previous slide" title="Previous slide">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="hero-dots" id="heroDots" role="tablist" aria-label="Slides navigation">
+            <button class="hero-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Slide 1: Secure Shredding">
+                <span class="hero-dot-fill"></span>
+            </button>
+            <button class="hero-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2: Mobile Destruction">
+                <span class="hero-dot-fill"></span>
+            </button>
+            <button class="hero-dot" data-slide="2" role="tab" aria-selected="false" aria-label="Slide 3: Legal Compliance">
+                <span class="hero-dot-fill"></span>
+            </button>
         </div>
+        <button class="hero-nav-btn next" id="heroNextBtn" aria-label="Next slide" title="Next slide">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="hero-slide-counter" id="heroSlideCounter" aria-live="polite">01 <span class="sep">/</span> 03</div>
     </div>
 </section>
 
@@ -57,8 +154,8 @@
             <p class="section-subtitle">From regular scheduled pickups to one-time purge projects, we handle every document destruction need with military-grade security.</p>
         </div>
         <div class="bento-grid">
-            <!-- Large card -->
-            <a href="services.html" class="bento-card large fade-up">
+            <!-- Card 1 -->
+            <a href="services.html" class="bento-card fade-up">
                 <div class="bento-card-bg"><img src="assets/images/onsite-service.jpg" alt="Mobile shredding truck at client location"></div>
                 <div class="bento-card-overlay"></div>
                 <div class="bento-card-content">
@@ -68,8 +165,8 @@
                     <span class="bento-card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
-            <!-- Small card -->
-            <a href="services.html" class="bento-card small fade-up delay-1">
+            <!-- Card 2 -->
+            <a href="services.html" class="bento-card fade-up delay-1">
                 <div class="bento-card-bg"><img src="assets/images/offsite-facility.jpg" alt="Secure off-site shredding facility"></div>
                 <div class="bento-card-overlay"></div>
                 <div class="bento-card-content">
@@ -79,34 +176,25 @@
                     <span class="bento-card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
-            <!-- 3 Medium cards -->
-            <a href="services.html" class="bento-card medium fade-up">
+            <!-- Card 3 -->
+            <a href="services.html" class="bento-card fade-up">
                 <div class="bento-card-bg"><img src="assets/images/one-time-purge.jpg" alt="Large volume document purge"></div>
                 <div class="bento-card-overlay"></div>
                 <div class="bento-card-content">
-                    <span class="bento-card-tag"><i class="fas fa-boxes-stacked"></i> Purge</span>
+                    <span class="bento-card-tag"><i class="fas fa-boxes-stacked"></i> Purge Service</span>
                     <h3>One-Time Purge</h3>
-                    <p>Office moves, year-end cleanouts, or clearing archived records — any size project.</p>
+                    <p>Office moves, year-end cleanouts, or clearing archived records — fast and certified destruction for any size project.</p>
                     <span class="bento-card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
-            <a href="services.html" class="bento-card medium fade-up delay-1">
+            <!-- Card 4 -->
+            <a href="services.html" class="bento-card fade-up delay-1">
                 <div class="bento-card-bg"><img src="assets/images/hard-drive.jpg" alt="Hard drive physical destruction"></div>
                 <div class="bento-card-overlay"></div>
                 <div class="bento-card-content">
-                    <span class="bento-card-tag"><i class="fas fa-hard-drive"></i> Electronics</span>
+                    <span class="bento-card-tag"><i class="fas fa-hard-drive"></i> Electronic Media</span>
                     <h3>Hard Drive Destruction</h3>
-                    <p>Physical destruction of HDDs, SSDs, tapes, and electronic media with serial tracking.</p>
-                    <span class="bento-card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </div>
-            </a>
-            <a href="services.html" class="bento-card medium fade-up delay-2">
-                <div class="bento-card-bg"><img src="assets/images/recurring-plan.jpg" alt="Recurring service plan"></div>
-                <div class="bento-card-overlay"></div>
-                <div class="bento-card-content">
-                    <span class="bento-card-tag"><i class="fas fa-repeat"></i> Recurring</span>
-                    <h3>Scheduled Plans</h3>
-                    <p>Weekly, bi-weekly, or monthly — set it and forget it with automated pickups.</p>
+                    <p>Physical destruction of HDDs, SSDs, tapes, and electronic media with serialized chain-of-custody tracking.</p>
                     <span class="bento-card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -206,44 +294,23 @@
                     </div>
                 </div>
             </div>
-            <!-- Full-width feature card -->
-            <div class="glass-feature-card fade-up delay-3">
-                <div class="gfc-icon"><i class="fas fa-file-circle-check"></i></div>
-                <div class="gfc-content">
-                    <h3>Every Service Includes a Certificate of Destruction</h3>
-                    <p>Detailed documentation of date, time, method, and materials destroyed — providing a complete audit trail for your regulatory compliance records.</p>
+            <div class="glass-card fade-up delay-3">
+                <div class="gc-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="gc-text">Their scheduled console service has simplified our data privacy compliance completely. Locked bins, reliable bi-weekly pickups, and instant serialized certificates every single visit.</p>
+                <div class="gc-author">
+                    <div class="gc-avatar">DC</div>
+                    <div class="gc-meta">
+                        <span class="gc-name">David Chen</span>
+                        <span class="gc-role">VP of Technology, Apex Financial</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============ SECTION 4: SCROLLING CERTIFICATION TICKER ============ -->
-<section class="ticker-section">
-    <div class="ticker-label">Trusted Certifications & Industry Partners</div>
-    <div class="ticker-track">
-        <div class="ticker-item"><i class="fas fa-shield-halved"></i><div><span>NAID AAA</span><span class="ticker-sub">Certified Facility</span></div></div>
-        <div class="ticker-item"><i class="fas fa-hospital"></i><div><span>HIPAA</span><span class="ticker-sub">Compliant Partner</span></div></div>
-        <div class="ticker-item"><i class="fas fa-file-contract"></i><div><span>FACTA</span><span class="ticker-sub">Disposal Standards</span></div></div>
-        <div class="ticker-item"><i class="fas fa-landmark"></i><div><span>GLBA</span><span class="ticker-sub">Financial Privacy</span></div></div>
-        <div class="ticker-item"><i class="fas fa-chart-line"></i><div><span>SOX</span><span class="ticker-sub">Record Retention</span></div></div>
-        <div class="ticker-item"><i class="fas fa-recycle"></i><div><span>Eco-Certified</span><span class="ticker-sub">Zero Landfill</span></div></div>
-        <div class="ticker-item"><i class="fas fa-globe"></i><div><span>CCPA</span><span class="ticker-sub">Privacy Compliance</span></div></div>
-        <div class="ticker-item"><i class="fas fa-lock"></i><div><span>DIN 66399</span><span class="ticker-sub">P-4 Cross-Cut</span></div></div>
-        <!-- Duplicated for seamless loop -->
-        <div class="ticker-item"><i class="fas fa-shield-halved"></i><div><span>NAID AAA</span><span class="ticker-sub">Certified Facility</span></div></div>
-        <div class="ticker-item"><i class="fas fa-hospital"></i><div><span>HIPAA</span><span class="ticker-sub">Compliant Partner</span></div></div>
-        <div class="ticker-item"><i class="fas fa-file-contract"></i><div><span>FACTA</span><span class="ticker-sub">Disposal Standards</span></div></div>
-        <div class="ticker-item"><i class="fas fa-landmark"></i><div><span>GLBA</span><span class="ticker-sub">Financial Privacy</span></div></div>
-        <div class="ticker-item"><i class="fas fa-chart-line"></i><div><span>SOX</span><span class="ticker-sub">Record Retention</span></div></div>
-        <div class="ticker-item"><i class="fas fa-recycle"></i><div><span>Eco-Certified</span><span class="ticker-sub">Zero Landfill</span></div></div>
-        <div class="ticker-item"><i class="fas fa-globe"></i><div><span>CCPA</span><span class="ticker-sub">Privacy Compliance</span></div></div>
-        <div class="ticker-item"><i class="fas fa-lock"></i><div><span>DIN 66399</span><span class="ticker-sub">P-4 Cross-Cut</span></div></div>
-    </div>
-</section>
-
 <!-- ============ SECTION 5: OVERLAPPING PROCESS CARDS ============ -->
-<section class="section overlap-process">
+<section class="section overlap-process" style="background:var(--bg-alt)">
     <div class="container">
         <div class="section-header fade-up">
             <span class="section-badge-primary"><i class="fas fa-route"></i> Our Process</span>
@@ -278,117 +345,78 @@
     </div>
 </section>
 
-<!-- ============ SECTION 6: SPLIT FAQ + IMAGE ============ -->
-<section class="section split-faq">
-    <div class="container">
-        <div class="split-faq-grid">
-            <div class="split-faq-content slide-left">
-                <span class="section-badge"><i class="fas fa-circle-question"></i> FAQ</span>
-                <h2 style="margin-top:16px">Common Questions</h2>
-                <p>Everything you need to know about our secure document shredding services.</p>
-                <div class="split-faq-list">
-                    <div class="sfaq-item active">
-                        <button class="sfaq-btn" onclick="toggleSFAQ(this)">
-                            <span class="sfaq-num">01</span>
-                            <span>What types of documents can you shred?</span>
-                            <i class="fas fa-chevron-down sfaq-chevron"></i>
-                        </button>
-                        <div class="sfaq-answer">
-                            <div class="sfaq-answer-inner">We shred all paper documents, folders, binders, envelopes, and stapled materials. No need to remove staples, clips, or rubber bands before shredding.</div>
-                        </div>
-                    </div>
-                    <div class="sfaq-item">
-                        <button class="sfaq-btn" onclick="toggleSFAQ(this)">
-                            <span class="sfaq-num">02</span>
-                            <span>Do you provide a Certificate of Destruction?</span>
-                            <i class="fas fa-chevron-down sfaq-chevron"></i>
-                        </button>
-                        <div class="sfaq-answer">
-                            <div class="sfaq-answer-inner">Yes! Every service includes a detailed Certificate of Destruction documenting date, time, method, and materials destroyed for your compliance audit trail.</div>
-                        </div>
-                    </div>
-                    <div class="sfaq-item">
-                        <button class="sfaq-btn" onclick="toggleSFAQ(this)">
-                            <span class="sfaq-num">03</span>
-                            <span>Can you destroy hard drives and media?</span>
-                            <i class="fas fa-chevron-down sfaq-chevron"></i>
-                        </button>
-                        <div class="sfaq-answer">
-                            <div class="sfaq-answer-inner">Absolutely. We offer physical destruction of hard drives, SSDs, tapes, CDs, and USB drives with serial number tracking and photographic evidence.</div>
-                        </div>
-                    </div>
-                    <div class="sfaq-item">
-                        <button class="sfaq-btn" onclick="toggleSFAQ(this)">
-                            <span class="sfaq-num">04</span>
-                            <span>How fast can you schedule a pickup?</span>
-                            <i class="fas fa-chevron-down sfaq-chevron"></i>
-                        </button>
-                        <div class="sfaq-answer">
-                            <div class="sfaq-answer-inner">Recurring clients get same-day or next-day service. New clients are typically serviced within 48 hours of their initial request.</div>
-                        </div>
-                    </div>
-                    <div class="sfaq-item">
-                        <button class="sfaq-btn" onclick="toggleSFAQ(this)">
-                            <span class="sfaq-num">05</span>
-                            <span>Are there long-term contracts?</span>
-                            <i class="fas fa-chevron-down sfaq-chevron"></i>
-                        </button>
-                        <div class="sfaq-answer">
-                            <div class="sfaq-answer-inner">No long-term contracts required. All plans are month-to-month with the flexibility to upgrade, downgrade, or cancel at any time with 30 days notice.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="split-faq-img slide-right">
-                <img src="assets/images/data-security.jpg" alt="Secure data destruction professional">
-                <div class="split-faq-img-badge">
-                    <i class="fas fa-headset"></i>
-                    <div class="sfib-text">
-                        <span>Need Help?</span>
-                        <strong>(555) 123-4567</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<script>
-function toggleSFAQ(btn){const item=btn.closest('.sfaq-item');const active=item.classList.contains('active');document.querySelectorAll('.sfaq-item.active').forEach(i=>i.classList.remove('active'));if(!active)item.classList.add('active');}
-</script>
 
 <!-- ============ SECTION 7: SUSTAINABILITY & ECO-METRICS ============ -->
 <section class="section eco-dashboard">
     <div class="container">
         <div class="section-header fade-up">
-            <span class="section-badge" style="background:rgba(42,157,143,0.12);color:#2a9d8f;"><i class="fas fa-leaf"></i> Eco-Friendly Shredding</span>
+            <span class="section-badge"><i class="fas fa-leaf"></i> Eco-Friendly Shredding</span>
             <h2>100% Recycled Post-Destruction</h2>
             <p class="section-subtitle">Every shredded particle is securely baled, pulped, and converted into recycled paper products — supporting your corporate ESG initiatives.</p>
         </div>
         <div class="eco-grid">
-            <div class="eco-card fade-up">
-                <div class="eco-icon-wrap"><i class="fas fa-tree"></i></div>
-                <div class="eco-stat" data-count="17" data-suffix=" Trees">0</div>
+            <!-- 1. Trees -->
+            <div class="eco-card eco-card-tree fade-up">
+                <div class="eco-card-ambient"></div>
+                <div class="eco-card-top">
+                    <div class="eco-icon-wrap"><i class="fas fa-tree"></i></div>
+                    <span class="eco-pill-tag">Forest Health</span>
+                </div>
+                <div class="eco-stat" data-count="17" data-suffix=" Trees">17 Trees</div>
                 <div class="eco-label">Saved Per Ton</div>
-                <div class="eco-subtext">Protects mature forest ecosystems from industrial logging</div>
+                <div class="eco-subtext">Protects mature forest ecosystems from industrial clear-cut logging.</div>
+                <div class="eco-meter">
+                    <div class="eco-meter-track"><span class="eco-meter-fill" style="width: 88%"></span></div>
+                    <span class="eco-meter-label"><i class="fas fa-arrow-trend-up"></i> 88% Net Offset</span>
+                </div>
             </div>
-            <div class="eco-card fade-up delay-1">
-                <div class="eco-icon-wrap"><i class="fas fa-droplet"></i></div>
-                <div class="eco-stat" data-count="7000" data-suffix=" Gal">0</div>
+
+            <!-- 2. Water -->
+            <div class="eco-card eco-card-water fade-up delay-1">
+                <div class="eco-card-ambient"></div>
+                <div class="eco-card-top">
+                    <div class="eco-icon-wrap"><i class="fas fa-droplet"></i></div>
+                    <span class="eco-pill-tag">Aquifer Relief</span>
+                </div>
+                <div class="eco-stat" data-count="7000" data-suffix=" Gal">7,000 Gal</div>
                 <div class="eco-label">Water Conserved</div>
-                <div class="eco-subtext">Drastically reduces industrial manufacturing freshwater draw</div>
+                <div class="eco-subtext">Diverts intensive industrial manufacturing freshwater draw.</div>
+                <div class="eco-meter">
+                    <div class="eco-meter-track"><span class="eco-meter-fill" style="width: 94%"></span></div>
+                    <span class="eco-meter-label"><i class="fas fa-arrow-trend-up"></i> 94% Process Savings</span>
+                </div>
             </div>
-            <div class="eco-card fade-up delay-2">
-                <div class="eco-icon-wrap"><i class="fas fa-bolt"></i></div>
-                <div class="eco-stat" data-count="4100" data-suffix=" kWh">0</div>
+
+            <!-- 3. Energy -->
+            <div class="eco-card eco-card-energy fade-up delay-2">
+                <div class="eco-card-ambient"></div>
+                <div class="eco-card-top">
+                    <div class="eco-icon-wrap"><i class="fas fa-bolt"></i></div>
+                    <span class="eco-pill-tag">Clean Power</span>
+                </div>
+                <div class="eco-stat" data-count="4100" data-suffix=" kWh">4,100 kWh</div>
                 <div class="eco-label">Electricity Preserved</div>
-                <div class="eco-subtext">Enough energy saved per ton to power an average home for 6 months</div>
+                <div class="eco-subtext">Enough energy saved per ton to power a modern home.</div>
+                <div class="eco-meter">
+                    <div class="eco-meter-track"><span class="eco-meter-fill" style="width: 82%"></span></div>
+                    <span class="eco-meter-label"><i class="fas fa-arrow-trend-up"></i> 82% Grid Reduction</span>
+                </div>
             </div>
-            <div class="eco-card fade-up delay-3">
-                <div class="eco-icon-wrap"><i class="fas fa-recycle"></i></div>
-                <div class="eco-stat" data-count="3" data-suffix=" Cu Yds">0</div>
+
+            <!-- 4. Landfill -->
+            <div class="eco-card eco-card-landfill fade-up delay-3">
+                <div class="eco-card-ambient"></div>
+                <div class="eco-card-top">
+                    <div class="eco-icon-wrap"><i class="fas fa-recycle"></i></div>
+                    <span class="eco-pill-tag">Zero Waste</span>
+                </div>
+                <div class="eco-stat" data-count="3" data-suffix=" Cu Yds">3 Cu Yds</div>
                 <div class="eco-label">Landfill Avoided</div>
-                <div class="eco-subtext">Zero-landfill certified policy keeps paper waste out of refuse dumps</div>
+                <div class="eco-subtext">Certified zero-landfill baling keeps paper waste 100% circular.</div>
+                <div class="eco-meter">
+                    <div class="eco-meter-track"><span class="eco-meter-fill" style="width: 100%"></span></div>
+                    <span class="eco-meter-label"><i class="fas fa-circle-check"></i> 100% Diverted</span>
+                </div>
             </div>
         </div>
         <div class="eco-banner-card fade-up">
@@ -439,6 +467,7 @@ function toggleSFAQ(btn){const item=btn.closest('.sfaq-item');const active=item.
                         </div>
                         <div class="cm-guarantee-point"><i class="fas fa-circle-check"></i><span>100% HIPAA Audit Defense Record</span></div>
                         <div class="cm-guarantee-point"><i class="fas fa-circle-check"></i><span>Serial Barcode Tracking per Bin</span></div>
+                        <div class="cm-guarantee-point"><i class="fas fa-circle-check"></i><span>NAID AAA Certified Chain-of-Custody</span></div>
                     </div>
                     <a href="compliance.html" class="btn btn-white btn-sm" style="margin-top:20px;align-self:flex-start">Compliance Guide <i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -463,6 +492,7 @@ function toggleSFAQ(btn){const item=btn.closest('.sfaq-item');const active=item.
                         </div>
                         <div class="cm-guarantee-point"><i class="fas fa-circle-check"></i><span>Sarbanes-Oxley Section 802 Aligned</span></div>
                         <div class="cm-guarantee-point"><i class="fas fa-circle-check"></i><span>$5M Indemnification Warranty</span></div>
+                        <div class="cm-guarantee-point"><i class="fas fa-circle-check"></i><span>GLBA Safeguards Audit Defense</span></div>
                     </div>
                     <a href="compliance.html" class="btn btn-white btn-sm" style="margin-top:20px;align-self:flex-start">Financial Protocols <i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -487,6 +517,7 @@ function toggleSFAQ(btn){const item=btn.closest('.sfaq-item');const active=item.
                         </div>
                         <div class="cm-guarantee-point"><i class="fas fa-circle-check"></i><span>Witnessed On-Site Destruction</span></div>
                         <div class="cm-guarantee-point"><i class="fas fa-circle-check"></i><span>Bonded & Vetted Security Officers</span></div>
+                        <div class="cm-guarantee-point"><i class="fas fa-circle-check"></i><span>Strict Non-Disclosure Guarantee</span></div>
                     </div>
                     <a href="compliance.html" class="btn btn-white btn-sm" style="margin-top:20px;align-self:flex-start">Legal Brief <i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -511,6 +542,7 @@ function toggleSFAQ(btn){const item=btn.closest('.sfaq-item');const active=item.
                         </div>
                         <div class="cm-guarantee-point"><i class="fas fa-circle-check"></i><span>Zero-Gap Custody Transfer</span></div>
                         <div class="cm-guarantee-point"><i class="fas fa-circle-check"></i><span>100% Complete Shredding Guarantee</span></div>
+                        <div class="cm-guarantee-point"><i class="fas fa-circle-check"></i><span>FACTA & CCPA Compliant Audit Trail</span></div>
                     </div>
                     <a href="compliance.html" class="btn btn-white btn-sm" style="margin-top:20px;align-self:flex-start">Enterprise Specs <i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -563,7 +595,7 @@ function toggleSFAQ(btn){const item=btn.closest('.sfaq-item');const active=item.
                     </div>
                 </div>
                 <div class="coc-hash-box">
-                    <span><i class="fas fa-fingerprint" style="margin-right:6px;color:var(--secondary)"></i> SHA-256 HASH:</span>
+                    <span><i class="fas fa-fingerprint" style="margin-right:6px"></i> SHA-256 HASH:</span>
                     <span>7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1f...</span>
                 </div>
             </div>
@@ -609,19 +641,186 @@ function switchComplianceTab(tabId, btn) {
 }
 </script>
 
-<!-- CTA -->
-<section class="cta-section">
+<!-- ============ SECTION 6: SPLIT FAQ + IMAGE ============ -->
+<section class="section split-faq">
     <div class="container">
-        <div class="cta-inner fade-up">
-            <h2>Ready to Secure Your Documents?</h2>
-            <p>Get a free quote today and experience the VaultShred difference. Certified, secure, and eco-friendly document destruction.</p>
-            <div class="cta-actions">
-                <a href="contact.html" class="btn btn-white btn-lg">Get Free Quote <i class="fas fa-arrow-right"></i></a>
-                <a href="pricing.html" class="btn btn-white-outline btn-lg">View Pricing</a>
+        <div class="split-faq-grid">
+            <div class="split-faq-content slide-left">
+                <span class="section-badge"><i class="fas fa-circle-question"></i> FAQ</span>
+                <h2 style="margin-top:16px">Common Questions</h2>
+                <p>Everything you need to know about our secure document shredding services.</p>
+                <div class="split-faq-list">
+                    <div class="sfaq-item active">
+                        <button class="sfaq-btn" onclick="toggleSFAQ(this)">
+                            <span class="sfaq-num">01</span>
+                            <span>What types of documents can you shred?</span>
+                            <i class="fas fa-chevron-down sfaq-chevron"></i>
+                        </button>
+                        <div class="sfaq-answer">
+                            <div class="sfaq-answer-inner">We shred all paper documents, folders, binders, envelopes, and stapled materials. No need to remove staples, clips, or rubber bands before shredding.</div>
+                        </div>
+                    </div>
+                    <div class="sfaq-item">
+                        <button class="sfaq-btn" onclick="toggleSFAQ(this)">
+                            <span class="sfaq-num">02</span>
+                            <span>Do you provide a Certificate of Destruction?</span>
+                            <i class="fas fa-chevron-down sfaq-chevron"></i>
+                        </button>
+                        <div class="sfaq-answer">
+                            <div class="sfaq-answer-inner">Yes! Every service includes a detailed Certificate of Destruction documenting date, time, method, and materials destroyed for your compliance audit trail.</div>
+                        </div>
+                    </div>
+                    <div class="sfaq-item">
+                        <button class="sfaq-btn" onclick="toggleSFAQ(this)">
+                            <span class="sfaq-num">03</span>
+                            <span>Can you destroy hard drives and media?</span>
+                            <i class="fas fa-chevron-down sfaq-chevron"></i>
+                        </button>
+                        <div class="sfaq-answer">
+                            <div class="sfaq-answer-inner">Absolutely. We offer physical destruction of hard drives, SSDs, tapes, CDs, and USB drives with serial number tracking and photographic evidence.</div>
+                        </div>
+                    </div>
+                    <div class="sfaq-item">
+                        <button class="sfaq-btn" onclick="toggleSFAQ(this)">
+                            <span class="sfaq-num">04</span>
+                            <span>How fast can you schedule a pickup?</span>
+                            <i class="fas fa-chevron-down sfaq-chevron"></i>
+                        </button>
+                        <div class="sfaq-answer">
+                            <div class="sfaq-answer-inner">Recurring clients get same-day or next-day service. New clients are typically serviced within 48 hours of their initial request.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="split-faq-img slide-right">
+                <img src="assets/images/data-security.jpg" alt="Secure data destruction professional">
+                <div class="split-faq-img-badge">
+                    <i class="fas fa-headset"></i>
+                    <div class="sfib-text">
+                        <span>Need Help?</span>
+                        <strong>(555) 123-4567</strong>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+function toggleSFAQ(btn){const item=btn.closest('.sfaq-item');const active=item.classList.contains('active');document.querySelectorAll('.sfaq-item.active').forEach(i=>i.classList.remove('active'));if(!active)item.classList.add('active');}
+</script>
+
+<!-- ============ SECTION: MODERN BENTO SHOWCASE CTA ============ -->
+<section class="cta-section cta-modern-section">
+    <div class="container">
+        <div class="cta-showcase-card fade-up">
+            <!-- Ambient Glowing Highlights -->
+            <div class="cta-ambient-glow red"></div>
+            <div class="cta-ambient-glow blue"></div>
+
+            <div class="cta-showcase-grid">
+                <!-- Left Content Column -->
+                <div class="cta-content-col">
+                    <span class="cta-security-badge">
+                        <span class="pulse-dot"></span> 100% Zero-Defect Audit Guarantee
+                    </span>
+                    <h2>Ready to Eliminate Data Risk? <span class="cta-highlight-text">Secure Your Facility Today.</span></h2>
+                    <p>
+                        From scheduled locked deskside consoles to high-volume purge cleanouts, VaultShred delivers NAID AAA certified destruction with on-site CCTV verification and legally binding certificates.
+                    </p>
+
+                    <!-- Actions Cluster -->
+                    <div class="cta-actions-cluster">
+                        <a href="contact.html" class="btn btn-cta-primary">
+                            <span>Get Free Custom Quote</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="pricing.html" class="btn btn-cta-secondary">
+                            <i class="fas fa-calculator"></i>
+                            <span>View Pricing Plans</span>
+                        </a>
+                    </div>
+
+                    <!-- Direct Hotline -->
+                    <div class="cta-hotline-meta">
+                        <i class="fas fa-headset"></i>
+                        <span>Need emergency same-day dispatch? Call <strong>(555) 123-4567</strong></span>
+                    </div>
+                </div>
+
+                <!-- Right Interactive Estimator Card -->
+                <div class="cta-widget-col">
+                    <div class="cta-interactive-card">
+                        <div class="cta-widget-top">
+                            <div class="cw-title">
+                                <i class="fas fa-bolt"></i>
+                                <span>Quick Service Estimator</span>
+                            </div>
+                            <span class="cw-badge">Instant Rate</span>
+                        </div>
+                        <p class="cw-subtitle">Select your requirements for immediate scheduling and transparent volume pricing.</p>
+
+                        <!-- Step 1: Mode -->
+                        <div class="cw-field-group">
+                            <label class="cw-label">Service Type</label>
+                            <div class="cw-pills-row">
+                                <button type="button" class="cw-pill active" onclick="setCtaService(this, 'Mobile On-Site Truck')">
+                                    <i class="fas fa-truck-fast"></i> Mobile On-Site
+                                </button>
+                                <button type="button" class="cw-pill" onclick="setCtaService(this, 'Plant Facility Purge')">
+                                    <i class="fas fa-building-shield"></i> Plant Purge
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Volume -->
+                        <div class="cw-field-group">
+                            <label class="cw-label">Estimated Container Volume</label>
+                            <div class="cw-pills-row">
+                                <button type="button" class="cw-pill active" onclick="setCtaVolume(this, '1-4 Consoles')">1-4 Consoles</button>
+                                <button type="button" class="cw-pill" onclick="setCtaVolume(this, '5-12 Rolling Bins')">5-12 Bins</button>
+                                <button type="button" class="cw-pill" onclick="setCtaVolume(this, 'Warehouse Bulk Purge')">Bulk Purge</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Quick Form -->
+                        <form class="cw-input-form" onsubmit="event.preventDefault(); window.location.href='contact.html?service=' + encodeURIComponent(ctaSelectedService) + '&volume=' + encodeURIComponent(ctaSelectedVolume);">
+                            <div class="cw-input-wrap">
+                                <i class="fas fa-location-dot"></i>
+                                <input type="text" placeholder="Enter ZIP code or city for dispatch ETA" class="cw-input" required>
+                            </div>
+                            <button type="submit" class="cw-submit-btn">
+                                <span>Check Availability & Price</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </form>
+
+                        <div class="cw-security-seal">
+                            <i class="fas fa-lock"></i>
+                            <span>No obligation • 100% confidential • Commercial & residential</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+let ctaSelectedService = 'Mobile On-Site Truck';
+let ctaSelectedVolume = '1-4 Consoles';
+function setCtaService(btn, service) {
+    ctaSelectedService = service;
+    btn.parentElement.querySelectorAll('.cw-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+}
+function setCtaVolume(btn, volume) {
+    ctaSelectedVolume = volume;
+    btn.parentElement.querySelectorAll('.cw-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+}
+</script>
 
 <div id="footer-placeholder"></div>
 

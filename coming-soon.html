@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" id="root-html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon — VaultShred</title>
-    <meta name="description" content="This page is coming soon. Subscribe to be notified when it launches.">
+    <title>Coming Soon — VaultShred Secure Destruction</title>
+    <meta name="description" content="We're crafting something exciting for you. Subscribe to get early access and notifications when this page launches.">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -14,24 +14,27 @@
 <div id="fullscreen-topbar-placeholder"></div>
 
 <main class="fullscreen-content">
-    <div>
-        <div style="width:80px;height:80px;border-radius:var(--radius-xl);background:var(--secondary-50);color:var(--secondary);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 28px">
-            <i class="fas fa-rocket"></i>
+    <div class="fullscreen-card-wrap">
+        <!-- Badge -->
+        <div class="coming-soon-badge">
+            <i class="fas fa-rocket"></i> Under Development
         </div>
-        <h2 class="error-subtitle" style="font-size:2rem">Coming Soon</h2>
-        <p class="error-desc">We're working hard to bring you something amazing. Subscribe to be the first to know when this page goes live.</p>
 
-        <div class="countdown-grid">
+        <h1 class="error-subtitle" style="font-size:clamp(1.75rem,5vw,2.5rem);margin-bottom:12px;">Coming Soon</h1>
+        <p class="error-desc">We're engineering an enhanced digital experience with real-time shredding tracking, chain-of-custody verification, and instant compliance certificate generation. Stay tuned!</p>
+
+        <!-- Countdown -->
+        <div class="countdown-grid" id="countdownGrid" aria-label="Launch countdown timer">
             <div class="cd-block">
-                <span class="cd-num" id="cd-days">00</span>
+                <span class="cd-num" id="cd-days">30</span>
                 <span class="cd-label">Days</span>
             </div>
             <div class="cd-block">
-                <span class="cd-num" id="cd-hours">00</span>
+                <span class="cd-num" id="cd-hours">14</span>
                 <span class="cd-label">Hours</span>
             </div>
             <div class="cd-block">
-                <span class="cd-num" id="cd-minutes">00</span>
+                <span class="cd-num" id="cd-minutes">25</span>
                 <span class="cd-label">Minutes</span>
             </div>
             <div class="cd-block">
@@ -40,13 +43,24 @@
             </div>
         </div>
 
-        <form class="coming-soon-form" onsubmit="event.preventDefault();alert('Thank you! We\'ll notify you when this page is ready.');">
-            <input type="email" placeholder="Enter your email to get notified" required>
-            <button type="submit" class="btn btn-primary">Notify Me</button>
+        <!-- Subscribe Form -->
+        <form class="coming-soon-form" onsubmit="event.preventDefault(); alert('Thank you! We will notify you at ' + this.querySelector('input').value + ' when this feature goes live.'); this.reset();">
+            <input type="email" placeholder="Enter your work email address" aria-label="Email address for notifications" required>
+            <button type="submit" class="btn btn-primary btn-lg">Notify Me <i class="fas fa-paper-plane" style="margin-left:6px"></i></button>
         </form>
 
-        <div class="error-actions" style="margin-top:32px">
-            <a href="index.html" class="btn btn-secondary"><i class="fas fa-home"></i> Back to Home</a>
+        <!-- Social Links (Per Magtan standard) -->
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:32px;">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="auth-toggle-btn" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="auth-toggle-btn" aria-label="X / Twitter" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="auth-toggle-btn" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="auth-toggle-btn" aria-label="YouTube" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <!-- Quick actions -->
+        <div class="error-actions" style="margin-top:28px">
+            <a href="index.html" class="btn btn-secondary btn-sm"><i class="fas fa-home"></i> Back to Home</a>
+            <a href="services.html" class="btn btn-secondary btn-sm"><i class="fas fa-shield-halved"></i> Explore Services</a>
         </div>
     </div>
 </main>

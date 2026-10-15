@@ -7,7 +7,7 @@
     <meta name="description" content="Transparent pricing for VaultShred document shredding services. Starter, Professional, and Enterprise plans. No hidden fees.">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.2">
 </head>
 <body>
 
@@ -90,56 +90,8 @@
     </div>
 </section>
 
-<!-- FAQ -->
-<section class="section" style="background:var(--bg-alt)">
-    <div class="container">
-        <div class="section-header fade-up">
-            <span class="section-badge-primary"><i class="fas fa-circle-question"></i> Pricing FAQ</span>
-            <h2>Common Pricing Questions</h2>
-        </div>
-        <div class="faq-grid">
-            <div class="faq-item active fade-up">
-                <button class="faq-question">
-                    <span>Are there any setup fees or hidden costs?</span>
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">No. Our pricing is fully transparent with no setup fees, no contract fees, and no hidden charges. The price you see is the price you pay.</div>
-                </div>
-            </div>
-            <div class="faq-item fade-up delay-1">
-                <button class="faq-question">
-                    <span>Can I switch plans at any time?</span>
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">Yes! You can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing cycle.</div>
-                </div>
-            </div>
-            <div class="faq-item fade-up delay-2">
-                <button class="faq-question">
-                    <span>Do you require long-term contracts?</span>
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">No long-term contracts required. All plans are month-to-month with the flexibility to cancel at any time with 30 days notice.</div>
-                </div>
-            </div>
-            <div class="faq-item fade-up delay-3">
-                <button class="faq-question">
-                    <span>What counts as a "box" for pricing?</span>
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">A standard banker's box (15" x 12" x 10") or equivalent volume. Loose papers and folders are estimated based on comparable box volumes.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- ============ PRICING SECTION: DETAILED PLAN COMPARISON MATRIX ============ -->
-<section class="section plan-comparison-table">
+<section class="section plan-comparison-table" style="background:var(--bg-alt)">
     <div class="container">
         <div class="section-header fade-up">
             <span class="section-badge-primary"><i class="fas fa-table-list"></i> Side-by-Side</span>
@@ -217,39 +169,6 @@
     </div>
 </section>
 
-<!-- ============ PRICING SECTION: INTERACTIVE ROI CALCULATOR ============ -->
-<section class="section pricing-calculator">
-    <div class="container">
-        <div class="section-header fade-up">
-            <span class="section-badge"><i class="fas fa-coins"></i> Value Estimator</span>
-            <h2>Calculate Your In-House Shredding Savings</h2>
-            <p class="section-subtitle">Having your employees manually feed personal office shredders burns thousands of dollars in lost labor hours and equipment maintenance every year.</p>
-        </div>
-        <div class="calc-box fade-up">
-            <div>
-                <h3 style="font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:8px">How many employees work in your office?</h3>
-                <p style="font-size:0.88rem;color:var(--text-secondary)">Drag the slider to calculate the real labor hours saved by dropping confidential documents into VaultShred locked consoles.</p>
-                <div class="calc-slider-wrap">
-                    <label>
-                        <span>Office Size:</span>
-                        <strong id="empCountDisplay" style="color:var(--secondary);font-size:1.2rem">25 Employees</strong>
-                    </label>
-                    <input type="range" min="5" max="250" value="25" step="5" class="calc-slider" id="empSlider" oninput="calculateSavings(this.value)">
-                </div>
-                <div style="font-size:0.82rem;color:var(--text-muted);line-height:1.5">
-                    *Based on average labor cost of $28/hr and 30 minutes/month per employee spent removing staples, unclogging jams, and feeding small strip-cut shredders.
-                </div>
-            </div>
-            <div class="calc-savings-card">
-                <span style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;opacity:0.85">Estimated Annual Net Savings</span>
-                <div class="calc-savings-num" id="savingsAmount">$4,200</div>
-                <div class="calc-savings-label" id="savingsHours">+ 150 Productive Hours Reclaimed</div>
-                <a href="contact.html" class="btn btn-secondary btn-sm">Lock In Your Savings <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- ============ PRICING SECTION: SPECIALIZED ADD-ONS ============ -->
 <section class="section pricing-addons">
     <div class="container">
@@ -264,44 +183,80 @@
                 <h3>Physical Hard Drive Shred</h3>
                 <div class="addon-price">$12 <span style="font-size:0.8rem;font-weight:500;color:var(--text-muted)">/ drive</span></div>
                 <p>Industrial rotary shearing with serial number barcode tracking and certificate documentation.</p>
-                <a href="contact.html" class="btn btn-outline btn-sm" style="margin-top:auto">Add to Plan</a>
+                <a href="contact.html" class="btn btn-outline btn-sm">Add to Plan</a>
             </div>
             <div class="addon-card fade-up delay-1">
                 <div class="addon-icon"><i class="fas fa-box-archive"></i></div>
                 <h3>Additional Locked Console</h3>
                 <div class="addon-price">$15 <span style="font-size:0.8rem;font-weight:500;color:var(--text-muted)">/ month</span></div>
                 <p>Executive wood laminate security console delivered and placed in additional departments.</p>
-                <a href="contact.html" class="btn btn-outline btn-sm" style="margin-top:auto">Add to Plan</a>
+                <a href="contact.html" class="btn btn-outline btn-sm">Add to Plan</a>
             </div>
             <div class="addon-card fade-up delay-2">
                 <div class="addon-icon"><i class="fas fa-moon"></i></div>
                 <h3>After-Hours & Weekend Purge</h3>
                 <div class="addon-price">+$75 <span style="font-size:0.8rem;font-weight:500;color:var(--text-muted)">flat rate</span></div>
-                <p>Curbside or off-site destruction scheduled outside normal business hours to minimize disruption.</p>
-                <a href="contact.html" class="btn btn-outline btn-sm" style="margin-top:auto">Add to Plan</a>
+                <p>Curbside or off-site destruction scheduled outside business hours with zero disruption.</p>
+                <a href="contact.html" class="btn btn-outline btn-sm">Add to Plan</a>
             </div>
             <div class="addon-card fade-up delay-3">
                 <div class="addon-icon"><i class="fas fa-certificate"></i></div>
                 <h3>Certified Audit Notarization</h3>
                 <div class="addon-price">Free <span style="font-size:0.8rem;font-weight:500;color:var(--text-muted)">included</span></div>
                 <p>Every pickup receives a formal, digitally signed and timestamped Certificate of Destruction.</p>
-                <a href="contact.html" class="btn btn-outline btn-sm" style="margin-top:auto">Included Free</a>
+                <a href="contact.html" class="btn btn-outline btn-sm">Included Free</a>
             </div>
         </div>
     </div>
 </section>
 
-<script>
-function calculateSavings(val) {
-    const emp = parseInt(val);
-    document.getElementById('empCountDisplay').textContent = emp + ' Employees';
-    const hours = Math.round(emp * 0.5 * 12);
-    const grossCost = hours * 28;
-    const netSavings = Math.max(1200, Math.round(grossCost * 0.75));
-    document.getElementById('savingsAmount').textContent = '$' + netSavings.toLocaleString();
-    document.getElementById('savingsHours').textContent = '+ ' + hours.toLocaleString() + ' Productive Hours Reclaimed';
-}
-</script>
+<!-- FAQ -->
+<section class="section" style="background:var(--bg-alt)">
+    <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-badge-primary"><i class="fas fa-circle-question"></i> Pricing FAQ</span>
+            <h2>Common Pricing Questions</h2>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item active fade-up">
+                <button class="faq-question">
+                    <span>Are there any setup fees or hidden costs?</span>
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">No. Our pricing is fully transparent with no setup fees, no contract fees, and no hidden charges. The price you see is the price you pay.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-up delay-1">
+                <button class="faq-question">
+                    <span>Can I switch plans at any time?</span>
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Yes! You can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing cycle.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-up delay-2">
+                <button class="faq-question">
+                    <span>Do you require long-term contracts?</span>
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">No long-term contracts required. All plans are month-to-month with the flexibility to cancel at any time with 30 days notice.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-up delay-3">
+                <button class="faq-question">
+                    <span>What counts as a "box" for pricing?</span>
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">A standard banker's box (15" x 12" x 10") or equivalent volume. Loose papers and folders are estimated based on comparable box volumes.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- CTA -->
 <section class="cta-section">

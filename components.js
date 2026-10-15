@@ -27,13 +27,13 @@ function getCurrentPage() {
 function renderNavbar() {
     const page = getCurrentPage();
     const links = [
-        { href: 'index.html', label: 'Home' },
-        { href: 'home2.html', label: 'Home 2' },
-        { href: 'about.html', label: 'About' },
-        { href: 'services.html', label: 'Services' },
-        { href: 'compliance.html', label: 'Compliance' },
-        { href: 'pricing.html', label: 'Pricing' },
-        { href: 'contact.html', label: 'Contact' },
+        { href: 'index.html', label: 'Home', icon: 'fa-house' },
+        { href: 'home2.html', label: 'Home 2', icon: 'fa-layer-group' },
+        { href: 'about.html', label: 'About', icon: 'fa-building' },
+        { href: 'services.html', label: 'Services', icon: 'fa-shield-halved' },
+        { href: 'compliance.html', label: 'Compliance', icon: 'fa-certificate' },
+        { href: 'pricing.html', label: 'Pricing', icon: 'fa-tag' },
+        { href: 'contact.html', label: 'Contact', icon: 'fa-headset' },
     ];
 
     const navLinksHtml = links.map(l =>
@@ -41,7 +41,10 @@ function renderNavbar() {
     ).join('');
 
     const mobLinksHtml = links.map(l =>
-        `<a href="${l.href}" class="mob-link${page === l.href ? ' active' : ''}">${l.label}</a>`
+        `<a href="${l.href}" class="mob-link${page === l.href ? ' active' : ''}">
+            <span class="mob-link-content"><i class="fas ${l.icon}"></i> <span>${l.label}</span></span>
+            <i class="fas fa-chevron-right mob-link-arrow"></i>
+        </a>`
     ).join('');
 
     const html = `
@@ -56,32 +59,54 @@ function renderNavbar() {
             </a>
             <div class="nav-links">${navLinksHtml}</div>
             <div class="nav-actions">
+                <button class="nav-icon-btn" id="rtlToggleNav" aria-label="Toggle layout direction / RTL" title="Toggle RTL">
+                    <span class="dir-indicator">RTL</span>
+                </button>
                 <button class="nav-icon-btn" id="darkToggleNav" aria-label="Toggle dark mode" title="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                 </button>
-                <button class="nav-icon-btn" id="rtlToggleNav" aria-label="Toggle RTL" title="Toggle RTL">
-                    <i class="fas fa-language"></i>
-                </button>
-                <a href="login.html" class="btn btn-primary btn-sm">Sign In</a>
-                <a href="dashboard.html" class="btn-nav-dashboard${page === 'dashboard.html' ? ' active' : ''}">
-                    <i class="fas fa-th-large" style="margin-right:6px"></i>Dashboard
-                </a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <a href="login.html" class="btn btn-primary btn-sm nav-cta-btn">Sign In</a>
+                <a href="dashboard.html" class="btn-nav-dashboard${page === 'dashboard.html' ? ' active' : ''}">Dashboard</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </nav>
-    <div class="mobile-backdrop" id="mobileBackdrop"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        ${mobLinksHtml}
-        <div class="mob-actions">
-            <a href="login.html" class="btn btn-primary btn-sm w-full">Sign In</a>
-            <a href="dashboard.html" class="btn btn-secondary btn-sm w-full">Dashboard</a>
+    <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+        <div class="mob-header">
+            <a href="index.html" class="nav-logo" aria-label="VaultShred Home">
+                ${LOGO_SVG}
+                <span class="nav-logo-text">
+                    <span class="brand-top">Secure Shredding</span>
+                    <span class="brand-bottom">VaultShred</span>
+                </span>
+            </a>
+            <button class="mob-close-btn" id="mobileCloseBtn" aria-label="Close navigation menu">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-        <div class="mob-toggles">
-            <button class="nav-icon-btn" id="darkToggleMob" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
-            <button class="nav-icon-btn" id="rtlToggleMob" aria-label="Toggle RTL"><i class="fas fa-language"></i></button>
+        <div class="mob-links-list">
+            ${mobLinksHtml}
+        </div>
+        <div class="mob-actions">
+            <a href="login.html" class="btn btn-primary btn-lg w-full"><i class="fas fa-arrow-right-to-bracket"></i> Sign In</a>
+            <a href="dashboard.html" class="btn btn-secondary btn-lg w-full"><i class="fas fa-chart-line"></i> Client Dashboard</a>
+        </div>
+        <div class="mob-toggles-grid">
+            <button class="mob-toggle-card" id="darkToggleMob" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+            </button>
+            <button class="mob-toggle-card" id="rtlToggleMob" aria-label="Toggle layout direction / RTL">
+                <span class="dir-indicator">RTL</span>
+                <span>Direction</span>
+            </button>
+        </div>
+        <div class="mob-support-strip">
+            <i class="fas fa-phone-volume"></i>
+            <span>24/7 Dispatch: <strong>1-800-555-SHRED</strong></span>
         </div>
     </div>
     <div class="navbar-spacer"></div>`;
@@ -104,18 +129,68 @@ function initNavbar() {
 
     /* Mobile menu */
     const btn = document.getElementById('mobileMenuBtn');
+    const closeBtn = document.getElementById('mobileCloseBtn');
     const menu = document.getElementById('mobileMenu');
     const backdrop = document.getElementById('mobileBackdrop');
-    if (btn && menu) {
-        const toggle = () => {
-            const open = menu.classList.toggle('open');
-            backdrop.classList.toggle('open', open);
-            document.body.classList.toggle('nav-open', open);
-            btn.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
-        };
-        btn.addEventListener('click', toggle);
-        if (backdrop) backdrop.addEventListener('click', toggle);
+
+    function openMenu() {
+        if (!menu) return;
+        menu.classList.add('open');
+        if (backdrop) backdrop.classList.add('open');
+        document.body.classList.add('nav-open');
+        if (btn) {
+            btn.setAttribute('aria-expanded', 'true');
+            const icon = btn.querySelector('i');
+            if (icon) icon.className = 'fas fa-times';
+        }
     }
+
+    function closeMenu() {
+        if (!menu) return;
+        menu.classList.remove('open');
+        if (backdrop) backdrop.classList.remove('open');
+        document.body.classList.remove('nav-open');
+        if (btn) {
+            btn.setAttribute('aria-expanded', 'false');
+            const icon = btn.querySelector('i');
+            if (icon) icon.className = 'fas fa-bars';
+        }
+    }
+
+    if (btn) {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (menu && menu.classList.contains('open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (backdrop) backdrop.addEventListener('click', closeMenu);
+
+    // Close when clicking any link inside mobile menu
+    if (menu) {
+        menu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', closeMenu);
+        });
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menu && menu.classList.contains('open')) {
+            closeMenu();
+        }
+    });
+
+    // Close when resizing above tablet breakpoint
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && menu && menu.classList.contains('open')) {
+            closeMenu();
+        }
+    }, { passive: true });
 
     /* Dark toggles */
     ['darkToggleNav', 'darkToggleMob'].forEach(id => {
@@ -128,6 +203,9 @@ function initNavbar() {
         const el = document.getElementById(id);
         if (el) el.addEventListener('click', toggleRTL);
     });
+
+    updateDarkIcons();
+    updateRTLIndicators();
 }
 
 /* ---- FOOTER ---- */
@@ -137,59 +215,61 @@ function renderFooter() {
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="index.html" class="nav-logo footer-logo">
+                    <a href="index.html" class="nav-logo footer-logo" aria-label="VaultShred Home">
                         ${LOGO_SVG}
                         <span class="nav-logo-text">
                             <span class="brand-top">Secure Shredding</span>
                             <span class="brand-bottom">VaultShred</span>
                         </span>
                     </a>
-                    <p>Certified document destruction services ensuring complete data security and regulatory compliance for businesses of all sizes.</p>
+                    <p>Transforming enterprise data security with smart chain-of-custody, NAID AAA certified document destruction, and compliant disposal for every office.</p>
                     <div class="footer-socials">
-                        <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="footer-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="Twitter / X" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
                     </div>
                 </div>
                 <div>
-                    <h4 class="footer-col-title">Services</h4>
+                    <h4 class="footer-col-title">QUICK LINKS</h4>
                     <div class="footer-links">
-                        <a href="services.html">On-Site Shredding</a>
-                        <a href="services.html">Off-Site Shredding</a>
-                        <a href="services.html">One-Time Purge</a>
-                        <a href="services.html">Hard Drive Destruction</a>
-                        <a href="pricing.html">Pricing Plans</a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="footer-col-title">Company</h4>
-                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="home2.html">Home 2 — Premium</a>
+                        <a href="services.html">Services</a>
                         <a href="about.html">About Us</a>
                         <a href="compliance.html">Compliance</a>
-                        <a href="contact.html">Contact</a>
-                        <a href="coming-soon.html">Blog</a>
-                        <a href="coming-soon.html">Careers</a>
+                        <a href="pricing.html">Pricing</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">RESOURCES</h4>
+                    <div class="footer-links">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="coming-soon.html">Coming Soon</a>
+                        <a href="404.html">404 Page</a>
+                        <a href="login.html">Sign In</a>
+                        <a href="signup.html">Sign Up</a>
                     </div>
                 </div>
                 <div>
                     <div class="footer-newsletter-card">
                         <h4 class="footer-newsletter-title">Stay Updated</h4>
-                        <p class="footer-newsletter-desc">Get data security tips and service updates delivered to your inbox.</p>
-                        <form class="footer-newsletter-form" onsubmit="event.preventDefault();alert('Thank you for subscribing!');">
-                            <input type="email" class="footer-newsletter-input" placeholder="Enter your email" required>
+                        <p class="footer-newsletter-desc">Subscribe for weekly security updates, compliance tips & corporate data protection insights.</p>
+                        <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Thank you! You are now subscribed to VaultShred Security updates.'); this.reset();">
+                            <input type="email" class="footer-newsletter-input" placeholder="your@email.com" aria-label="Email address" required>
                             <button type="submit" class="footer-newsletter-btn">Subscribe</button>
                         </form>
                     </div>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p class="footer-copyright">&copy; ${new Date().getFullYear()} VaultShred. All rights reserved.</p>
+                <p class="footer-copyright">&copy; ${new Date().getFullYear()} VAULTSHRED. ALL RIGHTS RESERVED.</p>
                 <div class="footer-bottom-links">
-                    <a href="coming-soon.html">Privacy Policy</a>
-                    <a href="coming-soon.html">Terms of Service</a>
-                    <a href="404.html">404 Page</a>
-                    <a href="coming-soon.html">Coming Soon</a>
+                    <a href="coming-soon.html">PRIVACY</a>
+                    <a href="coming-soon.html">TERMS</a>
+                    <a href="tel:18001234567">+1 (800) 123-4567</a>
                 </div>
             </div>
         </div>
@@ -205,7 +285,7 @@ function renderBackToTop() {
     const btn = document.createElement('button');
     btn.className = 'back-to-top';
     btn.id = 'backToTop';
-    btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    btn.innerHTML = '<i class="fas fa-chevron-up"></i>';
     btn.setAttribute('aria-label', 'Back to top');
     document.body.appendChild(btn);
 
@@ -228,29 +308,44 @@ function toggleDark() {
 
 function updateDarkIcons() {
     const isDark = document.documentElement.classList.contains('dark');
-    document.querySelectorAll('#darkToggleNav i, #darkToggleMob i, .auth-dark-toggle i').forEach(i => {
-        i.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    document.querySelectorAll('#darkToggleNav i, #darkToggleMob i, .auth-dark-toggle i, .auth-toggle-btn i').forEach(i => {
+        if (i.classList.contains('fa-moon') || i.classList.contains('fa-sun')) {
+            i.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        }
     });
 }
 
 function initDark() {
     const saved = localStorage.getItem('vs-dark');
-    if (saved === '1') document.documentElement.classList.add('dark');
+    if (saved === '1') {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
     updateDarkIcons();
 }
 
 /* ---- RTL ---- */
+function updateRTLIndicators() {
+    const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+    document.querySelectorAll('.dir-indicator').forEach(el => {
+        el.textContent = isRTL ? 'LTR' : 'RTL';
+    });
+}
+
 function toggleRTL() {
     const html = document.documentElement;
     const isRTL = html.getAttribute('dir') === 'rtl';
     html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
     localStorage.setItem('vs-rtl', isRTL ? '0' : '1');
+    updateRTLIndicators();
 }
 
 function initRTL() {
     if (localStorage.getItem('vs-rtl') === '1') {
         document.documentElement.setAttribute('dir', 'rtl');
     }
+    updateRTLIndicators();
 }
 
 /* ---- SCROLL ANIMATIONS ---- */
@@ -285,10 +380,14 @@ function initFAQ() {
 function initPasswordToggle() {
     document.querySelectorAll('.password-toggle').forEach(btn => {
         btn.addEventListener('click', () => {
-            const input = btn.previousElementSibling;
+            const input = btn.closest('.password-wrap')?.querySelector('input') || btn.previousElementSibling;
+            if (!input) return;
             const isPassword = input.type === 'password';
             input.type = isPassword ? 'text' : 'password';
-            btn.innerHTML = isPassword ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
+            const icon = btn.querySelector('i');
+            if (icon) {
+                icon.className = isPassword ? 'fas fa-eye-slash' : 'fas fa-eye';
+            }
         });
     });
 }
@@ -323,10 +422,13 @@ function animateCounters() {
 /* ---- COUNTDOWN (coming-soon) ---- */
 function initCountdown() {
     const target = new Date();
-    target.setDate(target.getDate() + 45);
+    target.setDate(target.getDate() + 30);
+    target.setHours(target.getHours() + 14);
+    target.setMinutes(target.getMinutes() + 25);
     function update() {
         const now = new Date();
         const diff = target - now;
+        if (diff <= 0) return;
         const d = Math.floor(diff / (1000 * 60 * 60 * 24));
         const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -344,13 +446,25 @@ function initCountdown() {
     setInterval(update, 1000);
 }
 
-/* ---- AUTH TOPBAR (dark/rtl for auth pages) ---- */
+/* ---- AUTH TOPBAR (for login & signup pages) ---- */
 function renderAuthTopbar() {
     const html = `
-    <div class="auth-topbar">
-        <button class="nav-icon-btn" id="darkToggleNav" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
-        <button class="nav-icon-btn" id="rtlToggleNav" aria-label="Toggle RTL"><i class="fas fa-language"></i></button>
-    </div>`;
+    <header class="auth-topbar">
+        <div class="auth-topbar-inner">
+            <a href="index.html" class="auth-back-link" aria-label="Back to VaultShred Home">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+            <div class="auth-topbar-actions">
+                <button class="auth-toggle-btn" id="rtlToggleNav" aria-label="Toggle layout direction / RTL" title="Toggle RTL / LTR direction">
+                    <span class="dir-indicator">RTL</span>
+                </button>
+                <button class="auth-toggle-btn" id="darkToggleNav" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>`;
     const container = document.getElementById('auth-topbar-placeholder');
     if (container) container.innerHTML = html;
     
@@ -360,25 +474,36 @@ function renderAuthTopbar() {
         if (darkBtn) darkBtn.addEventListener('click', toggleDark);
         if (rtlBtn) rtlBtn.addEventListener('click', toggleRTL);
         updateDarkIcons();
+        updateRTLIndicators();
     }, 0);
 }
 
 /* ---- FULLSCREEN TOPBAR (404, coming-soon) ---- */
 function renderFullscreenTopbar() {
     const html = `
-    <div class="fullscreen-topbar">
-        <a href="index.html" class="nav-logo" aria-label="VaultShred Home">
-            ${LOGO_SVG}
-            <span class="nav-logo-text">
-                <span class="brand-top">Secure Shredding</span>
-                <span class="brand-bottom">VaultShred</span>
-            </span>
-        </a>
-        <div style="display:flex;gap:8px">
-            <button class="nav-icon-btn" id="darkToggleNav" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
-            <button class="nav-icon-btn" id="rtlToggleNav" aria-label="Toggle RTL"><i class="fas fa-language"></i></button>
+    <header class="fullscreen-topbar">
+        <div class="fullscreen-topbar-inner">
+            <a href="index.html" class="nav-logo" aria-label="VaultShred Home">
+                ${LOGO_SVG}
+                <span class="nav-logo-text">
+                    <span class="brand-top">Secure Shredding</span>
+                    <span class="brand-bottom">VaultShred</span>
+                </span>
+            </a>
+            <div class="fullscreen-topbar-actions">
+                <a href="index.html" class="auth-back-link hide-mobile" aria-label="Back to Home">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Home</span>
+                </a>
+                <button class="auth-toggle-btn" id="rtlToggleNav" aria-label="Toggle layout direction / RTL" title="Toggle RTL / LTR direction">
+                    <span class="dir-indicator">RTL</span>
+                </button>
+                <button class="auth-toggle-btn" id="darkToggleNav" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </div>
-    </div>`;
+    </header>`;
     const container = document.getElementById('fullscreen-topbar-placeholder');
     if (container) container.innerHTML = html;
 
@@ -388,7 +513,177 @@ function renderFullscreenTopbar() {
         if (darkBtn) darkBtn.addEventListener('click', toggleDark);
         if (rtlBtn) rtlBtn.addEventListener('click', toggleRTL);
         updateDarkIcons();
+        updateRTLIndicators();
     }, 0);
+}
+
+/* ---- HERO SLIDER ---- */
+function initHeroSlider() {
+    const slider = document.getElementById('heroSlider');
+    if (!slider) return;
+
+    const slides = slider.querySelectorAll('.hero-slide');
+    const dots = slider.querySelectorAll('.hero-dot');
+    const prevBtn = document.getElementById('heroPrevBtn');
+    const nextBtn = document.getElementById('heroNextBtn');
+    const counterBadge = document.getElementById('heroSlideCounter');
+    if (!slides.length) return;
+
+    let currentIndex = 0;
+    let timer = null;
+    let isPaused = false;
+    const duration = 5000; // 5 seconds per slide
+
+    function animateSlideStat(slide) {
+        const counter = slide.querySelector('.stat-num[data-count]');
+        if (!counter) return;
+        const target = parseInt(counter.dataset.count, 10);
+        const suffix = counter.dataset.suffix || '';
+        const prefix = counter.dataset.prefix || '';
+        let current = 0;
+        const step = Math.max(1, Math.floor(target / 30));
+        const countTimer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+                current = target;
+                clearInterval(countTimer);
+            }
+            counter.textContent = prefix + current.toLocaleString() + suffix;
+        }, 25);
+    }
+
+    function updateSlide(index) {
+        currentIndex = (index + slides.length) % slides.length;
+
+        slides.forEach((slide, i) => {
+            const isActive = i === currentIndex;
+            slide.classList.toggle('active', isActive);
+            slide.setAttribute('aria-hidden', !isActive);
+            if (isActive) {
+                animateSlideStat(slide);
+            }
+        });
+
+        dots.forEach((dot, i) => {
+            const isActive = i === currentIndex;
+            dot.classList.toggle('active', isActive);
+            dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            const fill = dot.querySelector('.hero-dot-fill');
+            if (fill) {
+                fill.style.animation = 'none';
+                if (isActive) {
+                    void fill.offsetWidth; // Force reflow to restart CSS animation
+                    fill.style.animation = `heroProgress ${duration}ms linear forwards`;
+                }
+            }
+        });
+
+        if (counterBadge) {
+            counterBadge.innerHTML = `0${currentIndex + 1} <span class="sep">/</span> 0${slides.length}`;
+        }
+    }
+
+    function nextSlide() {
+        updateSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+        updateSlide(currentIndex - 1);
+    }
+
+    function startTimer() {
+        stopTimer();
+        timer = setInterval(() => {
+            if (!isPaused) {
+                nextSlide();
+            }
+        }, duration);
+    }
+
+    function stopTimer() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+
+    function resetTimer() {
+        startTimer();
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetTimer();
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetTimer();
+        });
+    }
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            if (currentIndex !== i) {
+                updateSlide(i);
+                resetTimer();
+            }
+        });
+    });
+
+    // Pause on hover
+    slider.addEventListener('mouseenter', () => {
+        isPaused = true;
+        const activeFill = slider.querySelector('.hero-dot.active .hero-dot-fill');
+        if (activeFill) activeFill.style.animationPlayState = 'paused';
+    });
+
+    slider.addEventListener('mouseleave', () => {
+        isPaused = false;
+        const activeFill = slider.querySelector('.hero-dot.active .hero-dot-fill');
+        if (activeFill) activeFill.style.animationPlayState = 'running';
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 45) {
+            const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+            if (diff > 0) {
+                isRTL ? prevSlide() : nextSlide();
+            } else {
+                isRTL ? nextSlide() : prevSlide();
+            }
+            resetTimer();
+        }
+    }, { passive: true });
+
+    // Keyboard arrow keys
+    window.addEventListener('keydown', (e) => {
+        if (document.activeElement && ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+        const rect = slider.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < window.innerHeight) {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+                resetTimer();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+                resetTimer();
+            }
+        }
+    });
+
+    updateSlide(0);
+    startTimer();
 }
 
 /* ---- INIT ---- */
@@ -399,11 +694,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const page = getCurrentPage();
     const authPages = ['login.html', 'signup.html'];
     const fullscreenPages = ['404.html', 'coming-soon.html'];
+    const dashboardPages = ['dashboard.html'];
 
     if (authPages.includes(page)) {
         renderAuthTopbar();
     } else if (fullscreenPages.includes(page)) {
         renderFullscreenTopbar();
+    } else if (dashboardPages.includes(page)) {
+        // Dedicated dashboard layout with custom topbar & sidebar per reference design
     } else {
         renderNavbar();
         renderFooter();
@@ -414,6 +712,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFAQ();
     initPasswordToggle();
     animateCounters();
+    initHeroSlider();
 
     if (page === 'coming-soon.html') initCountdown();
 });
