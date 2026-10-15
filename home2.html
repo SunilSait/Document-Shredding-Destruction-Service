@@ -7,31 +7,396 @@
     <meta name="description" content="Enterprise-grade document shredding with full-screen cinematic hero. VaultShred protects your business data with certified destruction services.">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3.7">
 </head>
 <body>
 
 <div id="navbar-placeholder"></div>
 
-<!-- ============ HERO 2 (Full-screen cinematic) ============ -->
-<section class="hero2">
+<!-- ============ HERO 2 (Enterprise Command Hub Redesign) ============ -->
+<section class="hero2 hero2-command-hub" id="hero2CommandHub">
+    <!-- Full-Bleed Atmospheric Background & Lighting -->
     <div class="hero2-bg">
-        <img src="assets/images/hero-home2.jpg" alt="Industrial document shredding facility">
+        <img src="assets/images/hero-home2.jpg" alt="Industrial document shredding facility" id="h2HeroBgImg">
     </div>
     <div class="hero2-overlay"></div>
-    <div class="hero2-content">
-        <span class="hero-eyebrow" style="color:#fff;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2)"><i class="fas fa-shield-halved"></i> Enterprise Data Security</span>
-        <h1 class="fade-up">Total Data <span class="accent">Destruction</span> for the Modern Enterprise</h1>
-        <p class="fade-up delay-1">From paper documents to hard drives, we provide end-to-end destruction solutions that meet the strictest regulatory requirements and protect your organization from data breaches.</p>
-        <div class="hero-actions fade-up delay-2" style="justify-content:center">
-            <a href="contact.html" class="btn btn-primary btn-xl">Request a Quote <i class="fas fa-arrow-right"></i></a>
-            <a href="services.html" class="btn btn-white-outline btn-xl">Explore Services</a>
+    <div class="hero-ambient-orb orb-crimson"></div>
+    <div class="hero-ambient-orb orb-cyan"></div>
+    <div class="hero-grid-matrix"></div>
+    <canvas id="h2ShredCanvas" class="hero-shred-canvas"></canvas>
+    <div class="hero-mouse-spotlight" id="h2Spotlight"></div>
+    <div class="hero-security-markers" aria-hidden="true">
+        <span class="marker marker-tl">+</span>
+        <span class="marker marker-tr">+</span>
+        <span class="marker marker-bl">+</span>
+        <span class="marker marker-br">+</span>
+    </div>
+    <div class="hero-scan-vignette"></div>
+
+    <div class="container hero2-container">
+        <!-- 3-Slide Interactive Carousel -->
+        <div class="h2-hero-carousel" id="h2HeroCarousel">
+            <div class="h2-slides-stage">
+                <!-- SLIDE 1: Curbside Mobile Destruction -->
+                <div class="h2-slide active" data-slide="0">
+                    <div class="hero2-grid">
+                        <!-- Left Column: Content -->
+                        <div class="hero2-col-left">
+                            <div class="h2-hero-eyebrow fade-up">
+                                <span class="h2-radar-beacon">
+                                    <span class="h2-radar-ping"></span>
+                                    <span class="h2-radar-dot"></span>
+                                </span>
+                                <span>ENTERPRISE CHAIN-OF-CUSTODY &bull; NAID AAA</span>
+                            </div>
+
+                            <h1 class="fade-up delay-1">
+                                Certified Mobile <span class="h2-text-accent">On-Site Destruction</span> At Your Doorstep.
+                            </h1>
+
+                            <p class="fade-up delay-2">
+                                Bank-grade mobile on-site shredding with live CCTV witness viewing. Watch your confidential files pulverized inside our industrial high-torque trucks before we depart.
+                            </p>
+
+                            <div class="hero2-actions fade-up delay-3">
+                                <a href="contact.html?service=Mobile%20On-Site%20Truck" class="btn btn-h2-primary">
+                                    <span>Request Mobile Dispatch</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <a href="services.html" class="btn btn-h2-glass">
+                                    <i class="fas fa-layer-group"></i>
+                                    <span>Explore Fleet Services</span>
+                                </a>
+                            </div>
+
+                            <div class="h2-hero-proof fade-up delay-4">
+                                <div class="h2-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <span class="h2-proof-text">
+                                    <strong>4.9/5 Rating</strong> from 1,200+ healthcare networks, banks & legal firms
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: 3-Image Trio Deck -->
+                        <div class="hero2-col-right fade-up delay-2">
+                            <div class="h2-trio-deck">
+                                <!-- Top-Left Card: Mobile Fleet Truck -->
+                                <div class="h2-trio-card h2-trio-top-left">
+                                    <div class="h2-trio-img-wrap">
+                                        <img src="assets/images/hero-truck.jpg" alt="Mobile shredding truck parked on-site" class="h2-trio-img">
+                                        <div class="h2-trio-gradient"></div>
+                                    </div>
+                                    <div class="h2-trio-content">
+                                        <div class="h2-trio-label">
+                                            <strong>Mobile Fleet Unit</strong>
+                                            <span>Active On Patrol</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Top-Right Card: Screened Specialist Live CCTV -->
+                                <div class="h2-trio-card h2-trio-top-right">
+                                    <div class="h2-trio-img-wrap">
+                                        <img src="assets/images/onsite-service.jpg" alt="Technician shredding documents inside mobile truck" class="h2-trio-img">
+                                        <div class="h2-trio-gradient"></div>
+                                    </div>
+                                    <div class="h2-trio-content">
+                                        <div class="h2-trio-label">
+                                            <strong>Screened Operator</strong>
+                                            <span>Uniformed &amp; Badged</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom Card: High-Torque Mobile Shredder -->
+                                <div class="h2-trio-card h2-trio-bottom">
+                                    <div class="h2-trio-img-wrap">
+                                        <img src="assets/images/secure-bins.jpg" alt="Locked security consoles and mobile destruction" class="h2-trio-img">
+                                        <div class="h2-trio-gradient"></div>
+                                    </div>
+                                    <div class="h2-trio-content">
+                                        <div class="h2-trio-bottom-info">
+                                            <h3>Curbside High-Torque Mobile Shredder</h3>
+                                            <div class="h2-bento-meta">
+                                                <span><i class="fas fa-video"></i> Dual Monitor CCTV</span>
+                                                <span><i class="fas fa-certificate"></i> Instant Certificate</span>
+                                                <span><i class="fas fa-bolt text-amber"></i> 3,500 Lbs/Hr</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 2: High-Volume Industrial Facility Purge -->
+                <div class="h2-slide" data-slide="1">
+                    <div class="hero2-grid">
+                        <!-- Left Column: Content -->
+                        <div class="hero2-col-left">
+                            <div class="h2-hero-eyebrow fade-up">
+                                <span class="h2-radar-beacon">
+                                    <span class="h2-radar-ping"></span>
+                                    <span class="h2-radar-dot"></span>
+                                </span>
+                                <span>INDUSTRIAL PLANT FACILITY &bull; NIST 800-88</span>
+                            </div>
+
+                            <h1 class="fade-up delay-1">
+                                High-Capacity <span class="h2-text-accent">Facility Purges</span> & Bulk Warehouse Shredding.
+                            </h1>
+
+                            <p class="fade-up delay-2">
+                                Destroy multi-ton archive purges in our high-security bonded facilities. GPS-monitored armored transport, dual-custodian chain-of-custody, and 100% recycling conversion.
+                            </p>
+
+                            <div class="hero2-actions fade-up delay-3">
+                                <a href="contact.html?service=Bulk%20Plant%20Purge" class="btn btn-h2-primary">
+                                    <span>Schedule Bulk Purge</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <a href="pricing.html" class="btn btn-h2-glass">
+                                    <i class="fas fa-calculator"></i>
+                                    <span>Calculate Volume Rates</span>
+                                </a>
+                            </div>
+
+                            <div class="h2-hero-proof fade-up delay-4">
+                                <div class="h2-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <span class="h2-proof-text">
+                                    <strong>Over 15,000,000 lbs</strong> destroyed annually with zero landfill footprint
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: 3-Image Trio Deck -->
+                        <div class="hero2-col-right fade-up delay-2">
+                            <div class="h2-trio-deck">
+                                <!-- Top-Left Card: 24/7 Biometric Plant Vault -->
+                                <div class="h2-trio-card h2-trio-top-left">
+                                    <div class="h2-trio-img-wrap">
+                                        <img src="assets/images/offsite-facility.jpg" alt="Industrial bonded shredding facility exterior" class="h2-trio-img">
+                                        <div class="h2-trio-gradient"></div>
+                                    </div>
+                                    <div class="h2-trio-content">
+                                        <div class="h2-trio-label">
+                                            <strong>Biometric Facility</strong>
+                                            <span>24/7 Access Control</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Top-Right Card: Bulk Warehouse Archive Boxes -->
+                                <div class="h2-trio-card h2-trio-top-right">
+                                    <div class="h2-trio-img-wrap">
+                                        <img src="assets/images/services-purge.jpg" alt="Bulk warehouse document purge boxes" class="h2-trio-img">
+                                        <div class="h2-trio-gradient"></div>
+                                    </div>
+                                    <div class="h2-trio-content">
+                                        <div class="h2-trio-label">
+                                            <strong>Bulk Consolidation</strong>
+                                            <span>Pallet &amp; Box Purges</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom Card: High-Volume Industrial Shredder -->
+                                <div class="h2-trio-card h2-trio-bottom">
+                                    <div class="h2-trio-img-wrap">
+                                        <img src="assets/images/shredding-machine.jpg" alt="Industrial shredding machine blades slicing documents" class="h2-trio-img">
+                                        <div class="h2-trio-gradient"></div>
+                                    </div>
+                                    <div class="h2-trio-content">
+                                        <div class="h2-trio-bottom-info">
+                                            <h3>High-Volume Plant Processing Facility</h3>
+                                            <div class="h2-bento-meta">
+                                                <span><i class="fas fa-shield-alt"></i> Armored GPS Transit</span>
+                                                <span><i class="fas fa-industry"></i> 30,000 Lbs/Hr</span>
+                                                <span><i class="fas fa-recycle text-green"></i> 100% Recycled</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 3: Hard Drives & Digital Media -->
+                <div class="h2-slide" data-slide="2">
+                    <div class="hero2-grid">
+                        <!-- Left Column: Content -->
+                        <div class="hero2-col-left">
+                            <div class="h2-hero-eyebrow fade-up">
+                                <span class="h2-radar-beacon">
+                                    <span class="h2-radar-ping"></span>
+                                    <span class="h2-radar-dot"></span>
+                                </span>
+                                <span>DIGITAL SANITIZATION &bull; DOD 5220.22-M</span>
+                            </div>
+
+                            <h1 class="fade-up delay-1">
+                                Serialized Hard Drive <span class="h2-text-accent">& Media Destruction</span> with Punch Audit.
+                            </h1>
+
+                            <p class="fade-up delay-2">
+                                Irreversible hydraulic shearing and 15,000-Gauss magnetic degaussing for HDDs, SSDs, and server tapes. Barcode-scanned serialization logged directly to your legal Certificate.
+                            </p>
+
+                            <div class="hero2-actions fade-up delay-3">
+                                <a href="contact.html?service=Hard%20Drive%20Destruction" class="btn btn-h2-primary">
+                                    <span>Book Media Destruction</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <a href="compliance.html" class="btn btn-h2-glass">
+                                    <i class="fas fa-file-contract"></i>
+                                    <span>Compliance Packet</span>
+                                </a>
+                            </div>
+
+                            <div class="h2-hero-proof fade-up delay-4">
+                                <div class="h2-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <span class="h2-proof-text">
+                                    <strong>100% Non-Recoverable</strong> destruction backing $5,000,000 indemnity policy
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: 3-Image Trio Deck -->
+                        <div class="hero2-col-right fade-up delay-2">
+                            <div class="h2-trio-deck">
+                                <!-- Top-Left Card: Platter Hydraulic Punch -->
+                                <div class="h2-trio-card h2-trio-top-left">
+                                    <div class="h2-trio-img-wrap">
+                                        <img src="assets/images/hard-drive.jpg" alt="Physical punctured hard drive platter" class="h2-trio-img">
+                                        <div class="h2-trio-gradient"></div>
+                                    </div>
+                                    <div class="h2-trio-content">
+                                        <div class="h2-trio-label">
+                                            <strong>Platter Pierced</strong>
+                                            <span>Zero Recovery</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Top-Right Card: Solid-State & Tape Sanitization -->
+                                <div class="h2-trio-card h2-trio-top-right">
+                                    <div class="h2-trio-img-wrap">
+                                        <img src="assets/images/ssd-destruction.jpg" alt="Solid state drive and flash memory destruction" class="h2-trio-img">
+                                        <div class="h2-trio-gradient"></div>
+                                    </div>
+                                    <div class="h2-trio-content">
+                                        <div class="h2-trio-label">
+                                            <strong>15k Gauss Field</strong>
+                                            <span>Total Degaussing</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom Card: Hard Drive & Electronic Media Shear -->
+                                <div class="h2-trio-card h2-trio-bottom">
+                                    <div class="h2-trio-img-wrap">
+                                        <img src="assets/images/hdd-destruction.jpg" alt="Hard drive and electronic media physical crusher" class="h2-trio-img">
+                                        <div class="h2-trio-gradient"></div>
+                                    </div>
+                                    <div class="h2-trio-content">
+                                        <div class="h2-trio-bottom-info">
+                                            <h3>Hard Drive & Solid-State Media Punch</h3>
+                                            <div class="h2-bento-meta">
+                                                <span><i class="fas fa-stamp"></i> Serial Barcode Log</span>
+                                                <span><i class="fas fa-file-contract"></i> Legal Certificate</span>
+                                                <span><i class="fas fa-shield-alt"></i> NIST 800-88</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Nav Controllers: 3 Slide Tabs with 5s Progress Bar + Arrows -->
+            <div class="h2-carousel-nav">
+                <button type="button" class="h2-nav-arrow h2-nav-prev" onclick="prevH2HeroSlide()" aria-label="Previous slide">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+
+                <div class="h2-nav-tabs">
+                    <button type="button" class="h2-nav-tab active" onclick="goToH2HeroSlide(0)">
+                        <span class="h2-tab-idx">01</span>
+                        <div class="h2-tab-text">
+                            <strong>Mobile On-Site</strong>
+                            <small>Curbside Truck Shredding</small>
+                        </div>
+                        <div class="h2-tab-progress"><div class="h2-tab-bar"></div></div>
+                    </button>
+
+                    <button type="button" class="h2-nav-tab" onclick="goToH2HeroSlide(1)">
+                        <span class="h2-tab-idx">02</span>
+                        <div class="h2-tab-text">
+                            <strong>Facility Purge</strong>
+                            <small>30,000 Lbs/Hr Plant</small>
+                        </div>
+                        <div class="h2-tab-progress"><div class="h2-tab-bar"></div></div>
+                    </button>
+
+                    <button type="button" class="h2-nav-tab" onclick="goToH2HeroSlide(2)">
+                        <span class="h2-tab-idx">03</span>
+                        <div class="h2-tab-text">
+                            <strong>Hard Drives & Media</strong>
+                            <small>Serialized Destruction</small>
+                        </div>
+                        <div class="h2-tab-progress"><div class="h2-tab-bar"></div></div>
+                    </button>
+                </div>
+
+                <button type="button" class="h2-nav-arrow h2-nav-next" onclick="nextH2HeroSlide()" aria-label="Next slide">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
-        <div class="hero2-badges fade-up delay-3">
-            <div class="hero2-badge"><i class="fas fa-check-circle"></i> NAID AAA Certified</div>
-            <div class="hero2-badge"><i class="fas fa-check-circle"></i> HIPAA Compliant</div>
-            <div class="hero2-badge"><i class="fas fa-check-circle"></i> Same-Day Service</div>
-            <div class="hero2-badge"><i class="fas fa-check-circle"></i> 100% Recycled</div>
+
+        <!-- Full-Width Operational Telemetry Bar -->
+        <div class="hero2-telemetry-bar fade-up delay-4">
+            <div class="h2-telem-item">
+                <i class="fas fa-truck text-cyan"></i>
+                <div class="h2-telem-info">
+                    <span class="h2-telem-label">Active Fleet</span>
+                    <strong class="h2-telem-val">42 Shred Trucks En Route</strong>
+                </div>
+            </div>
+            <div class="h2-telem-sep"></div>
+            <div class="h2-telem-item">
+                <i class="fas fa-weight-hanging text-crimson"></i>
+                <div class="h2-telem-info">
+                    <span class="h2-telem-label">Destroyed Annually</span>
+                    <strong class="h2-telem-val">15,000,000+ Lbs</strong>
+                </div>
+            </div>
+            <div class="h2-telem-sep"></div>
+            <div class="h2-telem-item">
+                <i class="fas fa-shield-check text-green"></i>
+                <div class="h2-telem-info">
+                    <span class="h2-telem-label">Audit Pass Rate</span>
+                    <strong class="h2-telem-val">100.0% Zero Defect</strong>
+                </div>
+            </div>
+            <div class="h2-telem-sep"></div>
+            <div class="h2-telem-item">
+                <i class="fas fa-award text-amber"></i>
+                <div class="h2-telem-info">
+                    <span class="h2-telem-label">Indemnity Shield</span>
+                    <strong class="h2-telem-val">$5,000,000 Policy</strong>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -141,15 +506,60 @@
             <p class="section-subtitle">We don't just shred documents — we protect reputations, ensure compliance, and give businesses peace of mind.</p>
         </div>
         <div class="spotlight-grid">
-            <div class="spotlight-quote slide-left">
-                <p class="sq-text">VaultShred transformed how we handle document security. Their dashboard makes it easy to schedule pickups, and we always have our Certificate of Destruction within hours. Our legal team finally stopped worrying about HIPAA compliance audits.</p>
-                <div class="sq-author">
-                    <div class="sq-avatar">DK</div>
-                    <div class="sq-meta">
-                        <span class="sq-name">David Kim</span>
-                        <span class="sq-role">CFO, Pacific Financial Group</span>
-                        <div class="sq-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="spotlight-quote slide-left" id="spotlightSlider">
+                <div class="sq-slides-container">
+                    <!-- Slide 1 -->
+                    <div class="sq-slide active" data-index="0">
+                        <p class="sq-text">VaultShred transformed how we handle document security. Their dashboard makes it easy to schedule pickups, and we always have our Certificate of Destruction within hours. Our legal team finally stopped worrying about HIPAA compliance audits.</p>
+                        <div class="sq-author">
+                            <div class="sq-avatar" style="background:linear-gradient(135deg,var(--secondary),var(--secondary-dark))">DK</div>
+                            <div class="sq-meta">
+                                <span class="sq-name">David Kim</span>
+                                <span class="sq-role">CFO, Pacific Financial Group</span>
+                                <div class="sq-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            </div>
+                            <div class="sq-verified-badge"><i class="fas fa-circle-check"></i> Verified Partner</div>
+                        </div>
                     </div>
+
+                    <!-- Slide 2 -->
+                    <div class="sq-slide" data-index="1">
+                        <p class="sq-text">Managing patient medical records across 14 regional health clinics used to be a massive compliance headache. VaultShred provided tamper-proof locked consoles and automated monthly pickups with complete chain-of-custody tracking. Simply the gold standard.</p>
+                        <div class="sq-author">
+                            <div class="sq-avatar" style="background:linear-gradient(135deg,#2a9d8f,#1d3557)">ER</div>
+                            <div class="sq-meta">
+                                <span class="sq-name">Dr. Elena Rostova</span>
+                                <span class="sq-role">Chief Compliance Officer, Horizon Health Systems</span>
+                                <div class="sq-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            </div>
+                            <div class="sq-verified-badge"><i class="fas fa-circle-check"></i> Verified Partner</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="sq-slide" data-index="2">
+                        <p class="sq-text">During our multi-floor corporate headquarters relocation, we had over 2,500 archive banker boxes requiring certified destruction. VaultShred dispatched two mobile shredding trucks and completed the entire purge in a single afternoon with live CCTV witnessing.</p>
+                        <div class="sq-author">
+                            <div class="sq-avatar" style="background:linear-gradient(135deg,#e76f51,#e63946)">MV</div>
+                            <div class="sq-meta">
+                                <span class="sq-name">Marcus Vance</span>
+                                <span class="sq-role">VP of Facilities & Security, Apex Global Tech</span>
+                                <div class="sq-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            </div>
+                            <div class="sq-verified-badge"><i class="fas fa-circle-check"></i> Verified Partner</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <div class="sq-controls">
+                    <button class="sq-arrow-btn prev" onclick="prevSqSlide()" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
+                    <div class="sq-dots">
+                        <button class="sq-dot active" onclick="goToSqSlide(0)" aria-label="Slide 1"><span class="sq-dot-progress"></span></button>
+                        <button class="sq-dot" onclick="goToSqSlide(1)" aria-label="Slide 2"><span class="sq-dot-progress"></span></button>
+                        <button class="sq-dot" onclick="goToSqSlide(2)" aria-label="Slide 3"><span class="sq-dot-progress"></span></button>
+                    </div>
+                    <button class="sq-arrow-btn next" onclick="nextSqSlide()" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
             <div class="spotlight-stats slide-right">
@@ -196,7 +606,7 @@
             <div class="gf-card fade-up delay-1">
                 <div class="gf-icon"><i class="fas fa-shield-virus"></i></div>
                 <h3>Chain-of-Custody Lock</h3>
-                <p>GPS-tracked transport vehicles, tamper-evident security seals, and continuous dual-custody verification from your office to the shredder.</p>
+                <p>GPS-tracked transport vehicles, tamper-evident security seals, and continuous dual-custody verification from your office.</p>
                 <a href="compliance.html" class="gf-link">View Protocols <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="gf-card fade-up delay-2">
@@ -456,113 +866,185 @@
     </div>
 </section>
 
-<!-- ============ SECTION: MODERN BENTO SHOWCASE CTA ============ -->
-<section class="cta-section cta-modern-section">
+<!-- ============ SECTION: ENTERPRISE COMMAND CTA REDESIGN ============ -->
+<section class="home2-cta-section">
     <div class="container">
-        <div class="cta-showcase-card fade-up">
-            <!-- Ambient Glowing Highlights -->
-            <div class="cta-ambient-glow red"></div>
-            <div class="cta-ambient-glow blue"></div>
+        <div class="h2-cta-terminal fade-up">
+            <!-- Ambient Glowing Lighting Highlights -->
+            <div class="h2-glow h2-glow-crimson"></div>
+            <div class="h2-glow h2-glow-cyan"></div>
+            <div class="h2-tech-grid"></div>
 
-            <div class="cta-showcase-grid">
+            <div class="h2-cta-grid">
                 <!-- Left Content Column -->
-                <div class="cta-content-col">
-                    <span class="cta-security-badge">
-                        <span class="pulse-dot"></span> Enterprise Compliance Shield
-                    </span>
-                    <h2>Protect Your Business Data Today.</h2>
-                    <p>
-                        Join thousands of financial institutions, healthcare providers, and legal firms that trust VaultShred for audited, zero-risk document destruction and on-site shredding.
+                <div class="h2-cta-main">
+                    <div class="h2-cta-status-pill">
+                        <span class="h2-radar-beacon">
+                            <span class="h2-radar-ping"></span>
+                            <span class="h2-radar-dot"></span>
+                        </span>
+                        <span>Enterprise Compliance Shield • NAID AAA</span>
+                    </div>
+
+                    <h2 class="h2-cta-title">
+                        Protect Your Business Data With <span class="h2-gradient-text">Zero Liability Risk.</span>
+                    </h2>
+
+                    <p class="h2-cta-desc">
+                        Join leading financial institutions, healthcare networks, and legal practices who trust VaultShred for audited on-site document destruction and legally binding serialized certificates.
                     </p>
 
-                    <!-- Trust Points -->
-                    <div class="cta-trust-list">
-                        <div class="cta-trust-item">
-                            <i class="fas fa-shield-halved"></i>
-                            <span>NAID AAA Certified & 100% Chain-of-Custody</span>
+                    <!-- Trust Cards Micro-Bento -->
+                    <div class="h2-pillar-grid">
+                        <div class="h2-pillar-card">
+                            <div class="h2-pillar-icon red"><i class="fas fa-shield-halved"></i></div>
+                            <div class="h2-pillar-info">
+                                <strong>NAID AAA Audited</strong>
+                                <span>Chain-of-Custody</span>
+                            </div>
                         </div>
-                        <div class="cta-trust-item">
-                            <i class="fas fa-file-circle-check"></i>
-                            <span>Serialized Certificate of Destruction Included</span>
+                        <div class="h2-pillar-card">
+                            <div class="h2-pillar-icon blue"><i class="fas fa-file-circle-check"></i></div>
+                            <div class="h2-pillar-info">
+                                <strong>Legal Certificate</strong>
+                                <span>Serialized for Audits</span>
+                            </div>
                         </div>
-                        <div class="cta-trust-item">
-                            <i class="fas fa-recycle"></i>
-                            <span>Eco-Friendly 100% Circular Paper Recycling</span>
+                        <div class="h2-pillar-card">
+                            <div class="h2-pillar-icon green"><i class="fas fa-leaf"></i></div>
+                            <div class="h2-pillar-info">
+                                <strong>100% Circular</strong>
+                                <span>Zero Landfill Recycling</span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Actions Cluster -->
-                    <div class="cta-actions-cluster">
-                        <a href="contact.html" class="btn btn-cta-primary">
+                    <div class="h2-cta-actions">
+                        <a href="contact.html" class="h2-btn-primary">
                             <span>Free Security Assessment</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
-                        <a href="services.html" class="btn btn-cta-secondary">
-                            <i class="fas fa-list-check"></i>
+                        <a href="services.html" class="h2-btn-secondary">
+                            <i class="fas fa-layer-group"></i>
                             <span>Browse All Services</span>
                         </a>
                     </div>
 
-                    <!-- Direct Hotline -->
-                    <div class="cta-hotline-meta">
-                        <i class="fas fa-headset"></i>
-                        <span>Need urgent collection? Call our 24/7 security desk: <strong>(555) 123-4567</strong></span>
+                    <!-- Live Dispatch Hotline -->
+                    <div class="h2-cta-hotline">
+                        <div class="h2-hotline-icon"><i class="fas fa-headset"></i></div>
+                        <div class="h2-hotline-text">
+                            Need urgent collection? Security desk: <strong>(555) 123-4567</strong>
+                        </div>
+                        <div class="h2-hotline-tag"><i class="fas fa-bolt"></i> 24/7 Active</div>
                     </div>
                 </div>
 
                 <!-- Right Interactive Estimator Card -->
-                <div class="cta-widget-col">
-                    <div class="cta-interactive-card">
-                        <div class="cta-widget-top">
-                            <div class="cw-title">
-                                <i class="fas fa-bolt"></i>
-                                <span>Quick Service Estimator</span>
+                <div class="h2-estimator-col">
+                    <div class="h2-estimator-card">
+                        <div class="h2-est-header">
+                            <div class="h2-est-title">
+                                <div class="h2-est-icon"><i class="fas fa-calculator"></i></div>
+                                <div>
+                                    <h3>Quick Service Estimator</h3>
+                                    <span class="h2-est-sub">Immediate scheduling & transparent volume pricing</span>
+                                </div>
                             </div>
-                            <span class="cw-badge">Instant Rate</span>
-                        </div>
-                        <p class="cw-subtitle">Select your requirements for immediate scheduling and transparent volume pricing.</p>
-
-                        <!-- Step 1: Mode -->
-                        <div class="cw-field-group">
-                            <label class="cw-label">Service Type</label>
-                            <div class="cw-pills-row">
-                                <button type="button" class="cw-pill active" onclick="setCtaService(this, 'Mobile On-Site Truck')">
-                                    <i class="fas fa-truck-fast"></i> Mobile On-Site
-                                </button>
-                                <button type="button" class="cw-pill" onclick="setCtaService(this, 'Plant Facility Purge')">
-                                    <i class="fas fa-building-shield"></i> Plant Purge
-                                </button>
-                                <button type="button" class="cw-pill" onclick="setCtaService(this, 'Hard Drives & Media')">
-                                    <i class="fas fa-hard-drive"></i> Media & Drives
-                                </button>
-                            </div>
+                            <span class="h2-live-tag"><i class="fas fa-circle"></i> Instant Rate</span>
                         </div>
 
-                        <!-- Step 2: Volume -->
-                        <div class="cw-field-group">
-                            <label class="cw-label">Estimated Container Volume</label>
-                            <div class="cw-pills-row">
-                                <button type="button" class="cw-pill active" onclick="setCtaVolume(this, '1-4 Consoles')">1-4 Consoles</button>
-                                <button type="button" class="cw-pill" onclick="setCtaVolume(this, '5-12 Rolling Bins')">5-12 Bins</button>
-                                <button type="button" class="cw-pill" onclick="setCtaVolume(this, 'Warehouse Bulk Purge')">Bulk Purge</button>
+                        <!-- Step 1: Destruction Mode -->
+                        <div class="h2-est-step">
+                            <div class="h2-step-label">
+                                <span>01</span> Service Type
+                            </div>
+                            <div class="h2-service-options">
+                                <button type="button" class="h2-svc-card active" onclick="setH2Service(this, 'Mobile On-Site Truck', 'Same/Next-Day Curbside')">
+                                    <div class="h2-svc-icon"><i class="fas fa-truck-fast"></i></div>
+                                    <div class="h2-svc-text">
+                                        <strong>Mobile On-Site</strong>
+                                        <small>Curbside Truck</small>
+                                    </div>
+                                    <i class="fas fa-check h2-svc-check"></i>
+                                </button>
+                                <button type="button" class="h2-svc-card" onclick="setH2Service(this, 'Plant Facility Purge', 'Scheduled Facility Shred')">
+                                    <div class="h2-svc-icon"><i class="fas fa-building-shield"></i></div>
+                                    <div class="h2-svc-text">
+                                        <strong>Plant Purge</strong>
+                                        <small>Bulk Facility</small>
+                                    </div>
+                                    <i class="fas fa-check h2-svc-check"></i>
+                                </button>
+                                <button type="button" class="h2-svc-card" onclick="setH2Service(this, 'Hard Drives & Media', 'Degauss & Serialized Punch')">
+                                    <div class="h2-svc-icon"><i class="fas fa-hard-drive"></i></div>
+                                    <div class="h2-svc-text">
+                                        <strong>Media & Drives</strong>
+                                        <small>Serial Punch</small>
+                                    </div>
+                                    <i class="fas fa-check h2-svc-check"></i>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Step 3: Quick Form -->
-                        <form class="cw-input-form" onsubmit="event.preventDefault(); window.location.href='contact.html?service=' + encodeURIComponent(ctaSelectedService) + '&volume=' + encodeURIComponent(ctaSelectedVolume);">
-                            <div class="cw-input-wrap">
-                                <i class="fas fa-location-dot"></i>
-                                <input type="text" placeholder="Enter ZIP code or city for dispatch ETA" class="cw-input" required>
+                        <!-- Step 2: Estimated Container Volume -->
+                        <div class="h2-est-step">
+                            <div class="h2-step-label">
+                                <span>02</span> Estimated Container Volume
                             </div>
-                            <button type="submit" class="cw-submit-btn">
+                            <div class="h2-volume-pills">
+                                <button type="button" class="h2-vol-pill active" onclick="setH2Volume(this, '1-4 Consoles')">
+                                    <i class="fas fa-box-archive"></i>
+                                    <span>1–4 Consoles</span>
+                                </button>
+                                <button type="button" class="h2-vol-pill" onclick="setH2Volume(this, '5-12 Rolling Bins')">
+                                    <i class="fas fa-trash-can"></i>
+                                    <span>5–12 Bins</span>
+                                </button>
+                                <button type="button" class="h2-vol-pill" onclick="setH2Volume(this, 'Warehouse Bulk Purge')">
+                                    <i class="fas fa-warehouse"></i>
+                                    <span>Bulk Purge</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Dynamic Live Preview Readout -->
+                        <div class="h2-est-preview">
+                            <div class="h2-prev-item">
+                                <span class="h2-prev-label">Selected Mode</span>
+                                <span class="h2-prev-val" id="h2PrevMode">Mobile On-Site Truck</span>
+                            </div>
+                            <div class="h2-prev-divider"></div>
+                            <div class="h2-prev-item">
+                                <span class="h2-prev-label">Turnaround</span>
+                                <span class="h2-prev-val text-cyan" id="h2PrevTurnaround">Next-Day Available</span>
+                            </div>
+                            <div class="h2-prev-divider"></div>
+                            <div class="h2-prev-item">
+                                <span class="h2-prev-label">Certificate</span>
+                                <span class="h2-prev-val text-green"><i class="fas fa-check-circle"></i> Included</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Dispatch Input Form -->
+                        <form class="h2-est-form" onsubmit="handleH2EstimatorSubmit(event)">
+                            <div class="h2-input-group">
+                                <i class="fas fa-location-dot h2-input-icon"></i>
+                                <input type="text" id="h2ZipInput" class="h2-input" placeholder="Enter ZIP code or city for dispatch ETA" required>
+                            </div>
+                            <button type="submit" class="h2-submit-btn">
                                 <span>Check Availability & Price</span>
                                 <i class="fas fa-arrow-right"></i>
                             </button>
                         </form>
 
-                        <div class="cw-security-seal">
-                            <i class="fas fa-lock"></i>
-                            <span>No obligation • 100% confidential • Commercial & residential</span>
+                        <div class="h2-est-footer">
+                            <span><i class="fas fa-shield-halved"></i> 100% Confidential</span>
+                            <span>•</span>
+                            <span><i class="fas fa-lock"></i> Zero Obligation</span>
+                            <span>•</span>
+                            <span><i class="fas fa-truck-clock"></i> Commercial & Residential</span>
                         </div>
                     </div>
                 </div>
@@ -572,22 +1054,476 @@
 </section>
 
 <script>
-let ctaSelectedService = 'Mobile On-Site Truck';
-let ctaSelectedVolume = '1-4 Consoles';
-function setCtaService(btn, service) {
-    ctaSelectedService = service;
-    btn.parentElement.querySelectorAll('.cw-pill').forEach(p => p.classList.remove('active'));
+let h2SelectedService = 'Mobile On-Site Truck';
+let h2SelectedVolume = '1-4 Consoles';
+
+function setH2Service(btn, service, turnaround) {
+    h2SelectedService = service;
+    btn.parentElement.querySelectorAll('.h2-svc-card').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    const modeEl = document.getElementById('h2PrevMode');
+    const turnEl = document.getElementById('h2PrevTurnaround');
+    if (modeEl) modeEl.textContent = service;
+    if (turnEl) turnEl.textContent = turnaround || 'Available';
+}
+
+function setH2Volume(btn, volume) {
+    h2SelectedVolume = volume;
+    btn.parentElement.querySelectorAll('.h2-vol-pill').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
 }
-function setCtaVolume(btn, volume) {
-    ctaSelectedVolume = volume;
-    btn.parentElement.querySelectorAll('.cw-pill').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
+
+function handleH2EstimatorSubmit(e) {
+    e.preventDefault();
+    const zip = document.getElementById('h2ZipInput') ? document.getElementById('h2ZipInput').value.trim() : '';
+    const url = 'contact.html?service=' + encodeURIComponent(h2SelectedService) + 
+                '&volume=' + encodeURIComponent(h2SelectedVolume) + 
+                (zip ? '&zip=' + encodeURIComponent(zip) : '');
+    window.location.href = url;
+}
+
+// Backwards-compatibility aliases
+function setCtaService(btn, service) { setH2Service(btn, service); }
+function setCtaVolume(btn, volume) { setH2Volume(btn, volume); }
+
+/* ========================================================
+   TESTIMONIAL SPOTLIGHT CAROUSEL (3 slides, 5 sec switch)
+   ======================================================== */
+let sqCurrentIndex = 0;
+let sqInterval = null;
+
+function showSqSlide(index) {
+    const slides = document.querySelectorAll('.sq-slide');
+    const dots = document.querySelectorAll('.sq-dot');
+    if (!slides.length) return;
+
+    if (index >= slides.length) sqCurrentIndex = 0;
+    else if (index < 0) sqCurrentIndex = slides.length - 1;
+    else sqCurrentIndex = index;
+
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === sqCurrentIndex) {
+            slide.classList.add('active');
+        }
+    });
+
+    dots.forEach((dot, i) => {
+        dot.classList.remove('active');
+        const prog = dot.querySelector('.sq-dot-progress');
+        if (prog) {
+            prog.style.animation = 'none';
+            void prog.offsetWidth;
+            if (i === sqCurrentIndex) {
+                prog.style.animation = '';
+            }
+        }
+        if (i === sqCurrentIndex) {
+            dot.classList.add('active');
+        }
+    });
+}
+
+function nextSqSlide() {
+    showSqSlide(sqCurrentIndex + 1);
+    resetSqTimer();
+}
+
+function prevSqSlide() {
+    showSqSlide(sqCurrentIndex - 1);
+    resetSqTimer();
+}
+
+function goToSqSlide(index) {
+    showSqSlide(index);
+    resetSqTimer();
+}
+
+function startSqTimer() {
+    clearInterval(sqInterval);
+    sqInterval = setInterval(() => {
+        showSqSlide(sqCurrentIndex + 1);
+    }, 5000); // exactly 5 sec once
+}
+
+function resetSqTimer() {
+    startSqTimer();
+}
+
+function initSqSlider() {
+    const sliderBox = document.getElementById('spotlightSlider');
+    if (sliderBox && !sliderBox.dataset.sliderInit) {
+        sliderBox.dataset.sliderInit = 'true';
+        sliderBox.addEventListener('mouseenter', () => clearInterval(sqInterval));
+        sliderBox.addEventListener('mouseleave', startSqTimer);
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+        sliderBox.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        sliderBox.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 45) {
+                nextSqSlide();
+            } else if (touchEndX - touchStartX > 45) {
+                prevSqSlide();
+            }
+        }, { passive: true });
+
+        startSqTimer();
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSqSlider);
+} else {
+    initSqSlider();
+}
+
+/* ========================================================
+   HERO 2 CAROUSEL (3 Slides, Content + Image, 5s Auto-Switch)
+   ======================================================== */
+let h2HeroCurrentIndex = 0;
+let h2HeroTimer = null;
+const H2_HERO_SLIDE_DURATION = 5000; // 5 sec once
+
+function showH2HeroSlide(index) {
+    const slides = document.querySelectorAll('.h2-slide');
+    const tabs = document.querySelectorAll('.h2-nav-tab');
+    if (!slides.length) return;
+
+    if (index >= slides.length) h2HeroCurrentIndex = 0;
+    else if (index < 0) h2HeroCurrentIndex = slides.length - 1;
+    else h2HeroCurrentIndex = index;
+
+    slides.forEach((slide, i) => {
+        if (i === h2HeroCurrentIndex) {
+            slide.classList.add('active');
+        } else {
+            slide.classList.remove('active');
+        }
+    });
+
+    tabs.forEach((tab, i) => {
+        tab.classList.remove('active');
+        const bar = tab.querySelector('.h2-tab-bar');
+        if (bar) {
+            bar.style.animation = 'none';
+            void bar.offsetWidth; // force reflow to restart 5s animation
+            if (i === h2HeroCurrentIndex) {
+                bar.style.animation = '';
+            }
+        }
+        if (i === h2HeroCurrentIndex) {
+            tab.classList.add('active');
+        }
+    });
+}
+
+function nextH2HeroSlide() {
+    showH2HeroSlide(h2HeroCurrentIndex + 1);
+    resetH2HeroTimer();
+}
+
+function prevH2HeroSlide() {
+    showH2HeroSlide(h2HeroCurrentIndex - 1);
+    resetH2HeroTimer();
+}
+
+function goToH2HeroSlide(index) {
+    showH2HeroSlide(index);
+    resetH2HeroTimer();
+}
+
+function startH2HeroTimer() {
+    clearInterval(h2HeroTimer);
+    h2HeroTimer = setInterval(() => {
+        showH2HeroSlide(h2HeroCurrentIndex + 1);
+    }, H2_HERO_SLIDE_DURATION);
+}
+
+function resetH2HeroTimer() {
+    startH2HeroTimer();
+}
+
+function initH2HeroSlider() {
+    const carousel = document.getElementById('h2HeroCarousel');
+    if (carousel && !carousel.dataset.sliderInit) {
+        carousel.dataset.sliderInit = 'true';
+        carousel.addEventListener('mouseenter', () => clearInterval(h2HeroTimer));
+        carousel.addEventListener('mouseleave', startH2HeroTimer);
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+        carousel.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        carousel.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) {
+                nextH2HeroSlide();
+            } else if (touchEndX - touchStartX > 50) {
+                prevH2HeroSlide();
+            }
+        }, { passive: true });
+
+        startH2HeroTimer();
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initH2HeroSlider);
+} else {
+    initH2HeroSlider();
+}
+
+/* ========================================================
+   VAULTSHRED PROFESSIONAL ENTERPRISE BACKGROUND (HOME 2)
+   Guilloché Security Waveform + Calm Micro-Chits + Ambient Spotlight
+   ======================================================== */
+function initH2ShredAnimation() {
+    const canvas = document.getElementById('h2ShredCanvas');
+    const container = document.getElementById('hero2CommandHub');
+    const spotlight = document.getElementById('h2Spotlight');
+    if (!canvas || !container) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = 0;
+    let height = 0;
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let animationFrameId = null;
+    let time = 0;
+
+    const mouse = {
+        x: -9999,
+        y: -9999,
+        targetX: -9999,
+        targetY: -9999,
+        active: false,
+        radius: 140
+    };
+
+    let chits = [];
+
+    function resizeCanvas() {
+        const rect = container.getBoundingClientRect();
+        width = rect.width;
+        height = rect.height;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+    }
+
+    // --- 1. CALM MICRO-CUT SECURITY CHITS ---
+    class MicroChit {
+        constructor(isInitial = false) {
+            this.reset(isInitial);
+        }
+
+        reset(isInitial = false) {
+            this.x = Math.random() * width;
+            this.y = isInitial ? Math.random() * height : height + 15;
+            this.z = Math.random() * 0.6 + 0.4;
+
+            this.w = (Math.random() * 3 + 2.5) * this.z;
+            this.h = (Math.random() * 5 + 3.5) * this.z;
+
+            this.vx = (Math.random() - 0.5) * 0.3;
+            this.vy = -(Math.random() * 0.45 + 0.25) * this.z;
+            this.flutterPhase = Math.random() * Math.PI * 2;
+            this.flutterSpeed = Math.random() * 0.02 + 0.01;
+
+            this.rotX = Math.random() * Math.PI * 2;
+            this.rotY = Math.random() * Math.PI * 2;
+            this.rotZ = Math.random() * Math.PI * 2;
+            this.speedX = (Math.random() - 0.5) * 0.02;
+            this.speedY = (Math.random() - 0.5) * 0.02;
+            this.speedZ = (Math.random() - 0.5) * 0.015;
+
+            const r = Math.random();
+            if (r < 0.65) {
+                this.color = '248, 250, 252';
+                this.baseAlpha = (Math.random() * 0.14 + 0.08) * this.z;
+            } else if (r < 0.88) {
+                this.color = '56, 189, 248';
+                this.baseAlpha = (Math.random() * 0.16 + 0.09) * this.z;
+            } else {
+                this.color = '230, 57, 70';
+                this.baseAlpha = (Math.random() * 0.18 + 0.1) * this.z;
+            }
+        }
+
+        update() {
+            this.flutterPhase += this.flutterSpeed;
+            this.x += this.vx + Math.sin(this.flutterPhase) * 0.35;
+            this.y += this.vy;
+
+            this.rotX += this.speedX;
+            this.rotY += this.speedY;
+            this.rotZ += this.speedZ;
+
+            if (mouse.active) {
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.hypot(dx, dy);
+
+                if (dist < mouse.radius && dist > 0) {
+                    const force = (1 - dist / mouse.radius) * 1.2;
+                    this.x += (dx / dist) * force;
+                    this.y += (dy / dist) * force;
+                }
+            }
+
+            if (this.y < -20 || this.x < -30 || this.x > width + 30) {
+                this.reset(false);
+            }
+        }
+
+        draw() {
+            const cosX = Math.cos(this.rotX);
+            const cosY = Math.cos(this.rotY);
+            const alpha = this.baseAlpha * Math.abs(cosX) * Math.abs(cosY);
+            if (alpha <= 0.005) return;
+
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotZ);
+            ctx.scale(cosX, cosY);
+
+            ctx.fillStyle = `rgba(${this.color}, ${alpha})`;
+            ctx.fillRect(-this.w / 2, -this.h / 2, this.w, this.h);
+
+            ctx.restore();
+        }
+    }
+
+    function initElements() {
+        const count = Math.min(Math.floor(width / 45), 28);
+        chits = [];
+        for (let i = 0; i < count; i++) {
+            chits.push(new MicroChit(true));
+        }
+    }
+
+    // --- 2. HARMONIC GUILLOCHÉ SECURITY WAVEFORM ---
+    function drawGuillocheWaves() {
+        const waveCount = 4;
+        const baseY = height * 0.68;
+
+        for (let w = 0; w < waveCount; w++) {
+            ctx.beginPath();
+            const phaseOffset = w * 0.55;
+            const amp = 26 + w * 7;
+            const freq = 0.0016 + w * 0.00025;
+            const waveSpeed = time * 0.0008;
+
+            for (let x = 0; x <= width; x += 8) {
+                let y = baseY 
+                    + Math.sin(x * freq + waveSpeed + phaseOffset) * amp
+                    + Math.cos(x * freq * 0.6 - waveSpeed * 0.7) * (amp * 0.4);
+
+                if (mouse.active) {
+                    const dx = x - mouse.x;
+                    const dy = y - mouse.y;
+                    const distSq = dx * dx + dy * dy;
+                    const r = 160;
+                    if (distSq < r * r) {
+                        const factor = Math.exp(-distSq / (2 * 45 * 45));
+                        y += (dy > 0 ? 1 : -1) * factor * 22;
+                    }
+                }
+
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+
+            const alpha = 0.14 - (w * 0.022);
+            const grad = ctx.createLinearGradient(0, 0, width, 0);
+            grad.addColorStop(0, 'rgba(56, 189, 248, 0)');
+            grad.addColorStop(0.25, `rgba(56, 189, 248, ${alpha * 1.2})`);
+            grad.addColorStop(0.5, `rgba(230, 57, 70, ${alpha * 0.85})`);
+            grad.addColorStop(0.75, `rgba(56, 189, 248, ${alpha * 1.1})`);
+            grad.addColorStop(1, 'rgba(56, 189, 248, 0)');
+
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 1.1;
+            ctx.stroke();
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        time++;
+
+        if (mouse.active) {
+            mouse.x += (mouse.targetX - mouse.x) * 0.1;
+            mouse.y += (mouse.targetY - mouse.y) * 0.1;
+
+            if (spotlight) {
+                spotlight.style.setProperty('--mouse-x', `${mouse.x}px`);
+                spotlight.style.setProperty('--mouse-y', `${mouse.y}px`);
+            }
+        }
+
+        drawGuillocheWaves();
+
+        for (let i = 0; i < chits.length; i++) {
+            chits[i].update();
+            chits[i].draw();
+        }
+
+        animationFrameId = requestAnimationFrame(animate);
+    }
+
+    container.addEventListener('mousemove', e => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.targetX = e.clientX - rect.left;
+        mouse.targetY = e.clientY - rect.top;
+
+        if (!mouse.active) {
+            mouse.x = mouse.targetX;
+            mouse.y = mouse.targetY;
+            mouse.active = true;
+            if (spotlight) spotlight.classList.add('active');
+        }
+    });
+
+    container.addEventListener('mouseleave', () => {
+        mouse.active = false;
+        if (spotlight) spotlight.classList.remove('active');
+    });
+
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        initElements();
+    });
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            cancelAnimationFrame(animationFrameId);
+        } else {
+            animationFrameId = requestAnimationFrame(animate);
+        }
+    });
+
+    resizeCanvas();
+    initElements();
+    animate();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initH2ShredAnimation);
+} else {
+    initH2ShredAnimation();
 }
 </script>
 
 <div id="footer-placeholder"></div>
 
-<script src="components.js"></script>
+<script src="components.js?v=3.6"></script>
 </body>
 </html>

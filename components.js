@@ -302,6 +302,9 @@ function renderBackToTop() {
 function toggleDark() {
     const html = document.documentElement;
     const isDark = html.classList.toggle('dark');
+    if (document.body) {
+        document.body.classList.toggle('dark', isDark);
+    }
     localStorage.setItem('vs-dark', isDark ? '1' : '0');
     updateDarkIcons();
 }
@@ -319,8 +322,10 @@ function initDark() {
     const saved = localStorage.getItem('vs-dark');
     if (saved === '1') {
         document.documentElement.classList.add('dark');
+        if (document.body) document.body.classList.add('dark');
     } else {
         document.documentElement.classList.remove('dark');
+        if (document.body) document.body.classList.remove('dark');
     }
     updateDarkIcons();
 }

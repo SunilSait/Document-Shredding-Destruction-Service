@@ -7,7 +7,7 @@
     <meta name="description" content="VaultShred meets the highest data destruction standards: NAID AAA, HIPAA, FACTA, GLBA, SOX compliance. Full chain of custody documentation.">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.8">
 </head>
 <body>
 
@@ -15,6 +15,10 @@
 
 <!-- PAGE HERO -->
 <section class="page-hero">
+    <div class="page-hero-bg">
+        <img src="assets/images/banner-compliance.jpg" alt="VaultShred Compliance & Regulatory Accreditation Center" loading="eager">
+    </div>
+    <div class="page-hero-overlay"></div>
     <div class="container">
         <span class="page-hero-badge"><i class="fas fa-shield-halved"></i> Regulatory Compliance</span>
         <h1 class="fade-up">Compliance & Certifications</h1>
@@ -32,34 +36,64 @@
         </div>
         <div class="compliance-regs-grid">
             <div class="compliance-card fade-up">
-                <div class="compliance-icon"><i class="fas fa-shield-halved"></i></div>
-                <h3>NAID AAA Certification</h3>
-                <p>The gold standard in document destruction. Our facility and processes are subject to unannounced audits verifying security protocols, employee background checks, and operational standards.</p>
+                <div class="compliance-img-wrap">
+                    <img src="assets/images/compliance-naid.jpg" alt="NAID AAA Certified document destruction facility audit" class="compliance-img" loading="lazy">
+                    <div class="compliance-icon-badge"><i class="fas fa-shield-halved"></i></div>
+                </div>
+                <div class="compliance-body">
+                    <h3>NAID AAA Certification</h3>
+                    <p>The gold standard in document destruction. Our facility and processes are subject to unannounced audits verifying security protocols, employee background checks, and operational standards.</p>
+                </div>
             </div>
             <div class="compliance-card fade-up delay-1">
-                <div class="compliance-icon"><i class="fas fa-hospital"></i></div>
-                <h3>HIPAA Compliance</h3>
-                <p>We meet all Health Insurance Portability and Accountability Act requirements for the destruction of Protected Health Information (PHI). BAA agreements provided.</p>
+                <div class="compliance-img-wrap">
+                    <img src="assets/images/compliance-hipaa.jpg" alt="HIPAA compliant healthcare and patient records disposal" class="compliance-img" loading="lazy">
+                    <div class="compliance-icon-badge"><i class="fas fa-hospital"></i></div>
+                </div>
+                <div class="compliance-body">
+                    <h3>HIPAA Compliance</h3>
+                    <p>We meet all Health Insurance Portability and Accountability Act requirements for the destruction of Protected Health Information (PHI). BAA agreements provided.</p>
+                </div>
             </div>
             <div class="compliance-card fade-up delay-2">
-                <div class="compliance-icon"><i class="fas fa-file-contract"></i></div>
-                <h3>FACTA Compliance</h3>
-                <p>Fair and Accurate Credit Transactions Act requires proper disposal of consumer information. Our cross-cut shredding exceeds FACTA requirements for rendering data unreadable.</p>
+                <div class="compliance-img-wrap">
+                    <img src="assets/images/compliance-facta.jpg" alt="FACTA compliant consumer financial records disposal" class="compliance-img" loading="lazy">
+                    <div class="compliance-icon-badge"><i class="fas fa-file-contract"></i></div>
+                </div>
+                <div class="compliance-body">
+                    <h3>FACTA Compliance</h3>
+                    <p>Fair and Accurate Credit Transactions Act requires proper disposal of consumer information. Our cross-cut shredding exceeds FACTA requirements for rendering data unreadable.</p>
+                </div>
             </div>
             <div class="compliance-card fade-up">
-                <div class="compliance-icon"><i class="fas fa-landmark"></i></div>
-                <h3>GLBA Compliance</h3>
-                <p>Gramm-Leach-Bliley Act mandates financial institutions protect customer data. We provide the documented destruction required for GLBA Safeguards Rule compliance.</p>
+                <div class="compliance-img-wrap">
+                    <img src="assets/images/compliance-glba.jpg" alt="GLBA banking and financial institution customer data safeguard" class="compliance-img" loading="lazy">
+                    <div class="compliance-icon-badge"><i class="fas fa-landmark"></i></div>
+                </div>
+                <div class="compliance-body">
+                    <h3>GLBA Compliance</h3>
+                    <p>Gramm-Leach-Bliley Act mandates financial institutions protect customer data. We provide the documented destruction required for GLBA Safeguards Rule compliance.</p>
+                </div>
             </div>
             <div class="compliance-card fade-up delay-1">
-                <div class="compliance-icon"><i class="fas fa-chart-line"></i></div>
-                <h3>SOX Compliance</h3>
-                <p>Sarbanes-Oxley Act requires proper retention and destruction of financial records. We provide destruction schedules aligned with SOX retention requirements.</p>
+                <div class="compliance-img-wrap">
+                    <img src="assets/images/compliance-sox.jpg" alt="Sarbanes-Oxley SOX accounting records audit and retention destruction" class="compliance-img" loading="lazy">
+                    <div class="compliance-icon-badge"><i class="fas fa-chart-line"></i></div>
+                </div>
+                <div class="compliance-body">
+                    <h3>SOX Compliance</h3>
+                    <p>Sarbanes-Oxley Act requires proper retention and destruction of financial records. We provide destruction schedules aligned with SOX retention requirements.</p>
+                </div>
             </div>
             <div class="compliance-card fade-up delay-2">
-                <div class="compliance-icon"><i class="fas fa-globe"></i></div>
-                <h3>State Privacy Laws</h3>
-                <p>We comply with all 50 states' data disposal and privacy laws, including CCPA, providing the documentation needed for state-level regulatory compliance.</p>
+                <div class="compliance-img-wrap">
+                    <img src="assets/images/compliance-state.jpg" alt="State privacy laws and CCPA regulatory compliance" class="compliance-img" loading="lazy">
+                    <div class="compliance-icon-badge"><i class="fas fa-globe"></i></div>
+                </div>
+                <div class="compliance-body">
+                    <h3>State Privacy Laws</h3>
+                    <p>We comply with all 50 states' data disposal and privacy laws, including CCPA, providing the documentation needed for state-level regulatory compliance.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -320,12 +354,18 @@
 <!-- CTA -->
 <section class="cta-section">
     <div class="container">
-        <div class="cta-inner fade-up">
-            <h2>Need Compliance Documentation?</h2>
-            <p>Request our compliance packet including BAA agreements, certificates of insurance, and NAID AAA certification documentation.</p>
-            <div class="cta-actions">
-                <a href="contact.html" class="btn btn-white btn-lg">Request Compliance Packet <i class="fas fa-arrow-right"></i></a>
-                <a href="services.html" class="btn btn-white-outline btn-lg">View Services</a>
+        <div class="cta-split fade-up">
+            <div class="cta-content">
+                <h2>Need Compliance Documentation?</h2>
+                <p>Request our compliance packet including BAA agreements, certificates of insurance, and NAID AAA certification documentation.</p>
+                <div class="cta-actions">
+                    <a href="contact.html" class="btn btn-white btn-lg">Request Compliance Packet <i class="fas fa-arrow-right"></i></a>
+                    <a href="services.html" class="btn btn-white-outline btn-lg">View Services</a>
+                </div>
+            </div>
+            <div class="cta-img-wrap">
+                <img src="assets/images/compliance-packet.jpg" alt="VaultShred Compliance and Audit Documentation Packet with NAID AAA Certificate and BAA Agreement" class="cta-img" loading="lazy">
+                <div class="cta-img-badge"><i class="fas fa-shield-halved"></i> Audit Ready Pack</div>
             </div>
         </div>
     </div>

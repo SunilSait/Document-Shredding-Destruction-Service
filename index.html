@@ -7,7 +7,7 @@
     <meta name="description" content="VaultShred provides certified on-site and off-site document shredding and destruction services. HIPAA, FACTA & NAID AAA compliant. Schedule a pickup today.">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3.7">
 </head>
 <body>
 
@@ -15,6 +15,22 @@
 
 <!-- ============ HERO SLIDER (3 Slides — 5s Auto Transition) ============ -->
 <section class="hero-slider" id="heroSlider" aria-roledescription="carousel" aria-label="Featured Shredding Services">
+    <!-- Themed Background Animation Layers (Enterprise Guilloché Waveform, Security Mesh & Ambient Spotlight) -->
+    <div class="hero-bg-effects" aria-hidden="true">
+        <canvas id="heroShredCanvas" class="hero-shred-canvas"></canvas>
+        <div class="hero-ambient-orb orb-crimson"></div>
+        <div class="hero-ambient-orb orb-cyan"></div>
+        <div class="hero-grid-matrix"></div>
+        <div class="hero-mouse-spotlight" id="heroSpotlight"></div>
+        <div class="hero-security-markers" aria-hidden="true">
+            <span class="marker marker-tl">+</span>
+            <span class="marker marker-tr">+</span>
+            <span class="marker marker-bl">+</span>
+            <span class="marker marker-br">+</span>
+        </div>
+        <div class="hero-scan-vignette"></div>
+    </div>
+
     <div class="hero-slides-wrapper">
         <!-- SLIDE 1: Secure Document Shredding -->
         <div class="hero-slide hero-split active" data-slide-index="0" role="group" aria-roledescription="slide" aria-label="1 of 3: Secure Document Shredding">
@@ -725,7 +741,7 @@ function toggleSFAQ(btn){const item=btn.closest('.sfaq-item');const active=item.
                     <span class="cta-security-badge">
                         <span class="pulse-dot"></span> 100% Zero-Defect Audit Guarantee
                     </span>
-                    <h2>Ready to Eliminate Data Risk? <span class="cta-highlight-text">Secure Your Facility Today.</span></h2>
+                    <h2>Ready to Eliminate Data Risk?</h2>
                     <p>
                         From scheduled locked deskside consoles to high-volume purge cleanouts, VaultShred delivers NAID AAA certified destruction with on-site CCTV verification and legally binding certificates.
                     </p>
@@ -820,10 +836,255 @@ function setCtaVolume(btn, volume) {
     btn.parentElement.querySelectorAll('.cw-pill').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
 }
+
+/* ========================================================
+   VAULTSHRED THEMED HERO BACKGROUND ANIMATION
+   - Shredded Paper Ribbons & Security Data Particles
+   - Interactive mouse drift breeze
+   - Responsive & battery-efficient via requestAnimationFrame
+   ======================================================== */
+function initHeroShredAnimation() {
+    const canvas = document.getElementById('heroShredCanvas');
+    const container = document.getElementById('heroSlider');
+    const spotlight = document.getElementById('heroSpotlight');
+    if (!canvas || !container) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = 0;
+    let height = 0;
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let animationFrameId = null;
+    let time = 0;
+
+    const mouse = {
+        x: -9999,
+        y: -9999,
+        targetX: -9999,
+        targetY: -9999,
+        active: false,
+        radius: 140
+    };
+
+    let chits = [];
+
+    function resizeCanvas() {
+        const rect = container.getBoundingClientRect();
+        width = rect.width;
+        height = rect.height;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+    }
+
+    // --- 1. CALM MICRO-CUT SECURITY CHITS ---
+    class MicroChit {
+        constructor(isInitial = false) {
+            this.reset(isInitial);
+        }
+
+        reset(isInitial = false) {
+            this.x = Math.random() * width;
+            this.y = isInitial ? Math.random() * height : height + 15;
+            this.z = Math.random() * 0.6 + 0.4;
+
+            this.w = (Math.random() * 3 + 2.5) * this.z;
+            this.h = (Math.random() * 5 + 3.5) * this.z;
+
+            this.vx = (Math.random() - 0.5) * 0.3;
+            this.vy = -(Math.random() * 0.45 + 0.25) * this.z;
+            this.flutterPhase = Math.random() * Math.PI * 2;
+            this.flutterSpeed = Math.random() * 0.02 + 0.01;
+
+            this.rotX = Math.random() * Math.PI * 2;
+            this.rotY = Math.random() * Math.PI * 2;
+            this.rotZ = Math.random() * Math.PI * 2;
+            this.speedX = (Math.random() - 0.5) * 0.02;
+            this.speedY = (Math.random() - 0.5) * 0.02;
+            this.speedZ = (Math.random() - 0.5) * 0.015;
+
+            const r = Math.random();
+            if (r < 0.65) {
+                this.color = '248, 250, 252';
+                this.baseAlpha = (Math.random() * 0.14 + 0.08) * this.z;
+            } else if (r < 0.88) {
+                this.color = '56, 189, 248';
+                this.baseAlpha = (Math.random() * 0.16 + 0.09) * this.z;
+            } else {
+                this.color = '230, 57, 70';
+                this.baseAlpha = (Math.random() * 0.18 + 0.1) * this.z;
+            }
+        }
+
+        update() {
+            this.flutterPhase += this.flutterSpeed;
+            this.x += this.vx + Math.sin(this.flutterPhase) * 0.35;
+            this.y += this.vy;
+
+            this.rotX += this.speedX;
+            this.rotY += this.speedY;
+            this.rotZ += this.speedZ;
+
+            if (mouse.active) {
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.hypot(dx, dy);
+
+                if (dist < mouse.radius && dist > 0) {
+                    const force = (1 - dist / mouse.radius) * 1.2;
+                    this.x += (dx / dist) * force;
+                    this.y += (dy / dist) * force;
+                }
+            }
+
+            if (this.y < -20 || this.x < -30 || this.x > width + 30) {
+                this.reset(false);
+            }
+        }
+
+        draw() {
+            const cosX = Math.cos(this.rotX);
+            const cosY = Math.cos(this.rotY);
+            const alpha = this.baseAlpha * Math.abs(cosX) * Math.abs(cosY);
+            if (alpha <= 0.005) return;
+
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotZ);
+            ctx.scale(cosX, cosY);
+
+            ctx.fillStyle = `rgba(${this.color}, ${alpha})`;
+            ctx.fillRect(-this.w / 2, -this.h / 2, this.w, this.h);
+
+            ctx.restore();
+        }
+    }
+
+    function initElements() {
+        const count = Math.min(Math.floor(width / 45), 28);
+        chits = [];
+        for (let i = 0; i < count; i++) {
+            chits.push(new MicroChit(true));
+        }
+    }
+
+    // --- 2. HARMONIC GUILLOCHÉ SECURITY WAVEFORM ---
+    function drawGuillocheWaves() {
+        const waveCount = 4;
+        const baseY = height * 0.68;
+
+        for (let w = 0; w < waveCount; w++) {
+            ctx.beginPath();
+            const phaseOffset = w * 0.55;
+            const amp = 26 + w * 7;
+            const freq = 0.0016 + w * 0.00025;
+            const waveSpeed = time * 0.0008;
+
+            for (let x = 0; x <= width; x += 8) {
+                let y = baseY 
+                    + Math.sin(x * freq + waveSpeed + phaseOffset) * amp
+                    + Math.cos(x * freq * 0.6 - waveSpeed * 0.7) * (amp * 0.4);
+
+                if (mouse.active) {
+                    const dx = x - mouse.x;
+                    const dy = y - mouse.y;
+                    const distSq = dx * dx + dy * dy;
+                    const r = 160;
+                    if (distSq < r * r) {
+                        const factor = Math.exp(-distSq / (2 * 45 * 45));
+                        y += (dy > 0 ? 1 : -1) * factor * 22;
+                    }
+                }
+
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+
+            const alpha = 0.14 - (w * 0.022);
+            const grad = ctx.createLinearGradient(0, 0, width, 0);
+            grad.addColorStop(0, 'rgba(56, 189, 248, 0)');
+            grad.addColorStop(0.25, `rgba(56, 189, 248, ${alpha * 1.2})`);
+            grad.addColorStop(0.5, `rgba(230, 57, 70, ${alpha * 0.85})`);
+            grad.addColorStop(0.75, `rgba(56, 189, 248, ${alpha * 1.1})`);
+            grad.addColorStop(1, 'rgba(56, 189, 248, 0)');
+
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 1.1;
+            ctx.stroke();
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        time++;
+
+        if (mouse.active) {
+            mouse.x += (mouse.targetX - mouse.x) * 0.1;
+            mouse.y += (mouse.targetY - mouse.y) * 0.1;
+
+            if (spotlight) {
+                spotlight.style.setProperty('--mouse-x', `${mouse.x}px`);
+                spotlight.style.setProperty('--mouse-y', `${mouse.y}px`);
+            }
+        }
+
+        drawGuillocheWaves();
+
+        for (let i = 0; i < chits.length; i++) {
+            chits[i].update();
+            chits[i].draw();
+        }
+
+        animationFrameId = requestAnimationFrame(animate);
+    }
+
+    container.addEventListener('mousemove', e => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.targetX = e.clientX - rect.left;
+        mouse.targetY = e.clientY - rect.top;
+
+        if (!mouse.active) {
+            mouse.x = mouse.targetX;
+            mouse.y = mouse.targetY;
+            mouse.active = true;
+            if (spotlight) spotlight.classList.add('active');
+        }
+    });
+
+    container.addEventListener('mouseleave', () => {
+        mouse.active = false;
+        if (spotlight) spotlight.classList.remove('active');
+    });
+
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        initElements();
+    });
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            cancelAnimationFrame(animationFrameId);
+        } else {
+            animationFrameId = requestAnimationFrame(animate);
+        }
+    });
+
+    resizeCanvas();
+    initElements();
+    animate();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroShredAnimation);
+} else {
+    initHeroShredAnimation();
+}
 </script>
 
 <div id="footer-placeholder"></div>
 
-<script src="components.js"></script>
+<script src="components.js?v=3.6"></script>
 </body>
 </html>
