@@ -7,7 +7,7 @@
     <meta name="description" content="VaultShred meets the highest data destruction standards: NAID AAA, HIPAA, FACTA, GLBA, SOX compliance. Full chain of custody documentation.">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1.8">
+    <link rel="stylesheet" href="style.css?v=7.7">
 </head>
 <body>
 
@@ -42,7 +42,7 @@
                 </div>
                 <div class="compliance-body">
                     <h3>NAID AAA Certification</h3>
-                    <p>The gold standard in document destruction. Our facility and processes are subject to unannounced audits verifying security protocols, employee background checks, and operational standards.</p>
+                    <p>The gold standard in document destruction. Our facility and processes are subject to unannounced audits verifying security protocols, employee background checks.</p>
                 </div>
             </div>
             <div class="compliance-card fade-up delay-1">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="compliance-body">
                     <h3>FACTA Compliance</h3>
-                    <p>Fair and Accurate Credit Transactions Act requires proper disposal of consumer information. Our cross-cut shredding exceeds FACTA requirements for rendering data unreadable.</p>
+                    <p>Fair and Accurate Credit Transactions Act requires proper disposal of consumer information. Our cross-cut shredding exceeds FACTA requirements for rendering data.</p>
                 </div>
             </div>
             <div class="compliance-card fade-up">
@@ -246,51 +246,44 @@
                         <th>Classification</th>
                         <th>Max Particle Size</th>
                         <th>Recommended Application</th>
-                        <th>Reconstruction Risk</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Level P-1</strong></td>
-                        <td>General Data</td>
-                        <td>Strip width ≤ 12 mm</td>
-                        <td>Non-sensitive internal notes</td>
-                        <td><span style="color:#e63946;font-weight:600">Simple manual assembly</span></td>
+                        <td data-label="Security Level"><strong>Level P-1</strong></td>
+                        <td data-label="Classification">General Data</td>
+                        <td data-label="Max Particle Size">Strip width ≤ 12 mm</td>
+                        <td data-label="Application">Non-sensitive internal notes</td>
                     </tr>
                     <tr>
-                        <td><strong>Level P-2</strong></td>
-                        <td>Internal Data</td>
-                        <td>Strip width ≤ 6 mm</td>
-                        <td>Outdated internal memos</td>
-                        <td><span style="color:#e63946;font-weight:600">Reconstructible with tools</span></td>
+                        <td data-label="Security Level"><strong>Level P-2</strong></td>
+                        <td data-label="Classification">Internal Data</td>
+                        <td data-label="Max Particle Size">Strip width ≤ 6 mm</td>
+                        <td data-label="Application">Outdated internal memos</td>
                     </tr>
                     <tr>
-                        <td><strong>Level P-3</strong></td>
-                        <td>Sensitive Data</td>
-                        <td>Particle ≤ 320 mm²</td>
-                        <td>Confidential correspondence</td>
-                        <td>Feasible with specialized labs</td>
+                        <td data-label="Security Level"><strong>Level P-3</strong></td>
+                        <td data-label="Classification">Sensitive Data</td>
+                        <td data-label="Max Particle Size">Particle ≤ 320 mm²</td>
+                        <td data-label="Application">Confidential correspondence</td>
                     </tr>
                     <tr class="highlight-row">
-                        <td><span class="din-badge-p4">Level P-4 <i class="fas fa-star"></i></span></td>
-                        <td><strong>Particularly Sensitive</strong></td>
-                        <td><strong>Particle ≤ 160 mm² (Cross-Cut)</strong></td>
-                        <td><strong>HIPAA, GLBA, FACTA, HR & Financial Records</strong></td>
-                        <td><strong style="color:#2a9d8f">Impossible with current tech</strong></td>
+                        <td data-label="Security Level"><span class="din-badge-p4">Level P-4 <i class="fas fa-star"></i></span></td>
+                        <td data-label="Classification"><strong>Particularly Sensitive</strong></td>
+                        <td data-label="Max Particle Size"><strong>Particle ≤ 160 mm² (Cross-Cut)</strong></td>
+                        <td data-label="Application"><strong>HIPAA, GLBA, FACTA, HR Records</strong></td>
                     </tr>
                     <tr>
-                        <td><strong>Level P-5</strong></td>
-                        <td>Secret Data</td>
-                        <td>Particle ≤ 30 mm²</td>
-                        <td>Strategic patents, trade secrets, R&D</td>
-                        <td><span style="color:#2a9d8f;font-weight:600">Physically impossible</span></td>
+                        <td data-label="Security Level"><strong>Level P-5</strong></td>
+                        <td data-label="Classification">Secret Data</td>
+                        <td data-label="Max Particle Size">Particle ≤ 30 mm²</td>
+                        <td data-label="Application">Strategic patents, trade secrets, R&D</td>
                     </tr>
                     <tr>
-                        <td><strong>Level P-6 / P-7</strong></td>
-                        <td>Top Secret / NSA</td>
-                        <td>Particle ≤ 5 mm²</td>
-                        <td>National defense, military intelligence</td>
-                        <td><span style="color:#2a9d8f;font-weight:600">Zero residual trace</span></td>
+                        <td data-label="Security Level"><strong>Level P-6 / P-7</strong></td>
+                        <td data-label="Classification">Top Secret / NSA</td>
+                        <td data-label="Max Particle Size">Particle ≤ 5 mm²</td>
+                        <td data-label="Application">National defense, military intelligence</td>
                     </tr>
                 </tbody>
             </table>
@@ -313,7 +306,7 @@
                 <div class="retention-list">
                     <div>• Corporate tax returns & schedules</div>
                     <div>• General ledgers & cash books</div>
-                    <div>• Bank statements & cancelled checks</div>
+                    <div>• Bank statements & checks</div>
                     <div>• Depreciation records & invoices</div>
                 </div>
             </div>
@@ -342,7 +335,7 @@
                 <div class="retention-cat">Corporate Governance & Legal</div>
                 <div class="retention-list">
                     <div>• Articles of Incorporation & Bylaws</div>
-                    <div>• Board of Directors meeting minutes</div>
+                    <div>• Board of Directors meeting</div>
                     <div>• Trademark & patent registrations</div>
                     <div>• Real estate deed & title policies</div>
                 </div>

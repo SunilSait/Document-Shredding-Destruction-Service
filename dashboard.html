@@ -7,7 +7,7 @@
     <meta name="description" content="VaultShred Client Portal: Schedule on-site shredding pickups, access serialized certificates of destruction, manage recurring locked consoles, and review invoices.">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=7.7">
     <style>
         .dark input[type="date"],
         .dark .dash-custom-input[type="date"],
@@ -31,6 +31,406 @@
             opacity: 0.85 !important;
             transform: scale(1.08);
         }
+
+        /* Tablet/Mobile Header Spacing (1024px and below) */
+        @media (max-width: 1024px) {
+            .dash-header-left {
+                gap: 14px !important;
+            }
+            .dash-mobile-toggle {
+                display: inline-flex !important;
+                margin-right: 2px !important;
+                flex-shrink: 0 !important;
+            }
+            [dir="rtl"] .dash-mobile-toggle {
+                margin-right: 0 !important;
+                margin-left: 2px !important;
+            }
+            .dash-brand-area {
+                width: auto !important;
+            }
+            .dash-header-divider {
+                margin: 0 16px !important;
+            }
+        }
+
+        /* Responsive Mobile Table Card Transformation (Eliminates Side-scroll on 360px) */
+        @media (max-width: 768px) {
+            .dash-panel {
+                padding: 14px 10px !important;
+                max-width: 100% !important;
+                overflow: hidden !important;
+                box-sizing: border-box !important;
+            }
+            .dash-table-responsive {
+                overflow-x: hidden !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            table.dash-table-custom,
+            #masterCertTable,
+            #overviewPickupsTable,
+            #masterJobsTable {
+                display: block !important;
+                width: 100% !important;
+                border-collapse: separate !important;
+                border-spacing: 0 !important;
+                border: none !important;
+            }
+            table.dash-table-custom thead,
+            #masterCertTable thead,
+            #overviewPickupsTable thead,
+            #masterJobsTable thead {
+                display: none !important;
+            }
+            table.dash-table-custom tbody,
+            #masterCertTable tbody,
+            #overviewPickupsTable tbody,
+            #masterJobsTable tbody {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+                width: 100% !important;
+            }
+            table.dash-table-custom tr,
+            #masterCertTable tr,
+            #overviewPickupsTable tr,
+            #masterJobsTable tr {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 8px !important;
+                background: #ffffff !important;
+                border: 1px solid #e2e8f0 !important;
+                border-radius: 14px !important;
+                padding: 14px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+            }
+            .dark table.dash-table-custom tr,
+            .dark #masterCertTable tr,
+            .dark #overviewPickupsTable tr,
+            .dark #masterJobsTable tr {
+                background: #0d1b38 !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+            }
+            table.dash-table-custom td,
+            #masterCertTable td,
+            #overviewPickupsTable td,
+            #masterJobsTable td {
+                display: flex !important;
+                align-items: flex-start !important;
+                justify-content: flex-start !important;
+                flex-wrap: wrap !important;
+                gap: 6px 12px !important;
+                padding: 7px 0 !important;
+                border-bottom: 1px dashed #e2e8f0 !important;
+                font-size: 0.83rem !important;
+                text-align: left !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                word-break: break-word !important;
+            }
+            .dark table.dash-table-custom td,
+            .dark #masterCertTable td,
+            .dark #overviewPickupsTable td,
+            .dark #masterJobsTable td {
+                border-bottom: 1px dashed rgba(255, 255, 255, 0.08) !important;
+                color: #e2e8f0 !important;
+            }
+            table.dash-table-custom td *,
+            #masterCertTable td *,
+            #overviewPickupsTable td *,
+            #masterJobsTable td * {
+                text-align: left !important;
+            }
+            table.dash-table-custom td:last-child,
+            #masterCertTable td:last-child,
+            #overviewPickupsTable td:last-child,
+            #masterJobsTable td:last-child {
+                border-bottom: none !important;
+                padding-bottom: 0 !important;
+            }
+            table.dash-table-custom td::before,
+            #masterCertTable td::before,
+            #overviewPickupsTable td::before,
+            #masterJobsTable td::before {
+                content: attr(data-label);
+                font-weight: 700;
+                font-size: 0.72rem;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+                color: #64748b;
+                text-align: left !important;
+                min-width: 95px;
+                flex-shrink: 0;
+            }
+            table.dash-table-custom td:not([data-label])::before,
+            table.dash-table-custom td[data-label=""]::before {
+                display: none !important;
+            }
+            .dark table.dash-table-custom td::before,
+            .dark #masterCertTable td::before,
+            .dark #overviewPickupsTable td::before,
+            .dark #masterJobsTable td::before {
+                color: #94a3b8 !important;
+            }
+            table.dash-table-custom td[data-label="Audit Action"]::before,
+            table.dash-table-custom td[data-label="Actions"]::before,
+            table.dash-table-custom td[data-label="Action"]::before,
+            #masterCertTable td[data-label="Actions"]::before,
+            #overviewPickupsTable td[data-label="Audit Action"]::before,
+            #masterJobsTable td[data-label="Action"]::before {
+                display: none !important;
+            }
+            table.dash-table-custom td[data-label="Audit Action"],
+            table.dash-table-custom td[data-label="Actions"],
+            table.dash-table-custom td[data-label="Action"],
+            #masterCertTable td[data-label="Actions"],
+            #overviewPickupsTable td[data-label="Audit Action"],
+            #masterJobsTable td[data-label="Action"],
+            table.dash-table-custom td:has(.dash-hdr-pill-btn) {
+                padding-top: 10px !important;
+                justify-content: center !important;
+                border-bottom: none !important;
+                text-align: center !important;
+            }
+            table.dash-table-custom td[data-label="Audit Action"] .dash-hdr-pill-btn,
+            table.dash-table-custom td[data-label="Actions"] .dash-hdr-pill-btn,
+            table.dash-table-custom td[data-label="Action"] .dash-hdr-pill-btn,
+            #masterCertTable td[data-label="Actions"] .dash-hdr-pill-btn,
+            #overviewPickupsTable td[data-label="Audit Action"] .dash-hdr-pill-btn,
+            #masterJobsTable td[data-label="Action"] .dash-hdr-pill-btn,
+            table.dash-table-custom td .dash-hdr-pill-btn {
+                width: 100% !important;
+                justify-content: center !important;
+                display: flex !important;
+                padding: 9px 14px !important;
+                font-size: 0.82rem !important;
+                text-align: center !important;
+            }
+
+            /* Mobile Optimization for Job Cards (Tab 6 - My Shred Jobs) */
+            .dash-jobs-grid {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+                width: 100% !important;
+            }
+            .dash-job-card {
+                padding: 16px 14px !important;
+                border-radius: 14px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                overflow: hidden !important;
+            }
+            .dash-job-header {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 8px !important;
+                margin-bottom: 12px !important;
+                width: 100% !important;
+            }
+            .dash-job-header > div:first-child {
+                width: 100% !important;
+            }
+            .dash-job-id-title {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                flex-wrap: wrap !important;
+                gap: 8px !important;
+                width: 100% !important;
+            }
+            .dash-job-header > span {
+                align-self: flex-start !important;
+                margin-top: 2px !important;
+                font-size: 0.72rem !important;
+            }
+            .dash-job-chips-row {
+                gap: 6px !important;
+                margin: 10px 0 !important;
+            }
+            .dash-job-chip {
+                font-size: 0.72rem !important;
+                padding: 3px 8px !important;
+            }
+            .dash-job-driver-strip {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 8px !important;
+                padding: 10px 12px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                margin-bottom: 14px !important;
+            }
+            .dash-driver-info-block {
+                width: 100% !important;
+            }
+            .dash-job-driver-strip > span {
+                align-self: flex-start !important;
+                font-size: 0.73rem !important;
+            }
+            .dash-job-footer-actions {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 10px !important;
+                width: 100% !important;
+                padding-top: 12px !important;
+                box-sizing: border-box !important;
+            }
+            .dash-job-footer-actions > div {
+                display: flex !important;
+                width: 100% !important;
+                gap: 8px !important;
+            }
+            .dash-job-footer-actions > div .dash-hdr-pill-btn {
+                flex: 1 1 0 !important;
+                justify-content: center !important;
+                text-align: center !important;
+                padding: 8px 8px !important;
+                font-size: 0.78rem !important;
+                min-width: 0 !important;
+            }
+            .dash-job-footer-actions > .dash-hero-btn {
+                width: 100% !important;
+                justify-content: center !important;
+                padding: 10px 14px !important;
+                font-size: 0.82rem !important;
+                text-align: center !important;
+            }
+            .dash-toolbar-card {
+                padding: 12px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            .dash-toolbar-card > div:last-child {
+                width: 100% !important;
+            }
+            .dash-toolbar-card input {
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            .dash-brand-area .brand-top {
+                display: block !important;
+                font-size: 0.6rem !important;
+                font-weight: 600 !important;
+                letter-spacing: 0.1em !important;
+                text-transform: uppercase !important;
+                color: var(--secondary) !important;
+                line-height: 1.1 !important;
+            }
+            .dash-brand-area .brand-bottom {
+                font-size: 0.95rem !important;
+                font-weight: 700 !important;
+                letter-spacing: -0.01em !important;
+                color: var(--primary) !important;
+                line-height: 1.1 !important;
+            }
+            .dark .dash-brand-area .brand-bottom {
+                color: #ffffff !important;
+            }
+
+            /* Display Dashboard Hero KPI Stats 1 by 1 Vertically */
+            .dash-hero-inner {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                width: 100% !important;
+            }
+            .dash-hero-kpi-column {
+                display: flex !important;
+                flex-direction: column !important;
+                border-left: none !important;
+                border-top: 1px solid #e2e8f0 !important;
+                padding-left: 0 !important;
+                padding-top: 18px !important;
+                margin-top: 18px !important;
+                width: 100% !important;
+                min-width: 0 !important;
+                gap: 12px !important;
+                align-items: stretch !important;
+            }
+            .dark .dash-hero-kpi-column {
+                border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+            .dash-hero-kpi {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                width: 100% !important;
+                padding: 14px 16px !important;
+                background: #f8fafc !important;
+                border: 1px solid #e2e8f0 !important;
+                border-radius: 12px !important;
+                box-sizing: border-box !important;
+            }
+            .dark .dash-hero-kpi {
+                background: rgba(255, 255, 255, 0.04) !important;
+                border-color: rgba(255, 255, 255, 0.08) !important;
+            }
+            .dash-hero-kpi .dash-kpi-num {
+                font-size: 1.65rem !important;
+                font-weight: 800 !important;
+                line-height: 1.1 !important;
+                color: #0f172a !important;
+            }
+            .dark .dash-hero-kpi .dash-kpi-num {
+                color: #ffffff !important;
+            }
+            .dash-hero-kpi .dash-kpi-lbl {
+                font-size: 0.72rem !important;
+                font-weight: 700 !important;
+                letter-spacing: 0.06em !important;
+                text-transform: uppercase !important;
+                color: #64748b !important;
+                margin-top: 4px !important;
+                white-space: nowrap !important;
+            }
+            .dark .dash-hero-kpi .dash-kpi-lbl {
+                color: #94a3b8 !important;
+            }
+
+            /* Tab Header & Back Button width strictly constrained to content */
+            .dash-tab-header {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 12px !important;
+                width: 100% !important;
+            }
+            .dash-tab-header > div:first-child {
+                width: 100% !important;
+            }
+            .dash-tab-header > .dash-hdr-pill-btn,
+            .dash-tab-header button.dash-hdr-pill-btn,
+            .dash-panel-header > .dash-hdr-pill-btn,
+            button.dash-hdr-pill-btn[onclick*="switchTab"] {
+                order: -1 !important;
+                margin-bottom: 6px !important;
+                align-self: flex-start !important;
+                display: inline-flex !important;
+                width: auto !important;
+                width: fit-content !important;
+                max-width: fit-content !important;
+                flex: 0 0 auto !important;
+                flex-grow: 0 !important;
+                white-space: nowrap !important;
+                box-sizing: border-box !important;
+            }
+            .dash-tab-header > .dash-tab-actions,
+            .dash-tab-header > div:last-child:not(:first-child) {
+                order: -1 !important;
+                margin-bottom: 6px !important;
+                align-self: flex-start !important;
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 8px !important;
+                width: auto !important;
+                max-width: 100% !important;
+            }
+        }
     </style>
 </head>
 <body class="dash-portal-body">
@@ -47,11 +447,11 @@
         <div class="dash-brand-area">
             <a href="index.html" class="nav-logo" aria-label="VaultShred Home" title="Return to VaultShred Home">
                 <svg width="38" height="38" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs><linearGradient id="logoBgDash" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1D3557"/><stop offset="100%" stop-color="#2E5173"/></linearGradient></defs>
-                    <rect width="100" height="100" rx="20" fill="url(#logoBgDash)"/>
-                    <rect x="28" y="22" width="44" height="56" rx="4" fill="none" stroke="#E63946" stroke-width="5"/>
-                    <path d="M36 38 L64 38 M36 48 L64 48 M36 58 L52 58" stroke="white" stroke-width="4" stroke-linecap="round"/>
-                    <path d="M52 68 L72 48" stroke="#E63946" stroke-width="5" stroke-linecap="round"/>
+                  <defs><linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1D3557"/><stop offset="100%" stop-color="#2E5173"/></linearGradient></defs>
+                  <rect width="100" height="100" rx="20" fill="url(#logoBg)"/>
+                  <rect x="28" y="22" width="44" height="56" rx="4" fill="none" stroke="#E63946" stroke-width="5"/>
+                  <path d="M36 38 L64 38 M36 48 L64 48 M36 58 L52 58" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M52 68 L72 48" stroke="#E63946" stroke-width="5" stroke-linecap="round"/>
                 </svg>
                 <span class="nav-logo-text">
                     <span class="brand-top">Secure Shredding</span>
@@ -69,7 +469,7 @@
     <!-- Right: Utility Controls & Profile -->
     <div class="dash-header-right">
         <button class="dash-hdr-btn" id="rtlToggleNav" onclick="toggleRTL()" title="Toggle layout direction / RTL" aria-label="Toggle layout direction / RTL">
-            <i class="fas fa-right-left"></i>
+            <span class="dir-indicator">RTL</span>
         </button>
         <button class="dash-hdr-btn" id="darkToggleNav" onclick="toggleDark()" title="Toggle dark mode" aria-label="Toggle dark mode">
             <i class="fas fa-moon"></i>
@@ -157,7 +557,7 @@
         </div>
 
         <div class="dash-sidebar-footer">
-            <a href="index.html" class="dash-nav-link logout-link">
+            <a href="javascript:void(0)" class="dash-nav-link logout-link" onclick="openLogoutModal()">
                 <i class="fas fa-arrow-right-from-bracket"></i>
                 <span>Logout</span>
             </a>
@@ -278,25 +678,40 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong>Oct 18, 2026</strong><br><small style="color:#94a3b8">10:00 AM - 12:00 PM</small></td>
-                                        <td>Mobile On-Site Truck</td>
-                                        <td>4 Consoles + 6 Boxes</td>
-                                        <td>Truck #MT-04 (David V.)</td>
-                                        <td><span class="dash-status-badge scheduled"><i class="fas fa-clock"></i> Scheduled</span></td>
+                                        <td data-label="Date & Window">
+                                            <div class="dash-td-val">
+                                                <strong>Oct 18, 2026</strong>
+                                                <small style="display:block;color:#94a3b8">10:00 AM - 12:00 PM</small>
+                                            </div>
+                                        </td>
+                                        <td data-label="Service Type">Mobile On-Site Truck</td>
+                                        <td data-label="Containers">4 Consoles + 6 Boxes</td>
+                                        <td data-label="Assigned Unit">Truck #MT-04 (David V.)</td>
+                                        <td data-label="Status"><span class="dash-status-badge scheduled"><i class="fas fa-clock"></i> Scheduled</span></td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Oct 25, 2026</strong><br><small style="color:#94a3b8">02:00 PM - 04:00 PM</small></td>
-                                        <td>Recurring Console Swap</td>
-                                        <td>9 Locked Consoles</td>
-                                        <td>Route Unit #R-12</td>
-                                        <td><span class="dash-status-badge in-progress"><i class="fas fa-spinner"></i> In Progress</span></td>
+                                        <td data-label="Date & Window">
+                                            <div class="dash-td-val">
+                                                <strong>Oct 25, 2026</strong>
+                                                <small style="display:block;color:#94a3b8">02:00 PM - 04:00 PM</small>
+                                            </div>
+                                        </td>
+                                        <td data-label="Service Type">Recurring Console Swap</td>
+                                        <td data-label="Containers">9 Locked Consoles</td>
+                                        <td data-label="Assigned Unit">Route Unit #RT-12</td>
+                                        <td data-label="Status"><span class="dash-status-badge in-progress"><i class="fas fa-spinner"></i> Progress</span></td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Nov 01, 2026</strong><br><small style="color:#94a3b8">09:30 AM - 11:30 AM</small></td>
-                                        <td>Off-Site Plant Purge</td>
-                                        <td>15 Archive Cartons</td>
-                                        <td>Courier #S-08</td>
-                                        <td><span class="dash-status-badge scheduled"><i class="fas fa-clock"></i> Scheduled</span></td>
+                                        <td data-label="Date & Window">
+                                            <div class="dash-td-val">
+                                                <strong>Nov 01, 2026</strong>
+                                                <small style="display:block;color:#94a3b8">09:30 AM - 11:30 AM</small>
+                                            </div>
+                                        </td>
+                                        <td data-label="Service Type">Off-Site Plant Purge</td>
+                                        <td data-label="Containers">15 Archive Cartons</td>
+                                        <td data-label="Assigned Unit">Courier Unit #SA-08</td>
+                                        <td data-label="Status"><span class="dash-status-badge scheduled"><i class="fas fa-clock"></i> Scheduled</span></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -324,33 +739,33 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong class="dash-code-link">COD-2026-0847</strong></td>
-                                        <td>Oct 11, 2026</td>
-                                        <td>DIN 66399 Level P-4 Cross-Cut</td>
-                                        <td>1,420 lbs</td>
-                                        <td>
+                                        <td data-label="Certificate ID"><strong class="dash-code-link">COD-2026-0847</strong></td>
+                                        <td data-label="Destruction Date">Oct 11, 2026</td>
+                                        <td data-label="Method & Standard">DIN 66399 Level P-4 Cross-Cut</td>
+                                        <td data-label="Net Weight">1,420 lbs</td>
+                                        <td data-label="Audit Action">
                                             <button class="dash-hdr-pill-btn" onclick="openCertificateModal('COD-2026-0847', 'Oct 11, 2026', '1,420 lbs', 'Mobile Truck Unit #MT-04', '7f8a92b...e4a1')">
                                                 <i class="fas fa-file-pdf"></i> View Certificate
                                             </button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><strong class="dash-code-link">COD-2026-0832</strong></td>
-                                        <td>Sep 27, 2026</td>
-                                        <td>Level P-4 Cross-Cut & Shear</td>
-                                        <td>980 lbs</td>
-                                        <td>
+                                        <td data-label="Certificate ID"><strong class="dash-code-link">COD-2026-0832</strong></td>
+                                        <td data-label="Destruction Date">Sep 27, 2026</td>
+                                        <td data-label="Method & Standard">Level P-4 Cross-Cut & Shear</td>
+                                        <td data-label="Net Weight">980 lbs</td>
+                                        <td data-label="Audit Action">
                                             <button class="dash-hdr-pill-btn" onclick="openCertificateModal('COD-2026-0832', 'Sep 27, 2026', '980 lbs', 'Mobile Truck Unit #MT-02', '3b1c88d...99f0')">
                                                 <i class="fas fa-file-pdf"></i> View Certificate
                                             </button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><strong class="dash-code-link">COD-2026-0819</strong></td>
-                                        <td>Sep 13, 2026</td>
-                                        <td>DIN 66399 Level P-4 Cross-Cut</td>
-                                        <td>1,150 lbs</td>
-                                        <td>
+                                        <td data-label="Certificate ID"><strong class="dash-code-link">COD-2026-0819</strong></td>
+                                        <td data-label="Destruction Date">Sep 13, 2026</td>
+                                        <td data-label="Method & Standard">DIN 66399 Level P-4 Cross-Cut</td>
+                                        <td data-label="Net Weight">1,150 lbs</td>
+                                        <td data-label="Audit Action">
                                             <button class="dash-hdr-pill-btn" onclick="openCertificateModal('COD-2026-0819', 'Sep 13, 2026', '1,150 lbs', 'Facility Plant Shredder #1', 'c249a1e...41a7')">
                                                 <i class="fas fa-file-pdf"></i> View Certificate
                                             </button>
@@ -391,7 +806,7 @@
                             <a class="dash-panel-link" onclick="switchTab('recurring')">Manage</a>
                         </div>
                         <div class="dash-subcard">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 6px;">
                                 <strong class="dash-highlight-text" style="font-size: 0.9rem;">Enterprise Bi-Weekly Rotation</strong>
                                 <span class="dash-status-badge completed" style="font-size: 0.68rem;">Active</span>
                             </div>
@@ -435,38 +850,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Certified Facility Live Feed & Chain-of-Custody Card -->
-                    <div class="dash-panel dash-facility-card">
-                        <div class="dash-panel-header">
-                            <h3 class="dash-panel-title" style="font-size: 0.98rem;">
-                                <i class="fas fa-video"></i> Facility Audit Verification
-                            </h3>
-                            <span class="dash-radar-live-pill" style="font-size: 0.68rem; padding: 3px 8px;">
-                                <span class="dash-live-dot-pulse"></span> Plant Feed
-                            </span>
-                        </div>
-                        <div class="dash-facility-img-wrap">
-                            <img src="assets/images/dashboard-facility-feed.jpg" alt="NAID AAA Certified Facility Shredding Feed and Barcode Tracking" loading="lazy">
-                            <div class="dash-facility-cam-overlay">
-                                <span><i class="fas fa-circle text-rose" style="font-size: 0.6rem;"></i> REC • CAM #02</span>
-                                <span>BARCODE: #VS-9842</span>
-                            </div>
-                        </div>
-                        <div style="padding: 14px 16px 16px;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                                <strong class="dash-highlight-text" style="font-size: 0.88rem;">Secure Intake & Conveyor Shredding</strong>
-                                <span class="dash-status-badge completed" style="font-size: 0.66rem;">100% Chain-of-Custody</span>
-                            </div>
-                            <p style="font-size: 0.78rem; margin: 0 0 10px; color: #64748b; line-height: 1.45;">
-                                Continuous CCTV monitoring & automated barcode logging at our NAID AAA certified plant. Zero-landfill paper baling in progress.
-                            </p>
-                            <div class="dash-meta-row" style="padding-top: 8px; border-top: 1px solid var(--border); font-size: 0.74rem;">
-                                <span>Security Level:</span>
-                                <strong class="dash-code-link">DIN 66399 Level P-4 Certified</strong>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -475,12 +858,12 @@
              TAB 2: SCHEDULE SHREDDING SERVICE
              =================================================== -->
         <div class="dash-tab-pane" id="tab-schedule">
-            <div class="dash-panel-header" style="margin-bottom: 24px;">
+            <div class="dash-panel-header dash-tab-header">
                 <div>
                     <h2 class="dash-section-heading">Schedule Shredding Service</h2>
                     <p style="color: #64748b; font-size: 0.86rem;">Book an on-site mobile shredder truck or schedule a secure off-site plant purge.</p>
                 </div>
-                <button class="dash-hdr-pill-btn" onclick="switchTab('overview')"><i class="fas fa-arrow-left"></i> Back to Dashboard</button>
+                <button class="dash-hdr-pill-btn" onclick="switchTab('overview')" style="width: fit-content !important;"><i class="fas fa-arrow-left"></i> Back to Dashboard</button>
             </div>
 
             <div class="dash-scheduler-card">
@@ -606,16 +989,16 @@
              TAB 3: DESTRUCTION CERTIFICATES
              =================================================== -->
         <div class="dash-tab-pane" id="tab-certificates">
-            <div class="dash-panel-header" style="margin-bottom: 24px;">
+            <div class="dash-panel-header dash-tab-header">
                 <div>
                     <h2 class="dash-section-heading">Destruction Certificates</h2>
                     <p style="color: #64748b; font-size: 0.86rem;">Official NAID AAA certified certificates of destruction with cryptographic SHA-256 chain-of-custody hashes.</p>
                 </div>
-                <div style="display: flex; gap: 10px;">
+                <div class="dash-tab-actions">
                     <button class="dash-hdr-pill-btn" onclick="alert('Exporting complete audit report for HIPAA / FACTA auditors...')">
                         <i class="fas fa-file-export"></i> Export Audit Log (CSV)
                     </button>
-                    <button class="dash-hdr-pill-btn" onclick="switchTab('overview')">
+                    <button class="dash-hdr-pill-btn" onclick="switchTab('overview')" style="width: fit-content !important;">
                         <i class="fas fa-arrow-left"></i> Dashboard
                     </button>
                 </div>
@@ -624,11 +1007,11 @@
             <!-- Filter & Search Toolbar -->
             <div class="dash-panel" style="padding: 18px 24px; margin-bottom: 20px;">
                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 260px;">
+                    <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 220px;">
                         <i class="fas fa-search"></i>
                         <input type="text" id="certSearchInput" onkeyup="filterCertificates()" placeholder="Search certificate #, date, officer, or hash..." class="dash-custom-input" style="padding: 8px 12px; font-size: 0.84rem;">
                     </div>
-                    <div style="display: flex; gap: 8px;">
+                    <div class="dash-filter-pill-group">
                         <button class="dash-hdr-pill-btn active">All Standards</button>
                         <button class="dash-hdr-pill-btn" onclick="alert('Filtered: NAID AAA Certified')">NAID AAA</button>
                         <button class="dash-hdr-pill-btn" onclick="alert('Filtered: HIPAA & FACTA Compliant')">HIPAA / FACTA</button>
@@ -654,65 +1037,65 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong class="dash-code-link">COD-2026-0847</strong></td>
-                                <td>Oct 11, 2026</td>
-                                <td><span class="dash-status-badge completed">DIN Level P-4</span></td>
-                                <td><strong>1,420 lbs</strong></td>
-                                <td>David Vance (#NV-941)</td>
-                                <td><code class="dash-code-hash">7f8a92b...e4a1</code></td>
-                                <td>
+                                <td data-label="Certificate #"><strong class="dash-code-link">COD-2026-0847</strong></td>
+                                <td data-label="Issue Date">Oct 11, 2026</td>
+                                <td data-label="Standard"><span class="dash-status-badge completed">DIN Level P-4</span></td>
+                                <td data-label="Volume"><strong>1,420 lbs</strong></td>
+                                <td data-label="Officer">David Vance (#NV-941)</td>
+                                <td data-label="Hash"><code class="dash-code-hash">7f8a92b...e4a1</code></td>
+                                <td data-label="Actions">
                                     <button class="dash-hdr-pill-btn" onclick="openCertificateModal('COD-2026-0847', 'Oct 11, 2026', '1,420 lbs', 'Mobile Truck Unit #MT-04', '7f8a92b8d0c114f5e4a1')">
                                         <i class="fas fa-file-pdf"></i> View & Print
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong class="dash-code-link">COD-2026-0832</strong></td>
-                                <td>Sep 27, 2026</td>
-                                <td><span class="dash-status-badge completed">DIN Level P-4</span></td>
-                                <td><strong>980 lbs</strong></td>
-                                <td>Marcus Chen (#NV-882)</td>
-                                <td><code class="dash-code-hash">3b1c88d...99f0</code></td>
-                                <td>
+                                <td data-label="Certificate #"><strong class="dash-code-link">COD-2026-0832</strong></td>
+                                <td data-label="Issue Date">Sep 27, 2026</td>
+                                <td data-label="Standard"><span class="dash-status-badge completed">DIN Level P-4</span></td>
+                                <td data-label="Volume"><strong>980 lbs</strong></td>
+                                <td data-label="Officer">Marcus Chen (#NV-882)</td>
+                                <td data-label="Hash"><code class="dash-code-hash">3b1c88d...99f0</code></td>
+                                <td data-label="Actions">
                                     <button class="dash-hdr-pill-btn" onclick="openCertificateModal('COD-2026-0832', 'Sep 27, 2026', '980 lbs', 'Mobile Truck Unit #MT-02', '3b1c88d742a00199f02c')">
                                         <i class="fas fa-file-pdf"></i> View & Print
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong class="dash-code-link">COD-2026-0819</strong></td>
-                                <td>Sep 13, 2026</td>
-                                <td><span class="dash-status-badge completed">DIN Level P-4</span></td>
-                                <td><strong>1,150 lbs</strong></td>
-                                <td>Sarah Jenkins (#NV-905)</td>
-                                <td><code class="dash-code-hash">c249a1e...41a7</code></td>
-                                <td>
+                                <td data-label="Certificate #"><strong class="dash-code-link">COD-2026-0819</strong></td>
+                                <td data-label="Issue Date">Sep 13, 2026</td>
+                                <td data-label="Standard"><span class="dash-status-badge completed">DIN Level P-4</span></td>
+                                <td data-label="Volume"><strong>1,150 lbs</strong></td>
+                                <td data-label="Officer">Sarah Jenkins (#NV-905)</td>
+                                <td data-label="Hash"><code class="dash-code-hash">c249a1e...41a7</code></td>
+                                <td data-label="Actions">
                                     <button class="dash-hdr-pill-btn" onclick="openCertificateModal('COD-2026-0819', 'Sep 13, 2026', '1,150 lbs', 'Facility Plant Shredder #1', 'c249a1e488109bf41a7d')">
                                         <i class="fas fa-file-pdf"></i> View & Print
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong class="dash-code-link">COD-2026-0805</strong></td>
-                                <td>Aug 30, 2026</td>
-                                <td><span class="dash-status-badge completed">DIN Level P-5</span></td>
-                                <td><strong>2,100 lbs</strong></td>
-                                <td>David Vance (#NV-941)</td>
-                                <td><code class="dash-code-hash">88f12cc...330b</code></td>
-                                <td>
+                                <td data-label="Certificate #"><strong class="dash-code-link">COD-2026-0805</strong></td>
+                                <td data-label="Issue Date">Aug 30, 2026</td>
+                                <td data-label="Standard"><span class="dash-status-badge completed">DIN Level P-5</span></td>
+                                <td data-label="Volume"><strong>2,100 lbs</strong></td>
+                                <td data-label="Officer">David Vance (#NV-941)</td>
+                                <td data-label="Hash"><code class="dash-code-hash">88f12cc...330b</code></td>
+                                <td data-label="Actions">
                                     <button class="dash-hdr-pill-btn" onclick="openCertificateModal('COD-2026-0805', 'Aug 30, 2026', '2,100 lbs', 'Mobile Truck Unit #MT-04', '88f12cc9940129330b41')">
                                         <i class="fas fa-file-pdf"></i> View & Print
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong class="dash-code-link">COD-2026-0792</strong></td>
-                                <td>Aug 16, 2026</td>
-                                <td><span class="dash-status-badge completed">DIN Level P-4</span></td>
-                                <td><strong>830 lbs</strong></td>
-                                <td>Marcus Chen (#NV-882)</td>
-                                <td><code class="dash-code-hash">41ad90e...778e</code></td>
-                                <td>
+                                <td data-label="Certificate #"><strong class="dash-code-link">COD-2026-0792</strong></td>
+                                <td data-label="Issue Date">Aug 16, 2026</td>
+                                <td data-label="Standard"><span class="dash-status-badge completed">DIN Level P-4</span></td>
+                                <td data-label="Volume"><strong>830 lbs</strong></td>
+                                <td data-label="Officer">Marcus Chen (#NV-882)</td>
+                                <td data-label="Hash"><code class="dash-code-hash">41ad90e...778e</code></td>
+                                <td data-label="Actions">
                                     <button class="dash-hdr-pill-btn" onclick="openCertificateModal('COD-2026-0792', 'Aug 16, 2026', '830 lbs', 'Mobile Truck Unit #MT-01', '41ad90e0081235778ef2')">
                                         <i class="fas fa-file-pdf"></i> View & Print
                                     </button>
@@ -728,12 +1111,12 @@
              TAB 4: RECURRING SERVICE PLANS & CONSOLES
              =================================================== -->
         <div class="dash-tab-pane" id="tab-recurring">
-            <div class="dash-panel-header" style="margin-bottom: 24px;">
+            <div class="dash-panel-header dash-tab-header">
                 <div>
                     <h2 class="dash-section-heading">Recurring Service Plans</h2>
                     <p class="dash-section-sub">Manage deployed locked office consoles, pickup frequency, and automated collection schedules.</p>
                 </div>
-                <button class="dash-hdr-pill-btn" onclick="switchTab('overview')"><i class="fas fa-arrow-left"></i> Dashboard</button>
+                <button class="dash-hdr-pill-btn" onclick="switchTab('overview')" style="width: fit-content !important;"><i class="fas fa-arrow-left"></i> Dashboard</button>
             </div>
 
             <!-- Active Plan Card -->
@@ -848,12 +1231,12 @@
              TAB 5: INVOICES & BILLING
              =================================================== -->
         <div class="dash-tab-pane" id="tab-invoices">
-            <div class="dash-panel-header" style="margin-bottom: 24px;">
+            <div class="dash-panel-header dash-tab-header">
                 <div>
                     <h2 class="dash-section-heading">Invoices & Billing History</h2>
                     <p class="dash-section-sub">Review verified destruction invoices, payment receipts, and download compliance statements.</p>
                 </div>
-                <button class="dash-hdr-pill-btn" onclick="switchTab('overview')"><i class="fas fa-arrow-left"></i> Dashboard</button>
+                <button class="dash-hdr-pill-btn" onclick="switchTab('overview')" style="width: fit-content !important;"><i class="fas fa-arrow-left"></i> Dashboard</button>
             </div>
 
             <!-- Billing KPI Summary -->
@@ -905,65 +1288,65 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong class="dash-code-link">INV-2026-1049</strong></td>
-                                <td>Oct 11, 2026</td>
-                                <td>Bi-Weekly On-Site Shredding (9 Consoles + 6 Extra Boxes)</td>
-                                <td><strong class="dash-code-hash">COD-2026-0847</strong></td>
-                                <td><strong>₹2,490</strong></td>
-                                <td><span class="dash-status-badge paid"><i class="fas fa-check"></i> Paid</span></td>
-                                <td>
+                                <td data-label="Invoice #"><strong class="dash-code-link">INV-2026-1049</strong></td>
+                                <td data-label="Billing Date">Oct 11, 2026</td>
+                                <td data-label="Service">Bi-Weekly On-Site Shredding (9 Consoles + 6 Extra Boxes)</td>
+                                <td data-label="Linked Cert"><strong class="dash-code-hash">COD-2026-0847</strong></td>
+                                <td data-label="Amount"><strong>₹2,490</strong></td>
+                                <td data-label="Status"><span class="dash-status-badge paid"><i class="fas fa-check"></i> Paid</span></td>
+                                <td data-label="Actions">
                                     <button class="dash-hdr-pill-btn" onclick="alert('Downloading Invoice INV-2026-1049 PDF receipt...')">
                                         <i class="fas fa-download"></i> PDF
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong class="dash-code-link">INV-2026-0988</strong></td>
-                                <td>Sep 27, 2026</td>
-                                <td>Bi-Weekly Scheduled Shredding & Console Swap</td>
-                                <td><strong class="dash-code-hash">COD-2026-0832</strong></td>
-                                <td><strong>₹2,490</strong></td>
-                                <td><span class="dash-status-badge paid"><i class="fas fa-check"></i> Paid</span></td>
-                                <td>
+                                <td data-label="Invoice #"><strong class="dash-code-link">INV-2026-0988</strong></td>
+                                <td data-label="Billing Date">Sep 27, 2026</td>
+                                <td data-label="Service">Bi-Weekly Scheduled Shredding & Console Swap</td>
+                                <td data-label="Linked Cert"><strong class="dash-code-hash">COD-2026-0832</strong></td>
+                                <td data-label="Amount"><strong>₹2,490</strong></td>
+                                <td data-label="Status"><span class="dash-status-badge paid"><i class="fas fa-check"></i> Paid</span></td>
+                                <td data-label="Actions">
                                     <button class="dash-hdr-pill-btn" onclick="alert('Downloading Invoice INV-2026-0988 PDF receipt...')">
                                         <i class="fas fa-download"></i> PDF
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong class="dash-code-link">INV-2026-0921</strong></td>
-                                <td>Sep 13, 2026</td>
-                                <td>Bulk Archival Cleanout Purge (1,150 lbs)</td>
-                                <td><strong class="dash-code-hash">COD-2026-0819</strong></td>
-                                <td><strong>₹4,800</strong></td>
-                                <td><span class="dash-status-badge paid"><i class="fas fa-check"></i> Paid</span></td>
-                                <td>
+                                <td data-label="Invoice #"><strong class="dash-code-link">INV-2026-0921</strong></td>
+                                <td data-label="Billing Date">Sep 13, 2026</td>
+                                <td data-label="Service">Bulk Archival Cleanout Purge (1,150 lbs)</td>
+                                <td data-label="Linked Cert"><strong class="dash-code-hash">COD-2026-0819</strong></td>
+                                <td data-label="Amount"><strong>₹4,800</strong></td>
+                                <td data-label="Status"><span class="dash-status-badge paid"><i class="fas fa-check"></i> Paid</span></td>
+                                <td data-label="Actions">
                                     <button class="dash-hdr-pill-btn" onclick="alert('Downloading Invoice INV-2026-0921 PDF receipt...')">
                                         <i class="fas fa-download"></i> PDF
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong class="dash-code-link">INV-2026-0854</strong></td>
-                                <td>Aug 30, 2026</td>
-                                <td>Enterprise Bi-Weekly Shredding</td>
-                                <td><strong class="dash-code-hash">COD-2026-0805</strong></td>
-                                <td><strong>₹2,490</strong></td>
-                                <td><span class="dash-status-badge paid"><i class="fas fa-check"></i> Paid</span></td>
-                                <td>
+                                <td data-label="Invoice #"><strong class="dash-code-link">INV-2026-0854</strong></td>
+                                <td data-label="Billing Date">Aug 30, 2026</td>
+                                <td data-label="Service">Enterprise Bi-Weekly Shredding</td>
+                                <td data-label="Linked Cert"><strong class="dash-code-hash">COD-2026-0805</strong></td>
+                                <td data-label="Amount"><strong>₹2,490</strong></td>
+                                <td data-label="Status"><span class="dash-status-badge paid"><i class="fas fa-check"></i> Paid</span></td>
+                                <td data-label="Actions">
                                     <button class="dash-hdr-pill-btn" onclick="alert('Downloading Invoice INV-2026-0854 PDF receipt...')">
                                         <i class="fas fa-download"></i> PDF
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong class="dash-code-link">INV-2026-0801</strong></td>
-                                <td>Aug 16, 2026</td>
-                                <td>Enterprise Bi-Weekly Shredding</td>
-                                <td><strong class="dash-code-hash">COD-2026-0792</strong></td>
-                                <td><strong>₹1,950</strong></td>
-                                <td><span class="dash-status-badge paid"><i class="fas fa-check"></i> Paid</span></td>
-                                <td>
+                                <td data-label="Invoice #"><strong class="dash-code-link">INV-2026-0801</strong></td>
+                                <td data-label="Billing Date">Aug 16, 2026</td>
+                                <td data-label="Service">Enterprise Bi-Weekly Shredding</td>
+                                <td data-label="Linked Cert"><strong class="dash-code-hash">COD-2026-0792</strong></td>
+                                <td data-label="Amount"><strong>₹1,950</strong></td>
+                                <td data-label="Status"><span class="dash-status-badge paid"><i class="fas fa-check"></i> Paid</span></td>
+                                <td data-label="Actions">
                                     <button class="dash-hdr-pill-btn" onclick="alert('Downloading Invoice INV-2026-0801 PDF receipt...')">
                                         <i class="fas fa-download"></i> PDF
                                     </button>
@@ -982,16 +1365,16 @@
              TAB 6: MY SHRED JOBS & ACTIVE PICKUPS
              =================================================== -->
         <div class="dash-tab-pane" id="tab-pickups">
-            <div class="dash-panel-header" style="margin-bottom: 24px;">
+            <div class="dash-panel-header dash-tab-header">
                 <div>
                     <h2 class="dash-section-heading">My Shred Jobs</h2>
                     <p class="dash-section-sub">Real-time dispatch status, assigned security fleet, container inventories, and past destruction history.</p>
                 </div>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <div class="dash-tab-actions">
                     <button class="dash-hero-btn primary" onclick="switchTab('schedule')" style="padding: 8px 18px; font-size: 0.82rem;">
                         <i class="fas fa-plus"></i> Schedule New Pickup
                     </button>
-                    <button class="dash-hdr-pill-btn" onclick="switchTab('overview')"><i class="fas fa-arrow-left"></i> Dashboard</button>
+                    <button class="dash-hdr-pill-btn" onclick="switchTab('overview')" style="width: fit-content !important;"><i class="fas fa-arrow-left"></i> Dashboard</button>
                 </div>
             </div>
 
@@ -1015,7 +1398,7 @@
                     <div class="dash-metric-icon-circle emerald"><i class="fas fa-clock"></i></div>
                     <div class="dash-metric-meta">
                         <span class="dash-metric-val">10:00 AM</span>
-                        <span class="dash-metric-tag">Next Pickup Window (Oct 16)</span>
+                        <span class="dash-metric-tag">Next Pickup Window</span>
                     </div>
                 </div>
                 <div class="dash-metric-quad-card">
@@ -1199,52 +1582,52 @@
                         </thead>
                         <tbody>
                             <tr class="job-row-item" data-status="completed">
-                                <td><strong class="dash-code-link">JOB-8812</strong></td>
-                                <td>Oct 11, 2026</td>
-                                <td>Mobile On-Site Shredding</td>
-                                <td>9 Consoles + 6 Boxes</td>
-                                <td><strong>1,420 lbs</strong></td>
-                                <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Certified</span></td>
-                                <td>
+                                <td data-label="Job ID"><strong class="dash-code-link">JOB-8812</strong></td>
+                                <td data-label="Date">Oct 11, 2026</td>
+                                <td data-label="Service">Mobile On-Site Shredding</td>
+                                <td data-label="Containers">9 Consoles + 6 Boxes</td>
+                                <td data-label="Net Weight"><strong>1,420 lbs</strong></td>
+                                <td data-label="Audit Status"><span class="dash-status-badge completed"><i class="fas fa-check"></i> Certified</span></td>
+                                <td data-label="Action">
                                     <button class="dash-hdr-pill-btn" onclick="openCertificateModal('COD-2026-0847', 'Oct 11, 2026', '1,420 lbs', 'Mobile Truck Unit #MT-04', '7f8a92b...e4a1')">
                                         <i class="fas fa-file-pdf"></i> Certificate
                                     </button>
                                 </td>
                             </tr>
                             <tr class="job-row-item" data-status="completed">
-                                <td><strong class="dash-code-link">JOB-8805</strong></td>
-                                <td>Sep 27, 2026</td>
-                                <td>Bi-Weekly Scheduled Rotation</td>
-                                <td>9 Locked Consoles</td>
-                                <td><strong>980 lbs</strong></td>
-                                <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Certified</span></td>
-                                <td>
+                                <td data-label="Job ID"><strong class="dash-code-link">JOB-8805</strong></td>
+                                <td data-label="Date">Sep 27, 2026</td>
+                                <td data-label="Service">Bi-Weekly Scheduled Rotation</td>
+                                <td data-label="Containers">9 Locked Consoles</td>
+                                <td data-label="Net Weight"><strong>980 lbs</strong></td>
+                                <td data-label="Audit Status"><span class="dash-status-badge completed"><i class="fas fa-check"></i> Certified</span></td>
+                                <td data-label="Action">
                                     <button class="dash-hdr-pill-btn" onclick="openCertificateModal('COD-2026-0832', 'Sep 27, 2026', '980 lbs', 'Mobile Truck Unit #MT-02', '3b1c88d...99f0')">
                                         <i class="fas fa-file-pdf"></i> Certificate
                                     </button>
                                 </td>
                             </tr>
                             <tr class="job-row-item" data-status="completed">
-                                <td><strong class="dash-code-link">JOB-8791</strong></td>
-                                <td>Sep 13, 2026</td>
-                                <td>Facility Plant Purge</td>
-                                <td>15 Archive Banker Boxes</td>
-                                <td><strong>1,150 lbs</strong></td>
-                                <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Certified</span></td>
-                                <td>
+                                <td data-label="Job ID"><strong class="dash-code-link">JOB-8791</strong></td>
+                                <td data-label="Date">Sep 13, 2026</td>
+                                <td data-label="Service">Facility Plant Purge</td>
+                                <td data-label="Containers">15 Archive Banker Boxes</td>
+                                <td data-label="Net Weight"><strong>1,150 lbs</strong></td>
+                                <td data-label="Audit Status"><span class="dash-status-badge completed"><i class="fas fa-check"></i> Certified</span></td>
+                                <td data-label="Action">
                                     <button class="dash-hdr-pill-btn" onclick="openCertificateModal('COD-2026-0819', 'Sep 13, 2026', '1,150 lbs', 'Facility Plant Shredder #1', 'c249a1e...41a7')">
                                         <i class="fas fa-file-pdf"></i> Certificate
                                     </button>
                                 </td>
                             </tr>
                             <tr class="job-row-item" data-status="completed">
-                                <td><strong class="dash-code-link">JOB-8780</strong></td>
-                                <td>Aug 30, 2026</td>
-                                <td>Mobile On-Site Shredding</td>
-                                <td>Executive Suite Cleanout</td>
-                                <td><strong>2,100 lbs</strong></td>
-                                <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Certified</span></td>
-                                <td>
+                                <td data-label="Job ID"><strong class="dash-code-link">JOB-8780</strong></td>
+                                <td data-label="Date">Aug 30, 2026</td>
+                                <td data-label="Service">Mobile On-Site Shredding</td>
+                                <td data-label="Containers">Executive Suite Cleanout</td>
+                                <td data-label="Net Weight"><strong>2,100 lbs</strong></td>
+                                <td data-label="Audit Status"><span class="dash-status-badge completed"><i class="fas fa-check"></i> Certified</span></td>
+                                <td data-label="Action">
                                     <button class="dash-hdr-pill-btn" onclick="openCertificateModal('COD-2026-0805', 'Aug 30, 2026', '2,100 lbs', 'Mobile Truck Unit #MT-04', '88f12cc...330b')">
                                         <i class="fas fa-file-pdf"></i> Certificate
                                     </button>
@@ -1260,22 +1643,22 @@
              TAB 7: LIVE TRACKING & CHAIN OF CUSTODY
              =================================================== -->
         <div class="dash-tab-pane" id="tab-tracking">
-            <div class="dash-panel-header" style="margin-bottom: 24px;">
+            <div class="dash-panel-header dash-tab-header">
                 <div>
                     <h2 class="dash-section-heading">Live Order Tracking & Chain of Custody</h2>
                     <p class="dash-section-sub">GPS fleet telemetry, tamper-evident barcode milestones, and CCTV destruction verification.</p>
                 </div>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <div class="dash-tab-actions">
                     <button class="dash-hero-btn primary" onclick="alert('Downloading Certified Chain of Custody Manifest #COC-8819 with SHA-256 digital fingerprint...')" style="padding: 8px 18px; font-size: 0.82rem;">
                         <i class="fas fa-file-signature"></i> Download Custody Manifest (PDF)
                     </button>
-                    <button class="dash-hdr-pill-btn" onclick="switchTab('overview')"><i class="fas fa-arrow-left"></i> Dashboard</button>
+                    <button class="dash-hdr-pill-btn" onclick="switchTab('overview')" style="width: fit-content !important;"><i class="fas fa-arrow-left"></i> Dashboard</button>
                 </div>
             </div>
 
             <!-- Order Switcher Pills -->
             <div class="dash-toolbar-card" style="padding: 12px 20px; margin-bottom: 20px;">
-                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <div class="dash-filter-pill-group">
                     <span style="font-size: 0.78rem; font-weight: 700; color: #64748b;"><i class="fas fa-truck"></i> SELECT CONSIGNMENT:</span>
                     <button class="dash-hdr-pill-btn active" id="btnTrack8819" onclick="switchTrackedOrder('8819')">
                         <span class="dash-live-dot-pulse" style="margin-right: 4px;"></span> #JOB-8819 (Tomorrow • MT-04)
@@ -1369,7 +1752,7 @@
                     <div class="dash-step-card step-done">
                         <span class="dash-step-badge">STEP 1 — COMPLETED</span>
                         <h4 class="dash-step-title">Barcode Allocation</h4>
-                        <p>10 barcoded security seals (#BC-09941 to 09950) generated & assigned.</p>
+                        <p>10 barcoded security seals (#BC-09941 to 09950) generated.</p>
                         <small class="dash-step-time">Completed: Today 08:30 AM</small>
                     </div>
                     <div class="dash-step-card step-active">
@@ -1387,7 +1770,7 @@
                     <div class="dash-step-card step-pending">
                         <span class="dash-step-badge">STEP 4 — PENDING</span>
                         <h4 class="dash-step-title">Certificate Minted</h4>
-                        <p>Cryptographic SHA-256 PDF minted and baled for 100% paper mill recycling.</p>
+                        <p>Cryptographic SHA-256 PDF minted and baled for 100% recycling.</p>
                         <small class="dash-step-time">Post-Destruction</small>
                     </div>
                 </div>
@@ -1418,39 +1801,39 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Today 08:30 AM</td>
-                                <td><code class="dash-code-link">#BC-09941</code></td>
-                                <td>64-Gallon Rolling Cart #1</td>
-                                <td>Central Logistics Depot</td>
-                                <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
+                                <td data-label="Scan Time">Today 08:30 AM</td>
+                                <td data-label="Barcode ID"><code class="dash-code-link">#BC-09941</code></td>
+                                <td data-label="Container">64-Gallon Rolling Cart #1</td>
+                                <td data-label="Location">Central Logistics Depot</td>
+                                <td data-label="Status"><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
                             </tr>
                             <tr>
-                                <td>Today 08:31 AM</td>
-                                <td><code class="dash-code-link">#BC-09942</code></td>
-                                <td>64-Gallon Rolling Cart #2</td>
-                                <td>Central Logistics Depot</td>
-                                <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
+                                <td data-label="Scan Time">Today 08:31 AM</td>
+                                <td data-label="Barcode ID"><code class="dash-code-link">#BC-09942</code></td>
+                                <td data-label="Container">64-Gallon Rolling Cart #2</td>
+                                <td data-label="Location">Central Logistics Depot</td>
+                                <td data-label="Status"><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
                             </tr>
                             <tr>
-                                <td>Today 08:32 AM</td>
-                                <td><code class="dash-code-link">#BC-09943</code></td>
-                                <td>32-Gal Security Console #1</td>
-                                <td>Assigned to Truck #MT-04</td>
-                                <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
+                                <td data-label="Scan Time">Today 08:32 AM</td>
+                                <td data-label="Barcode ID"><code class="dash-code-link">#BC-09943</code></td>
+                                <td data-label="Container">32-Gal Security Console #1</td>
+                                <td data-label="Location">Assigned to Truck #MT-04</td>
+                                <td data-label="Status"><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
                             </tr>
                             <tr>
-                                <td>Today 08:33 AM</td>
-                                <td><code class="dash-code-link">#BC-09944</code></td>
-                                <td>32-Gal Security Console #2</td>
-                                <td>Assigned to Truck #MT-04</td>
-                                <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
+                                <td data-label="Scan Time">Today 08:33 AM</td>
+                                <td data-label="Barcode ID"><code class="dash-code-link">#BC-09944</code></td>
+                                <td data-label="Container">32-Gal Security Console #2</td>
+                                <td data-label="Location">Assigned to Truck #MT-04</td>
+                                <td data-label="Status"><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
                             </tr>
                             <tr>
-                                <td>Today 08:35 AM</td>
-                                <td><code class="dash-code-hash">#TS-99214</code></td>
-                                <td>Tamper Padlock Bolt Seal</td>
-                                <td>Departure Gate Outbound</td>
-                                <td><span class="dash-status-badge completed"><i class="fas fa-lock"></i> Sealed</span></td>
+                                <td data-label="Scan Time">Today 08:35 AM</td>
+                                <td data-label="Barcode ID"><code class="dash-code-hash">#TS-99214</code></td>
+                                <td data-label="Container">Tamper Padlock Bolt Seal</td>
+                                <td data-label="Location">Departure Gate Outbound</td>
+                                <td data-label="Status"><span class="dash-status-badge completed"><i class="fas fa-lock"></i> Sealed</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -1540,6 +1923,24 @@
 </div>
 
 <!-- ===================================================
+     LOGOUT CONFIRMATION POPUP MODAL (2 OPTIONS)
+     =================================================== -->
+<div class="dash-modal-backdrop" id="logoutModal" onclick="if(event.target === this) closeLogoutModal()">
+    <div class="dash-modal-content" style="max-width: 420px; text-align: center; padding: 32px 24px;">
+        <button class="dash-modal-close" onclick="closeLogoutModal()" aria-label="Close modal">&times;</button>
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(230, 57, 70, 0.12); color: #e63946; display: flex; align-items: center; justify-content: center; font-size: 1.45rem; margin: 0 auto 16px;">
+            <i class="fas fa-arrow-right-from-bracket"></i>
+        </div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 8px;">Confirm Logout</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 24px;">Are you sure you want to end your current session? You will be redirected to the home page.</p>
+        <div style="display: flex; gap: 12px; justify-content: center;">
+            <button type="button" class="btn btn-outline" onclick="closeLogoutModal()" style="flex: 1; padding: 11px 16px; border-radius: var(--radius-md); font-weight: 600; font-size: 0.9rem; cursor: pointer;">Cancel</button>
+            <a href="index.html" class="btn btn-primary" style="flex: 1; padding: 11px 16px; border-radius: var(--radius-md); font-weight: 600; font-size: 0.9rem; background: #e63946; border-color: #e63946; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; color: #fff; cursor: pointer;">Yes, Log Out</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===================================================
      CLIENT PORTAL CONTROLLER SCRIPTS
      =================================================== -->
 <script>
@@ -1619,6 +2020,29 @@
     function closeCertificateModal() {
         document.getElementById('certificateModal').classList.remove('open');
     }
+
+    // Logout Modal Handlers
+    function openLogoutModal() {
+        const sidebar = document.getElementById('dashSidebar');
+        if (sidebar && window.innerWidth <= 1024) {
+            sidebar.classList.remove('open');
+        }
+        document.getElementById('logoutModal').classList.add('open');
+    }
+
+    function closeLogoutModal() {
+        document.getElementById('logoutModal').classList.remove('open');
+    }
+
+    // Close modals on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const certModal = document.getElementById('certificateModal');
+            const logModal = document.getElementById('logoutModal');
+            if (certModal && certModal.classList.contains('open')) closeCertificateModal();
+            if (logModal && logModal.classList.contains('open')) closeLogoutModal();
+        }
+    });
 
     // Filter Certificates Search Bar
     function filterCertificates() {

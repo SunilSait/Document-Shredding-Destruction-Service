@@ -3,64 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon — VaultShred Secure Destruction</title>
+    <title>Coming Soon | VaultShred — Document Shredding & Destruction</title>
     <meta name="description" content="We're crafting something exciting for you. Subscribe to get early access and notifications when this page launches.">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=8.0">
+    <script>
+        (function() {
+            try {
+                if (localStorage.getItem('vs-dark') === '1') {
+                    document.documentElement.classList.add('dark');
+                } else if (localStorage.getItem('vs-dark') === '0') {
+                    document.documentElement.classList.remove('dark');
+                }
+                if (localStorage.getItem('vs-rtl') === '1') {
+                    document.documentElement.setAttribute('dir', 'rtl');
+                }
+            } catch (e) {}
+        })();
+    </script>
 </head>
 <body class="fullscreen-page">
 
-<div id="fullscreen-topbar-placeholder"></div>
+<!-- Top Bar -->
+<header class="fullscreen-topbar">
+    <a href="index.html" class="nav-logo" aria-label="VaultShred Home">
+        <svg width="38" height="38" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1D3557"/><stop offset="100%" stop-color="#2E5173"/></linearGradient></defs>
+            <rect width="100" height="100" rx="20" fill="url(#logoBg)"/>
+            <rect x="28" y="22" width="44" height="56" rx="4" fill="none" stroke="#E63946" stroke-width="5"/>
+            <path d="M36 38 L64 38 M36 48 L64 48 M36 58 L52 58" stroke="white" stroke-width="4" stroke-linecap="round"/>
+            <path d="M52 68 L72 48" stroke="#E63946" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-logo-text">
+            <span class="brand-top">Secure Shredding</span>
+            <span class="brand-bottom">VaultShred</span>
+        </span>
+    </a>
+    <div style="display:flex;gap:0.5rem;align-items:center;">
+        <button onclick="toggleDir()" class="auth-toggle-btn" id="rtlToggleNav" aria-label="Toggle layout direction / RTL" title="Toggle Direction">
+            <span class="dir-indicator dir-label" style="font-size:0.625rem;font-weight:700;">LTR</span>
+        </button>
+        <button onclick="toggleTheme()" class="auth-toggle-btn" id="darkToggleNav" aria-label="Toggle dark mode" title="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</header>
 
+<!-- Content -->
 <main class="fullscreen-content">
-    <div class="fullscreen-card-wrap">
-        <!-- Badge -->
-        <div class="coming-soon-badge">
-            <i class="fas fa-rocket"></i> Under Development
-        </div>
+    <div style="position:relative;max-width:540px;width:100%;margin:0 auto;">
+        <!-- Ambient radial glow -->
+        <div style="position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:min(450px, 90vw);height:min(450px, 90vw);background:radial-gradient(circle,rgba(230,57,70,0.1),transparent 65%);border-radius:50%;pointer-events:none;"></div>
 
-        <h1 class="error-subtitle" style="font-size:clamp(1.75rem,5vw,2.5rem);margin-bottom:12px;">Coming Soon</h1>
-        <p class="error-desc">We're engineering an enhanced digital experience with real-time shredding tracking, chain-of-custody verification, and instant compliance certificate generation. Stay tuned!</p>
-
-        <!-- Countdown -->
-        <div class="countdown-grid" id="countdownGrid" aria-label="Launch countdown timer">
-            <div class="cd-block">
-                <span class="cd-num" id="cd-days">30</span>
-                <span class="cd-label">Days</span>
+        <div style="position:relative;z-index:2;">
+            <div class="coming-badge">
+                <i class="fas fa-rocket"></i> Under Development
             </div>
-            <div class="cd-block">
-                <span class="cd-num" id="cd-hours">14</span>
-                <span class="cd-label">Hours</span>
-            </div>
-            <div class="cd-block">
-                <span class="cd-num" id="cd-minutes">25</span>
-                <span class="cd-label">Minutes</span>
-            </div>
-            <div class="cd-block">
-                <span class="cd-num" id="cd-seconds">00</span>
-                <span class="cd-label">Seconds</span>
-            </div>
-        </div>
+            <h1 class="coming-title">Coming Soon</h1>
+            <p class="coming-desc">
+                We're engineering an enhanced digital experience with real-time shredding tracking, chain-of-custody verification, and instant compliance certificate generation. Stay tuned!
+            </p>
 
-        <!-- Subscribe Form -->
-        <form class="coming-soon-form" onsubmit="event.preventDefault(); alert('Thank you! We will notify you at ' + this.querySelector('input').value + ' when this feature goes live.'); this.reset();">
-            <input type="email" placeholder="Enter your work email address" aria-label="Email address for notifications" required>
-            <button type="submit" class="btn btn-primary btn-lg">Notify Me <i class="fas fa-paper-plane" style="margin-left:6px"></i></button>
-        </form>
+            <!-- Countdown (Matching Reference 4-column layout) -->
+            <div class="countdown-grid" id="countdown" aria-label="Launch countdown timer">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="cd-days">30</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="cd-hours">14</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="cd-mins">25</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="cd-secs">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
 
-        <!-- Social Links (Per Magtan standard) -->
-        <div style="display:flex;gap:12px;justify-content:center;margin-top:32px;">
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="auth-toggle-btn" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://twitter.com" target="_blank" rel="noopener" class="auth-toggle-btn" aria-label="X / Twitter" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="auth-toggle-btn" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://youtube.com" target="_blank" rel="noopener" class="auth-toggle-btn" aria-label="YouTube" title="YouTube"><i class="fab fa-youtube"></i></a>
-        </div>
+            <!-- Subscribe Form (Responsive Stacking on mobile) -->
+            <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Subscribed! We will notify you when this page launches.'); this.reset();">
+                <input type="email" placeholder="Enter your work email address" aria-label="Email address for notifications" required>
+                <button type="submit" class="btn btn-primary">Notify Me</button>
+            </form>
 
-        <!-- Quick actions -->
-        <div class="error-actions" style="margin-top:28px">
-            <a href="index.html" class="btn btn-secondary btn-sm"><i class="fas fa-home"></i> Back to Home</a>
-            <a href="services.html" class="btn btn-secondary btn-sm"><i class="fas fa-shield-halved"></i> Explore Services</a>
+            <!-- Social Links (Circular buttons matching reference) -->
+            <div class="coming-socials">
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="coming-social-link" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://twitter.com" target="_blank" rel="noopener" class="coming-social-link" aria-label="X / Twitter" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://facebook.com" target="_blank" rel="noopener" class="coming-social-link" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://youtube.com" target="_blank" rel="noopener" class="coming-social-link" aria-label="YouTube" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <!-- Quick Action Links -->
+            <div style="display:flex;gap:0.75rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;">
+                <a href="index.html" class="btn btn-secondary btn-sm"><i class="fas fa-home"></i> Back to Home</a>
+                <a href="services.html" class="btn btn-secondary btn-sm"><i class="fas fa-shield-halved"></i> Explore Services</a>
+            </div>
         </div>
     </div>
 </main>

@@ -3,6 +3,24 @@
    Shared navbar, footer, dark/RTL toggles, utilities
    =================================================== */
 
+// Immediate Theme & Direction Initialization (prevents theme flash)
+(function() {
+    try {
+        const savedDark = localStorage.getItem('vs-dark');
+        if (savedDark === '1') {
+            document.documentElement.classList.add('dark');
+        } else if (savedDark === '0') {
+            document.documentElement.classList.remove('dark');
+        }
+        const savedDir = localStorage.getItem('vs-rtl');
+        if (savedDir === '1') {
+            document.documentElement.setAttribute('dir', 'rtl');
+        } else if (savedDir === '0') {
+            document.documentElement.setAttribute('dir', 'ltr');
+        }
+    } catch (e) {}
+})();
+
 /* ---- LOGO SVG ---- */
 const LOGO_SVG = `<svg width="38" height="38" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs><linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1D3557"/><stop offset="100%" stop-color="#2E5173"/></linearGradient></defs>
@@ -36,13 +54,16 @@ function renderNavbar() {
         { href: 'contact.html', label: 'Contact', icon: 'fa-headset' },
     ];
 
+    const isDark = document.documentElement.classList.contains('dark');
+    const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+
     const navLinksHtml = links.map(l =>
         `<a href="${l.href}" class="nav-link${page === l.href ? ' active' : ''}">${l.label}</a>`
     ).join('');
 
     const mobLinksHtml = links.map(l =>
         `<a href="${l.href}" class="mob-link${page === l.href ? ' active' : ''}">
-            <span class="mob-link-content"><i class="fas ${l.icon}"></i> <span>${l.label}</span></span>
+            <span class="mob-link-content"><span>${l.label}</span></span>
             <i class="fas fa-chevron-right mob-link-arrow"></i>
         </a>`
     ).join('');
@@ -60,55 +81,41 @@ function renderNavbar() {
             <div class="nav-links">${navLinksHtml}</div>
             <div class="nav-actions">
                 <button class="nav-icon-btn" id="rtlToggleNav" aria-label="Toggle layout direction / RTL" title="Toggle RTL">
-                    <span class="dir-indicator">RTL</span>
+                    <span class="dir-indicator">${isRTL ? 'LTR' : 'RTL'}</span>
                 </button>
                 <button class="nav-icon-btn" id="darkToggleNav" aria-label="Toggle dark mode" title="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
+                    <i class="fas ${isDark ? 'fa-sun' : 'fa-moon'}"></i>
                 </button>
                 <a href="login.html" class="btn btn-primary btn-sm nav-cta-btn">Sign In</a>
                 <a href="dashboard.html" class="btn-nav-dashboard${page === 'dashboard.html' ? ' active' : ''}">Dashboard</a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu">
-                    <i class="fas fa-bars"></i>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span class="mobile-menu-icon"><i class="fas fa-bars"></i></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Backdrop -->
+        <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+
+        <!-- Mobile Menu (Dropdown matching reference) -->
+        <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+            <div class="mob-links-list">
+                ${mobLinksHtml}
+            </div>
+            <div class="mob-actions">
+                <a href="login.html" class="btn btn-primary w-full">Sign In</a>
+                <a href="dashboard.html" class="btn btn-secondary w-full">Dashboard</a>
+            </div>
+            <div class="mob-toggles">
+                <button class="nav-icon-btn" id="rtlToggleMob" aria-label="Toggle layout direction / RTL" title="Toggle Direction">
+                    <span class="dir-indicator">${isRTL ? 'LTR' : 'RTL'}</span>
+                </button>
+                <button class="nav-icon-btn" id="darkToggleMob" aria-label="Toggle dark mode" title="Toggle Theme">
+                    <i class="fas ${isDark ? 'fa-sun' : 'fa-moon'}"></i>
                 </button>
             </div>
         </div>
     </nav>
-    <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
-    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
-        <div class="mob-header">
-            <a href="index.html" class="nav-logo" aria-label="VaultShred Home">
-                ${LOGO_SVG}
-                <span class="nav-logo-text">
-                    <span class="brand-top">Secure Shredding</span>
-                    <span class="brand-bottom">VaultShred</span>
-                </span>
-            </a>
-            <button class="mob-close-btn" id="mobileCloseBtn" aria-label="Close navigation menu">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="mob-links-list">
-            ${mobLinksHtml}
-        </div>
-        <div class="mob-actions">
-            <a href="login.html" class="btn btn-primary btn-lg w-full"><i class="fas fa-arrow-right-to-bracket"></i> Sign In</a>
-            <a href="dashboard.html" class="btn btn-secondary btn-lg w-full"><i class="fas fa-chart-line"></i> Client Dashboard</a>
-        </div>
-        <div class="mob-toggles-grid">
-            <button class="mob-toggle-card" id="darkToggleMob" aria-label="Toggle dark mode">
-                <i class="fas fa-moon"></i>
-                <span>Dark Mode</span>
-            </button>
-            <button class="mob-toggle-card" id="rtlToggleMob" aria-label="Toggle layout direction / RTL">
-                <span class="dir-indicator">RTL</span>
-                <span>Direction</span>
-            </button>
-        </div>
-        <div class="mob-support-strip">
-            <i class="fas fa-phone-volume"></i>
-            <span>24/7 Dispatch: <strong>1-800-555-SHRED</strong></span>
-        </div>
-    </div>
     <div class="navbar-spacer"></div>`;
 
     const container = document.getElementById('navbar-placeholder');
@@ -123,21 +130,30 @@ function initNavbar() {
     const nav = document.getElementById('mainNavbar');
     if (nav) {
         window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 20);
+            nav.classList.toggle('scrolled', window.scrollY > 15);
         }, { passive: true });
     }
 
-    /* Mobile menu */
+    /* Mobile menu matching reference */
     const btn = document.getElementById('mobileMenuBtn');
-    const closeBtn = document.getElementById('mobileCloseBtn');
     const menu = document.getElementById('mobileMenu');
     const backdrop = document.getElementById('mobileBackdrop');
 
-    function openMenu() {
+    function toggleMobileMenu(e) {
+        if (e && e.stopPropagation) e.stopPropagation();
+        if (!menu) return;
+        const isOpen = menu.classList.contains('open');
+        if (isOpen) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    }
+
+    function openMobileMenu() {
         if (!menu) return;
         menu.classList.add('open');
         if (backdrop) backdrop.classList.add('open');
-        document.body.classList.add('nav-open');
         if (btn) {
             btn.setAttribute('aria-expanded', 'true');
             const icon = btn.querySelector('i');
@@ -145,11 +161,10 @@ function initNavbar() {
         }
     }
 
-    function closeMenu() {
+    function closeMobileMenu() {
         if (!menu) return;
         menu.classList.remove('open');
         if (backdrop) backdrop.classList.remove('open');
-        document.body.classList.remove('nav-open');
         if (btn) {
             btn.setAttribute('aria-expanded', 'false');
             const icon = btn.querySelector('i');
@@ -158,37 +173,38 @@ function initNavbar() {
     }
 
     if (btn) {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (menu && menu.classList.contains('open')) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        });
+        btn.addEventListener('click', toggleMobileMenu);
     }
-
-    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-    if (backdrop) backdrop.addEventListener('click', closeMenu);
+    if (backdrop) {
+        backdrop.addEventListener('click', closeMobileMenu);
+    }
 
     // Close when clicking any link inside mobile menu
     if (menu) {
         menu.querySelectorAll('a').forEach(a => {
-            a.addEventListener('click', closeMenu);
+            a.addEventListener('click', closeMobileMenu);
         });
     }
+
+    // Close on outside click (matching reference)
+    document.addEventListener('click', function(e) {
+        if (!menu || !menu.classList.contains('open')) return;
+        if (btn && (btn === e.target || btn.contains(e.target))) return;
+        if (menu.contains(e.target)) return;
+        closeMobileMenu();
+    });
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && menu && menu.classList.contains('open')) {
-            closeMenu();
+            closeMobileMenu();
         }
     });
 
-    // Close when resizing above tablet breakpoint
+    // Close when resizing above 1024px
     window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && menu && menu.classList.contains('open')) {
-            closeMenu();
+        if (window.innerWidth > 1024 && menu && menu.classList.contains('open')) {
+            closeMobileMenu();
         }
     }, { passive: true });
 
@@ -230,7 +246,7 @@ function renderFooter() {
                         <a href="https://twitter.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="Twitter / X" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
                     </div>
                 </div>
-                <div>
+                <div class="footer-col">
                     <h4 class="footer-col-title">QUICK LINKS</h4>
                     <div class="footer-links">
                         <a href="index.html">Home</a>
@@ -242,7 +258,7 @@ function renderFooter() {
                         <a href="contact.html">Contact Us</a>
                     </div>
                 </div>
-                <div>
+                <div class="footer-col">
                     <h4 class="footer-col-title">RESOURCES</h4>
                     <div class="footer-links">
                         <a href="dashboard.html">Dashboard</a>
@@ -252,7 +268,7 @@ function renderFooter() {
                         <a href="signup.html">Sign Up</a>
                     </div>
                 </div>
-                <div>
+                <div class="footer-col footer-col-newsletter">
                     <div class="footer-newsletter-card">
                         <h4 class="footer-newsletter-title">Stay Updated</h4>
                         <p class="footer-newsletter-desc">Subscribe for weekly security updates, compliance tips & corporate data protection insights.</p>
@@ -299,21 +315,35 @@ function renderBackToTop() {
 }
 
 /* ---- DARK MODE ---- */
+let _isDarkToggling = false;
 function toggleDark() {
+    if (_isDarkToggling) return;
+    _isDarkToggling = true;
+    setTimeout(() => { _isDarkToggling = false; }, 80);
+
     const html = document.documentElement;
     const isDark = html.classList.toggle('dark');
     if (document.body) {
         document.body.classList.toggle('dark', isDark);
     }
-    localStorage.setItem('vs-dark', isDark ? '1' : '0');
+    try {
+        localStorage.setItem('vs-dark', isDark ? '1' : '0');
+    } catch (e) {}
     updateDarkIcons();
 }
 
 function updateDarkIcons() {
     const isDark = document.documentElement.classList.contains('dark');
-    document.querySelectorAll('#darkToggleNav i, #darkToggleMob i, .auth-dark-toggle i, .auth-toggle-btn i').forEach(i => {
-        if (i.classList.contains('fa-moon') || i.classList.contains('fa-sun')) {
-            i.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    document.querySelectorAll('#darkToggleNav, #darkToggleMob, .auth-dark-toggle, .auth-toggle-btn').forEach(btn => {
+        const icon = btn.querySelector('i');
+        if (icon && (icon.classList.contains('fa-moon') || icon.classList.contains('fa-sun') || btn.id === 'darkToggleNav' || btn.id === 'darkToggleMob')) {
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        if (btn.id === 'darkToggleNav' || btn.id === 'darkToggleMob' || btn.classList.contains('auth-toggle-btn')) {
+            if (icon && !btn.querySelector('.dir-indicator')) {
+                btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+                btn.setAttribute('title', isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme');
+            }
         }
     });
 }
@@ -333,16 +363,24 @@ function initDark() {
 /* ---- RTL ---- */
 function updateRTLIndicators() {
     const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
-    document.querySelectorAll('.dir-indicator').forEach(el => {
+    document.querySelectorAll('.dir-indicator, .dir-label').forEach(el => {
         el.textContent = isRTL ? 'LTR' : 'RTL';
     });
 }
 
+let _isRTLToggling = false;
 function toggleRTL() {
+    if (_isRTLToggling) return;
+    _isRTLToggling = true;
+    setTimeout(() => { _isRTLToggling = false; }, 80);
+
     const html = document.documentElement;
     const isRTL = html.getAttribute('dir') === 'rtl';
-    html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
-    localStorage.setItem('vs-rtl', isRTL ? '0' : '1');
+    const newDir = isRTL ? 'ltr' : 'rtl';
+    html.setAttribute('dir', newDir);
+    try {
+        localStorage.setItem('vs-rtl', isRTL ? '0' : '1');
+    } catch (e) {}
     updateRTLIndicators();
 }
 
@@ -382,10 +420,25 @@ function initFAQ() {
 }
 
 /* ---- PASSWORD TOGGLE ---- */
+function togglePasswordVisibility(inputId, btnEl) {
+    const input = document.getElementById(inputId);
+    if (!input) return;
+    const isPassword = input.type === 'password';
+    input.type = isPassword ? 'text' : 'password';
+    const icon = btnEl ? btnEl.querySelector('i, svg, .pw-icon') : null;
+    if (icon) {
+        if (icon.tagName === 'I' || icon.classList.contains('fa-eye') || icon.classList.contains('fa-eye-slash') || icon.classList.contains('fas')) {
+            icon.className = isPassword ? 'fas fa-eye-slash' : 'fas fa-eye';
+        } else if (icon.querySelector('i')) {
+            icon.querySelector('i').className = isPassword ? 'fas fa-eye-slash' : 'fas fa-eye';
+        }
+    }
+}
+
 function initPasswordToggle() {
     document.querySelectorAll('.password-toggle').forEach(btn => {
         btn.addEventListener('click', () => {
-            const input = btn.closest('.password-wrap')?.querySelector('input') || btn.previousElementSibling;
+            const input = btn.closest('.password-wrap, .password-wrapper')?.querySelector('input') || btn.previousElementSibling;
             if (!input) return;
             const isPassword = input.type === 'password';
             input.type = isPassword ? 'text' : 'password';
@@ -440,8 +493,8 @@ function initCountdown() {
         const s = Math.floor((diff % (1000 * 60)) / 1000);
         const dEl = document.getElementById('cd-days');
         const hEl = document.getElementById('cd-hours');
-        const mEl = document.getElementById('cd-minutes');
-        const sEl = document.getElementById('cd-seconds');
+        const mEl = document.getElementById('cd-mins') || document.getElementById('cd-minutes');
+        const sEl = document.getElementById('cd-secs') || document.getElementById('cd-seconds');
         if (dEl) dEl.textContent = String(d).padStart(2, '0');
         if (hEl) hEl.textContent = String(h).padStart(2, '0');
         if (mEl) mEl.textContent = String(m).padStart(2, '0');
@@ -450,6 +503,17 @@ function initCountdown() {
     update();
     setInterval(update, 1000);
 }
+
+// Global aliases for benchmark compatibility
+window.toggleTheme = toggleDark;
+window.toggleDark = toggleDark;
+window.toggleDir = toggleRTL;
+window.toggleRTL = toggleRTL;
+window.togglePasswordVisibility = togglePasswordVisibility;
+window.initAuthPage = function() {
+    initDark();
+    initRTL();
+};
 
 /* ---- AUTH TOPBAR (for login & signup pages) ---- */
 function renderAuthTopbar() {
@@ -476,8 +540,12 @@ function renderAuthTopbar() {
     setTimeout(() => {
         const darkBtn = document.getElementById('darkToggleNav');
         const rtlBtn = document.getElementById('rtlToggleNav');
-        if (darkBtn) darkBtn.addEventListener('click', toggleDark);
-        if (rtlBtn) rtlBtn.addEventListener('click', toggleRTL);
+        if (darkBtn && !darkBtn.hasAttribute('onclick') && !darkBtn.onclick) {
+            darkBtn.addEventListener('click', toggleDark);
+        }
+        if (rtlBtn && !rtlBtn.hasAttribute('onclick') && !rtlBtn.onclick) {
+            rtlBtn.addEventListener('click', toggleRTL);
+        }
         updateDarkIcons();
         updateRTLIndicators();
     }, 0);
@@ -515,8 +583,12 @@ function renderFullscreenTopbar() {
     setTimeout(() => {
         const darkBtn = document.getElementById('darkToggleNav');
         const rtlBtn = document.getElementById('rtlToggleNav');
-        if (darkBtn) darkBtn.addEventListener('click', toggleDark);
-        if (rtlBtn) rtlBtn.addEventListener('click', toggleRTL);
+        if (darkBtn && !darkBtn.hasAttribute('onclick') && !darkBtn.onclick) {
+            darkBtn.addEventListener('click', toggleDark);
+        }
+        if (rtlBtn && !rtlBtn.hasAttribute('onclick') && !rtlBtn.onclick) {
+            rtlBtn.addEventListener('click', toggleRTL);
+        }
         updateDarkIcons();
         updateRTLIndicators();
     }, 0);
