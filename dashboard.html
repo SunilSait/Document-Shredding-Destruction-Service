@@ -435,6 +435,38 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Certified Facility Live Feed & Chain-of-Custody Card -->
+                    <div class="dash-panel dash-facility-card">
+                        <div class="dash-panel-header">
+                            <h3 class="dash-panel-title" style="font-size: 0.98rem;">
+                                <i class="fas fa-video"></i> Facility Audit Verification
+                            </h3>
+                            <span class="dash-radar-live-pill" style="font-size: 0.68rem; padding: 3px 8px;">
+                                <span class="dash-live-dot-pulse"></span> Plant Feed
+                            </span>
+                        </div>
+                        <div class="dash-facility-img-wrap">
+                            <img src="assets/images/dashboard-facility-feed.jpg" alt="NAID AAA Certified Facility Shredding Feed and Barcode Tracking" loading="lazy">
+                            <div class="dash-facility-cam-overlay">
+                                <span><i class="fas fa-circle text-rose" style="font-size: 0.6rem;"></i> REC • CAM #02</span>
+                                <span>BARCODE: #VS-9842</span>
+                            </div>
+                        </div>
+                        <div style="padding: 14px 16px 16px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                <strong class="dash-highlight-text" style="font-size: 0.88rem;">Secure Intake & Conveyor Shredding</strong>
+                                <span class="dash-status-badge completed" style="font-size: 0.66rem;">100% Chain-of-Custody</span>
+                            </div>
+                            <p style="font-size: 0.78rem; margin: 0 0 10px; color: #64748b; line-height: 1.45;">
+                                Continuous CCTV monitoring & automated barcode logging at our NAID AAA certified plant. Zero-landfill paper baling in progress.
+                            </p>
+                            <div class="dash-meta-row" style="padding-top: 8px; border-top: 1px solid var(--border); font-size: 0.74rem;">
+                                <span>Security Level:</span>
+                                <strong class="dash-code-link">DIN 66399 Level P-4 Certified</strong>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -461,7 +493,7 @@
                             <span class="dash-mode-badge">Most Popular</span>
                         </div>
                         <h4>Mobile On-Site Truck</h4>
-                        <p>Our heavy-duty industrial shredder truck drives directly to your building. Witness cross-cut destruction live via CCTV monitors.</p>
+                        <p>Our heavy-duty industrial shredder truck drives directly to your building. Witness cross-cut destruction live via CCTV.</p>
                     </div>
                     <div class="dash-mode-card" id="mode-plant" onclick="selectServiceMode('plant')">
                         <div class="dash-mode-top-row">
@@ -1012,7 +1044,7 @@
             <!-- Active Dispatched Jobs Detailed Cards Grid -->
             <div style="margin-bottom: 24px;" id="activeJobsSection">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
-                    <h3 style="font-size: 1.05rem; font-weight: 600; color: #0f172a; display: flex; align-items: center; gap: 8px;" class="dash-highlight-text">
+                    <h3 style="font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 8px;" class="dash-highlight-text">
                         <i class="fas fa-satellite-dish"></i> Active In-Progress Operations
                     </h3>
                     <span style="font-size: 0.75rem; color: #64748b;">Live GPS tracking enabled</span>
@@ -1035,7 +1067,7 @@
                                 </span>
                             </div>
 
-                            <p style="font-size: 0.82rem; color: #475569; margin: 0 0 10px 0; line-height: 1.5;">
+                            <p style="font-size: 0.82rem; margin: 0 0 10px 0; line-height: 1.5;" class="dash-sub-text">
                                 <i class="fas fa-location-dot" style="margin-right: 4px;"></i> <strong>Apex Legal HQ</strong> — 450 Financial Way, 4th Floor, Suite 410
                             </p>
 
@@ -1094,7 +1126,7 @@
                                 </span>
                             </div>
 
-                            <p style="font-size: 0.82rem; color: #475569; margin: 0 0 10px 0; line-height: 1.5;">
+                            <p style="font-size: 0.82rem; margin: 0 0 10px 0; line-height: 1.5;" class="dash-sub-text">
                                 <i class="fas fa-location-dot" style="margin-right: 4px;"></i> <strong>Apex Legal HQ</strong> — Floors 1 through 3 (All 9 Security Consoles)
                             </p>
 
@@ -1268,13 +1300,13 @@
                         <span class="dash-status-badge scheduled">
                             <i class="fas fa-satellite-dish"></i> Mobile Unit Dispatched
                         </span>
-                        <span style="font-size: 0.72rem; color: #64748b; font-family: monospace;">GEOFENCE: ARMED</span>
+                        <span style="font-size: 0.72rem; font-family: monospace;" class="dash-muted-badge">GEOFENCE: ARMED</span>
                     </div>
 
-                    <h3 style="font-size: 1.25rem; font-weight: 600; color: #0f172a; margin: 0 0 4px 0;" class="dash-highlight-text" id="trackJobHeading">
+                    <h3 style="font-size: 1.25rem; font-weight: 600; margin: 0 0 4px 0;" class="dash-highlight-text" id="trackJobHeading">
                         Job #JOB-8819 — Mobile On-Site Destruction
                     </h3>
-                    <p style="font-size: 0.82rem; color: #475569; margin: 0 0 16px 0;">
+                    <p style="font-size: 0.82rem; margin: 0 0 16px 0;" class="dash-sub-text">
                         <i class="fas fa-location-dot"></i> Destination: <strong>450 Financial Way, 4th Floor, Suite 410</strong>
                     </p>
 
@@ -1296,7 +1328,7 @@
 
                     <!-- Progress Bar -->
                     <div style="margin-bottom: 18px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.76rem; font-weight: 700; color: #475569; margin-bottom: 6px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.76rem; font-weight: 700; margin-bottom: 6px;" class="dash-sub-text">
                             <span>Dispatch Completion Milestone</span>
                             <span style="color: #2563eb;">50% Complete</span>
                         </div>
@@ -1319,204 +1351,109 @@
                         </button>
                     </div>
                 </div>
-
-                <!-- Right: Simulated GPS Fleet Radar Map Card -->
-                <div class="dash-telemetry-card">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-                        <h4 style="font-size: 0.95rem; font-weight: 600; color: #0f172a; margin: 0;" class="dash-highlight-text">
-                            <i class="fas fa-map-location-dot"></i> Live Vehicle Route Telemetry
-                        </h4>
-                        <span style="font-size: 0.72rem; font-weight: 700;" class="dash-text-muted"><i class="fas fa-signal"></i> GPS ONLINE</span>
-                    </div>
-
-                    <!-- Map Simulation Canvas -->
-                    <div class="dash-simulated-map">
-                        <div class="dash-map-grid-overlay"></div>
-                        <div class="dash-map-telemetry-tag">
-                            <i class="fas fa-compass"></i> SPEED: 38 MPH • HEADING: NE
-                        </div>
-
-                        <!-- Route Line -->
-                        <div class="dash-map-route-line"></div>
-
-                        <!-- Origin Pin -->
-                        <div class="dash-map-pin origin">
-                            <div style="width: 12px; height: 12px; background: #64748b; border: 2px solid #fff; border-radius: 50%;"></div>
-                            <span class="dash-map-pin-tag">VaultShred Depot Hub #1</span>
-                        </div>
-
-                        <!-- Live Truck Marker -->
-                        <div class="dash-map-pin truck">
-                            <span class="dash-map-pin-tag">
-                                <i class="fas fa-truck"></i> Truck #MT-04
-                            </span>
-                            <div class="dash-map-pulse-dot"></div>
-                        </div>
-
-                        <!-- Destination Pin -->
-                        <div class="dash-map-pin dest">
-                            <div style="width: 14px; height: 14px; background: #e63946; border: 2px solid #fff; border-radius: 50%;"></div>
-                            <span class="dash-map-pin-tag" style="border-color: #e63946;">
-                                <i class="fas fa-building"></i> 450 Financial Way
-                            </span>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; justify-content: space-between; font-size: 0.74rem; color: #64748b;">
-                        <span><i class="fas fa-shield"></i> Continuous GPS Tamper Log active</span>
-                        <a style="color: #2563eb; cursor: pointer; font-weight: 600;" onclick="alert('Geofence alert armed: You will receive an SMS 15 minutes before Truck #MT-04 arrives at your loading dock.')">Alert Settings</a>
-                    </div>
-                </div>
             </div>
 
             <!-- Middle Panel: 4-Step Chain of Custody Timeline -->
             <div class="dash-panel" style="padding: 28px; margin-bottom: 24px;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
                     <div>
-                        <h4 style="font-size: 1.05rem; font-weight: 600; color: #0f172a; margin: 0;" class="dash-highlight-text">
+                        <h4 style="font-size: 1.05rem; font-weight: 600; margin: 0;" class="dash-highlight-text">
                             <i class="fas fa-timeline"></i> 4-Stage Custody Chain & Destruction Lifecycle
                         </h4>
-                        <p style="font-size: 0.78rem; color: #64748b; margin: 4px 0 0 0;">Each phase requires cryptographic multi-party key authorization prior to advancement.</p>
+                        <p style="font-size: 0.78rem; margin: 4px 0 0 0;" class="dash-sub-text">Each phase requires cryptographic multi-party key authorization prior to advancement.</p>
                     </div>
                     <span class="dash-status-badge completed"><i class="fas fa-lock"></i> NAID AAA P-4 Certified</span>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;" id="custodyStepsRow">
+                <div class="dash-custody-steps-grid" id="custodyStepsRow">
                     <div class="dash-step-card step-done">
-                        <span class="dash-step-badge" style="font-size: 0.7rem; font-weight: 800;">STEP 1 — COMPLETED</span>
+                        <span class="dash-step-badge">STEP 1 — COMPLETED</span>
                         <h4 class="dash-step-title">Barcode Allocation</h4>
                         <p>10 barcoded security seals (#BC-09941 to 09950) generated & assigned.</p>
-                        <small style="display: block; margin-top: 8px; font-size: 0.68rem; color: #1d4ed8; font-weight: 700;">Completed: Today 08:30 AM</small>
+                        <small class="dash-step-time">Completed: Today 08:30 AM</small>
                     </div>
                     <div class="dash-step-card step-active">
-                        <span class="dash-step-badge" style="font-size: 0.7rem; font-weight: 800;">STEP 2 — ACTIVE</span>
+                        <span class="dash-step-badge">STEP 2 — ACTIVE</span>
                         <h4 class="dash-step-title">Mobile Unit Transit</h4>
                         <p>Truck #MT-04 dispatched under GPS seal to client facility dock.</p>
-                        <small style="display: block; margin-top: 8px; font-size: 0.68rem; color: #b45309; font-weight: 700;">Estimated Arrival: Tomorrow 10:00 AM</small>
+                        <small class="dash-step-time">Estimated Arrival: Tomorrow 10:00 AM</small>
                     </div>
                     <div class="dash-step-card step-pending">
-                        <span class="dash-step-badge" style="font-size: 0.7rem; font-weight: 800;">STEP 3 — PENDING</span>
+                        <span class="dash-step-badge">STEP 3 — PENDING</span>
                         <h4 class="dash-step-title">On-Site Destruction</h4>
                         <p>Dual-key console unlock; cross-cut shredding with CCTV monitor feed.</p>
-                        <small style="display: block; margin-top: 8px; font-size: 0.68rem; color: #64748b;">Pending Arrival</small>
+                        <small class="dash-step-time">Pending Arrival</small>
                     </div>
                     <div class="dash-step-card step-pending">
-                        <span class="dash-step-badge" style="font-size: 0.7rem; font-weight: 800;">STEP 4 — PENDING</span>
+                        <span class="dash-step-badge">STEP 4 — PENDING</span>
                         <h4 class="dash-step-title">Certificate Minted</h4>
                         <p>Cryptographic SHA-256 PDF minted and baled for 100% paper mill recycling.</p>
-                        <small style="display: block; margin-top: 8px; font-size: 0.68rem; color: #64748b;">Post-Destruction</small>
+                        <small class="dash-step-time">Post-Destruction</small>
                     </div>
                 </div>
             </div>
 
-            <!-- Bottom Split: Scan-by-Scan Barcode Audit Log (Left) + CCTV Hopper Simulation (Right) -->
-            <div class="dash-overview-columns" style="margin-bottom: 24px;">
-                <!-- Left: Barcode Audit Scan Stream -->
-                <div class="dash-panel" style="margin-bottom: 0;">
-                    <div class="dash-panel-header">
-                        <div>
-                            <h4 class="dash-panel-title" style="font-size: 0.98rem;">
-                                <i class="fas fa-barcode"></i> Tamper-Evident Barcode Scan Stream
-                            </h4>
-                            <p style="font-size: 0.76rem; color: #64748b; margin: 3px 0 0 0;">Real-time scan logs recorded at each custody handover.</p>
-                        </div>
-                        <span class="dash-status-badge completed" style="font-size: 0.68rem;">5 Scans Verified</span>
+            <!-- Barcode Audit Scan Stream (Full Width) -->
+            <div class="dash-panel" style="margin-bottom: 24px;">
+                <div class="dash-panel-header">
+                    <div>
+                        <h4 class="dash-panel-title" style="font-size: 0.98rem;">
+                            <i class="fas fa-barcode"></i> Tamper-Evident Barcode Scan Stream
+                        </h4>
+                        <p style="font-size: 0.76rem; margin: 3px 0 0 0;" class="dash-sub-text">Real-time scan logs recorded at each custody handover.</p>
                     </div>
-
-                    <div class="dash-table-responsive">
-                        <table class="dash-table-custom">
-                            <thead>
-                                <tr>
-                                    <th>Scan Time</th>
-                                    <th>Barcode ID</th>
-                                    <th>Container Description</th>
-                                    <th>Location Checkpoint</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Today 08:30 AM</td>
-                                    <td><code class="dash-code-link">#BC-09941</code></td>
-                                    <td>64-Gallon Rolling Cart #1</td>
-                                    <td>Central Logistics Depot</td>
-                                    <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Today 08:31 AM</td>
-                                    <td><code class="dash-code-link">#BC-09942</code></td>
-                                    <td>64-Gallon Rolling Cart #2</td>
-                                    <td>Central Logistics Depot</td>
-                                    <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Today 08:32 AM</td>
-                                    <td><code class="dash-code-link">#BC-09943</code></td>
-                                    <td>32-Gal Security Console #1</td>
-                                    <td>Assigned to Truck #MT-04</td>
-                                    <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Today 08:33 AM</td>
-                                    <td><code class="dash-code-link">#BC-09944</code></td>
-                                    <td>32-Gal Security Console #2</td>
-                                    <td>Assigned to Truck #MT-04</td>
-                                    <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Today 08:35 AM</td>
-                                    <td><code class="dash-code-hash">#TS-99214</code></td>
-                                    <td>Tamper Padlock Bolt Seal</td>
-                                    <td>Departure Gate Outbound</td>
-                                    <td><span class="dash-status-badge completed"><i class="fas fa-lock"></i> Sealed</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <span class="dash-status-badge completed" style="font-size: 0.68rem;">5 Scans Verified</span>
                 </div>
 
-                <!-- Right: Simulated CCTV Witness Feed & Green Recycling Guarantee -->
-                <div>
-                    <!-- CCTV Monitor Card -->
-                    <div class="dash-cctv-frame">
-                        <div class="dash-cctv-top">
-                            <span class="dash-cctv-rec-badge">
-                                <span class="dash-cctv-rec-dot"></span> LIVE CCTV FEED
-                            </span>
-                            <span style="font-size: 0.72rem; color: #60a5fa; font-family: monospace;">CAM 01: HOPPER INGESTION</span>
-                        </div>
-
-                        <div class="dash-cctv-view-window">
-                            <div class="dash-cctv-crosshair"></div>
-                            <i class="fas fa-video" style="font-size: 1.8rem; margin-bottom: 8px;"></i>
-                            <span style="font-size: 0.82rem; font-weight: 700; color: #f1f5f9;">Witness Camera Standby</span>
-                            <div class="dash-cctv-status-pill">
-                                <i class="fas fa-gear fa-spin"></i> SHREDDER BLADES: ARMED / READY
-                            </div>
-                        </div>
-
-                        <div class="dash-cctv-info-bar">
-                            <span>FPS: 30 • 1080P HD</span>
-                            <span>DIN 66399 LEVEL P-4</span>
-                        </div>
-                    </div>
-
-                    <!-- Green Environmental Guarantee Card -->
-                    <div class="dash-panel" style="margin-bottom: 0; padding: 18px 20px;">
-                        <div style="display: flex; align-items: flex-start; gap: 14px;">
-                            <div class="dash-metric-icon-circle" style="width: 40px; height: 40px; font-size: 1.1rem;">
-                                <i class="fas fa-leaf"></i>
-                            </div>
-                            <div>
-                                <h4 style="font-size: 0.92rem; font-weight: 600; color: #0f172a; margin: 0 0 4px 0;" class="dash-highlight-text">
-                                    100% Recycled & Zero Landfill Guarantee
-                                </h4>
-                                <p style="font-size: 0.78rem; color: #64748b; margin: 0; line-height: 1.5;">
-                                    Upon destruction, paper residue from JOB-8819 will be compressed into 1,000 lb bales and transferred to certified domestic recycling mills.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="dash-table-responsive">
+                    <table class="dash-table-custom">
+                        <thead>
+                            <tr>
+                                <th>Scan Time</th>
+                                <th>Barcode ID</th>
+                                <th>Container Description</th>
+                                <th>Location Checkpoint</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Today 08:30 AM</td>
+                                <td><code class="dash-code-link">#BC-09941</code></td>
+                                <td>64-Gallon Rolling Cart #1</td>
+                                <td>Central Logistics Depot</td>
+                                <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
+                            </tr>
+                            <tr>
+                                <td>Today 08:31 AM</td>
+                                <td><code class="dash-code-link">#BC-09942</code></td>
+                                <td>64-Gallon Rolling Cart #2</td>
+                                <td>Central Logistics Depot</td>
+                                <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
+                            </tr>
+                            <tr>
+                                <td>Today 08:32 AM</td>
+                                <td><code class="dash-code-link">#BC-09943</code></td>
+                                <td>32-Gal Security Console #1</td>
+                                <td>Assigned to Truck #MT-04</td>
+                                <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
+                            </tr>
+                            <tr>
+                                <td>Today 08:33 AM</td>
+                                <td><code class="dash-code-link">#BC-09944</code></td>
+                                <td>32-Gal Security Console #2</td>
+                                <td>Assigned to Truck #MT-04</td>
+                                <td><span class="dash-status-badge completed"><i class="fas fa-check"></i> Scanned</span></td>
+                            </tr>
+                            <tr>
+                                <td>Today 08:35 AM</td>
+                                <td><code class="dash-code-hash">#TS-99214</code></td>
+                                <td>Tamper Padlock Bolt Seal</td>
+                                <td>Departure Gate Outbound</td>
+                                <td><span class="dash-status-badge completed"><i class="fas fa-lock"></i> Sealed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
