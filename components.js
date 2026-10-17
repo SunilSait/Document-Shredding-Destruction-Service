@@ -64,7 +64,6 @@ function renderNavbar() {
     const mobLinksHtml = links.map(l =>
         `<a href="${l.href}" class="mob-link${page === l.href ? ' active' : ''}">
             <span class="mob-link-content"><span>${l.label}</span></span>
-            <i class="fas fa-chevron-right mob-link-arrow"></i>
         </a>`
     ).join('');
 

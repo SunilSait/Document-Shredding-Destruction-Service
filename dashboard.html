@@ -7,7 +7,7 @@
     <meta name="description" content="VaultShred Client Portal: Schedule on-site shredding pickups, access serialized certificates of destruction, manage recurring locked consoles, and review invoices.">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=7.7">
+    <link rel="stylesheet" href="style.css?v=7.8">
     <style>
         .dark input[type="date"],
         .dark .dash-custom-input[type="date"],
@@ -863,7 +863,6 @@
                     <h2 class="dash-section-heading">Schedule Shredding Service</h2>
                     <p style="color: #64748b; font-size: 0.86rem;">Book an on-site mobile shredder truck or schedule a secure off-site plant purge.</p>
                 </div>
-                <button class="dash-hdr-pill-btn" onclick="switchTab('overview')" style="width: fit-content !important;"><i class="fas fa-arrow-left"></i> Back to Dashboard</button>
             </div>
 
             <div class="dash-scheduler-card">
@@ -998,9 +997,6 @@
                     <button class="dash-hdr-pill-btn" onclick="alert('Exporting complete audit report for HIPAA / FACTA auditors...')">
                         <i class="fas fa-file-export"></i> Export Audit Log (CSV)
                     </button>
-                    <button class="dash-hdr-pill-btn" onclick="switchTab('overview')" style="width: fit-content !important;">
-                        <i class="fas fa-arrow-left"></i> Dashboard
-                    </button>
                 </div>
             </div>
 
@@ -1116,7 +1112,6 @@
                     <h2 class="dash-section-heading">Recurring Service Plans</h2>
                     <p class="dash-section-sub">Manage deployed locked office consoles, pickup frequency, and automated collection schedules.</p>
                 </div>
-                <button class="dash-hdr-pill-btn" onclick="switchTab('overview')" style="width: fit-content !important;"><i class="fas fa-arrow-left"></i> Dashboard</button>
             </div>
 
             <!-- Active Plan Card -->
@@ -1236,7 +1231,6 @@
                     <h2 class="dash-section-heading">Invoices & Billing History</h2>
                     <p class="dash-section-sub">Review verified destruction invoices, payment receipts, and download compliance statements.</p>
                 </div>
-                <button class="dash-hdr-pill-btn" onclick="switchTab('overview')" style="width: fit-content !important;"><i class="fas fa-arrow-left"></i> Dashboard</button>
             </div>
 
             <!-- Billing KPI Summary -->
@@ -1374,7 +1368,6 @@
                     <button class="dash-hero-btn primary" onclick="switchTab('schedule')" style="padding: 8px 18px; font-size: 0.82rem;">
                         <i class="fas fa-plus"></i> Schedule New Pickup
                     </button>
-                    <button class="dash-hdr-pill-btn" onclick="switchTab('overview')" style="width: fit-content !important;"><i class="fas fa-arrow-left"></i> Dashboard</button>
                 </div>
             </div>
 
@@ -1414,9 +1407,9 @@
             <div class="dash-toolbar-card">
                 <div class="dash-filter-pill-group">
                     <span style="font-size: 0.78rem; font-weight: 700; color: #64748b; margin-right: 4px;">FILTER:</span>
-                    <button class="dash-hdr-pill-btn active" id="btnFilterAllJobs" onclick="filterJobsList('all')">All Jobs (6)</button>
-                    <button class="dash-hdr-pill-btn" id="btnFilterActiveJobs" onclick="filterJobsList('active')">Active Dispatched (2)</button>
-                    <button class="dash-hdr-pill-btn" id="btnFilterCompletedJobs" onclick="filterJobsList('completed')">Completed & Certified (4)</button>
+                    <button class="dash-hdr-pill-btn active" id="btnFilterAllJobs" onclick="filterJobsList('all')">All Jobs</button>
+                    <button class="dash-hdr-pill-btn" id="btnFilterActiveJobs" onclick="filterJobsList('active')">Active Dispatched</button>
+                    <button class="dash-hdr-pill-btn" id="btnFilterCompletedJobs" onclick="filterJobsList('completed')">Completed & Certified</button>
                 </div>
                 <div style="display: flex; align-items: center; gap: 8px;">
                     <i class="fas fa-search" style="font-size: 0.85rem;"></i>
@@ -1652,7 +1645,6 @@
                     <button class="dash-hero-btn primary" onclick="alert('Downloading Certified Chain of Custody Manifest #COC-8819 with SHA-256 digital fingerprint...')" style="padding: 8px 18px; font-size: 0.82rem;">
                         <i class="fas fa-file-signature"></i> Download Custody Manifest (PDF)
                     </button>
-                    <button class="dash-hdr-pill-btn" onclick="switchTab('overview')" style="width: fit-content !important;"><i class="fas fa-arrow-left"></i> Dashboard</button>
                 </div>
             </div>
 
@@ -1661,7 +1653,7 @@
                 <div class="dash-filter-pill-group">
                     <span style="font-size: 0.78rem; font-weight: 700; color: #64748b;"><i class="fas fa-truck"></i> SELECT CONSIGNMENT:</span>
                     <button class="dash-hdr-pill-btn active" id="btnTrack8819" onclick="switchTrackedOrder('8819')">
-                        <span class="dash-live-dot-pulse" style="margin-right: 4px;"></span> #JOB-8819 (Tomorrow • MT-04)
+                        <span class="dash-live-dot-pulse" style="margin-right: 4px;"></span> #JOB-8819 (Tomorrow)
                     </button>
                     <button class="dash-hdr-pill-btn" id="btnTrack8820" onclick="switchTrackedOrder('8820')">
                         #JOB-8820 (Oct 25 • Route R-12)
@@ -1745,7 +1737,6 @@
                         </h4>
                         <p style="font-size: 0.78rem; margin: 4px 0 0 0;" class="dash-sub-text">Each phase requires cryptographic multi-party key authorization prior to advancement.</p>
                     </div>
-                    <span class="dash-status-badge completed"><i class="fas fa-lock"></i> NAID AAA P-4 Certified</span>
                 </div>
 
                 <div class="dash-custody-steps-grid" id="custodyStepsRow">
@@ -1932,10 +1923,10 @@
             <i class="fas fa-arrow-right-from-bracket"></i>
         </div>
         <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 8px;">Confirm Logout</h3>
-        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 24px;">Are you sure you want to end your current session? You will be redirected to the home page.</p>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 24px;">Are you sure you want to end your current session? You will be redirected to the login page.</p>
         <div style="display: flex; gap: 12px; justify-content: center;">
             <button type="button" class="btn btn-outline" onclick="closeLogoutModal()" style="flex: 1; padding: 11px 16px; border-radius: var(--radius-md); font-weight: 600; font-size: 0.9rem; cursor: pointer;">Cancel</button>
-            <a href="index.html" class="btn btn-primary" style="flex: 1; padding: 11px 16px; border-radius: var(--radius-md); font-weight: 600; font-size: 0.9rem; background: #e63946; border-color: #e63946; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; color: #fff; cursor: pointer;">Yes, Log Out</a>
+            <a href="login.html" class="btn btn-primary" style="flex: 1; padding: 11px 16px; border-radius: var(--radius-md); font-weight: 600; font-size: 0.9rem; background: #e63946; border-color: #e63946; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; color: #fff; cursor: pointer;">Yes, Log Out</a>
         </div>
     </div>
 </div>
